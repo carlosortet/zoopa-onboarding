@@ -1,0 +1,2424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding Zoopa - Guía para Nuevas Incorporaciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* VARIABLES ZOOPA */
+        :root {
+            --color-black: #000000;
+            --color-white: #ffffff;
+            --color-gray-blue: #abb8c3;
+            --color-gray-dark: #32373c;
+            --color-red: #cf2e2e;
+            --color-orange: #ff6900;
+            --color-green: #00d084;
+
+            --font-size-xs: 13px;
+            --font-size-base: 16px;
+            --font-size-md: 20px;
+            --font-size-lg: 36px;
+            --font-size-xl: 42px;
+
+            --font-weight-regular: 400;
+            --font-weight-bold: 700;
+            --font-weight-extrabold: 800;
+
+            --spacing-xs: 0.44rem;
+            --spacing-sm: 0.88rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 3.75rem;
+            --spacing-xxl: 5.06rem;
+
+            --transition-fast: 0.2s;
+            --transition-normal: 0.3s;
+            --transition-slow: 0.5s;
+        }
+
+        /* RESET Y BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            color: var(--color-black);
+            background: var(--color-white);
+        }
+
+        /* NAVEGACIÓN FIJA */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: var(--spacing-md) var(--spacing-lg);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-extrabold);
+            color: var(--color-white);
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--color-red);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-bold);
+            text-transform: uppercase;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            color: var(--color-red);
+        }
+
+        /* HERO */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--color-red) 0%, var(--color-black) 100%);
+            color: var(--color-white);
+            padding: var(--spacing-xxl) var(--spacing-lg);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-extrabold);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: var(--font-size-md);
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* CONTENEDORES */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .container-wide {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        /* SECCIONES */
+        .section {
+            padding: var(--spacing-xl) 0;
+            border-bottom: 2px solid rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            display: inline-block;
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-extrabold);
+            margin-bottom: var(--spacing-lg);
+            border-radius: 4px;
+        }
+
+        .section-subtitle {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-bold);
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-black);
+        }
+
+        .subsection-title {
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-bold);
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-gray-dark);
+        }
+
+        /* TARJETAS */
+        .card {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-blue);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            transition: all var(--transition-normal);
+        }
+
+        .card:hover {
+            border-color: var(--color-red);
+            box-shadow: 0 4px 20px rgba(207, 46, 46, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .card-highlight {
+            background: linear-gradient(135deg, rgba(207, 46, 46, 0.05) 0%, rgba(255, 105, 0, 0.05) 100%);
+            border-color: var(--color-red);
+        }
+
+        .card h3 {
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-extrabold);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-red);
+        }
+
+        .card p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* TAGS */
+        .tag {
+            display: inline-block;
+            background: var(--color-gray-dark);
+            color: var(--color-white);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-bold);
+            margin-right: var(--spacing-xs);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .tag-red {
+            background: var(--color-red);
+        }
+
+        .tag-orange {
+            background: var(--color-orange);
+        }
+
+        .tag-green {
+            background: var(--color-green);
+        }
+
+        /* LISTAS */
+        ul, ol {
+            margin-left: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding-left: var(--spacing-md);
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "□";
+            position: absolute;
+            left: 0;
+            color: var(--color-red);
+            font-weight: var(--font-weight-extrabold);
+        }
+
+        /* CÓDIGO */
+        pre, code {
+            background: #f5f5f5;
+            border: 1px solid var(--color-gray-blue);
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        pre {
+            padding: var(--spacing-md);
+            overflow-x: auto;
+            margin-bottom: var(--spacing-md);
+        }
+
+        code {
+            padding: 2px 6px;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* BOTONES */
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: var(--color-gray-dark);
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: var(--font-weight-extrabold);
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-family: inherit;
+            font-size: var(--font-size-base);
+        }
+
+        .btn:hover {
+            background: var(--color-red);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(207, 46, 46, 0.3);
+        }
+
+        .btn-red {
+            background: var(--color-red);
+        }
+
+        .btn-red:hover {
+            background: var(--color-orange);
+        }
+
+        /* TABLA */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: var(--spacing-md);
+        }
+
+        th, td {
+            padding: var(--spacing-sm);
+            text-align: left;
+            border-bottom: 1px solid var(--color-gray-blue);
+        }
+
+        th {
+            background: var(--color-gray-dark);
+            color: var(--color-white);
+            font-weight: var(--font-weight-extrabold);
+        }
+
+        /* DESTACADOS */
+        .highlight {
+            background: linear-gradient(to right, var(--color-red), var(--color-orange));
+            color: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .highlight strong {
+            font-weight: var(--font-weight-extrabold);
+        }
+
+        .warning {
+            background: rgba(255, 105, 0, 0.1);
+            border-left: 4px solid var(--color-orange);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            border-radius: 4px;
+        }
+
+        .success {
+            background: rgba(0, 208, 132, 0.1);
+            border-left: 4px solid var(--color-green);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            border-radius: 4px;
+        }
+
+        /* PRINCIPIOS */
+        .principle {
+            background: var(--color-white);
+            border-left: 6px solid var(--color-red);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .principle-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--color-red);
+            color: var(--color-white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: var(--font-weight-extrabold);
+            margin-right: var(--spacing-sm);
+        }
+
+        .principle h4 {
+            display: inline;
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-extrabold);
+            color: var(--color-black);
+        }
+
+        .principle p {
+            margin-top: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .principle-application {
+            background: rgba(0,0,0,0.02);
+            padding: var(--spacing-sm);
+            border-radius: 4px;
+            margin-top: var(--spacing-sm);
+        }
+
+        .principle-application strong {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-red);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: var(--spacing-xl) var(--spacing-lg);
+            text-align: center;
+            margin-top: var(--spacing-xxl);
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: var(--font-size-xs);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero {
+                padding: var(--spacing-lg);
+            }
+
+            .hero h1 {
+                font-size: var(--font-size-lg);
+            }
+
+            .section-subtitle {
+                font-size: var(--font-size-md);
+            }
+
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ANIMACIONES Y MICROINTERACCIONES */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Scroll Reveal Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Staggered animations for grid items */
+        .grid .card:nth-child(1) { transition-delay: 0.1s; }
+        .grid .card:nth-child(2) { transition-delay: 0.2s; }
+        .grid .card:nth-child(3) { transition-delay: 0.3s; }
+        .grid .card:nth-child(4) { transition-delay: 0.4s; }
+        .grid .card:nth-child(5) { transition-delay: 0.5s; }
+        .grid .card:nth-child(6) { transition-delay: 0.6s; }
+
+        /* Enhanced Card Hover Effects */
+        .card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(207, 46, 46, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(207, 46, 46, 0.15);
+        }
+
+        /* Nav scroll effect */
+        .nav {
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Hero animations */
+        .hero h1 {
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero > div > p:first-of-type {
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero .tag {
+            animation: scaleIn 0.6s ease-out both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero .tag:nth-child(1) { animation-delay: 0.6s; }
+        .hero .tag:nth-child(2) { animation-delay: 0.7s; }
+        .hero .tag:nth-child(3) { animation-delay: 0.8s; }
+
+        .hero .tag:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Section title animation */
+        .section-title {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--color-red);
+            transition: width 0.5s ease;
+        }
+
+        .section:hover .section-title::after {
+            width: 100%;
+        }
+
+        /* Principle cards enhanced */
+        .principle {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .principle::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 6px;
+            background: var(--color-red);
+            transition: width 0.3s ease;
+        }
+
+        .principle:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(207, 46, 46, 0.1);
+        }
+
+        .principle:hover::before {
+            width: 10px;
+        }
+
+        .principle-number {
+            transition: all 0.3s ease;
+        }
+
+        .principle:hover .principle-number {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 5px 15px rgba(207, 46, 46, 0.4);
+        }
+
+        /* Button enhanced */
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Highlight box pulse effect */
+        .highlight {
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        /* Banner hover zoom */
+        .banner-project {
+            overflow: hidden;
+        }
+
+        .banner-project > div {
+            transition: transform 0.5s ease;
+        }
+
+        .banner-project:hover > div {
+            transform: scale(1.05);
+        }
+
+        /* Quote sections */
+        .quote-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-section::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 200px;
+            opacity: 0.05;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation for images */
+        img {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Link hover underline effect */
+        a:not(.nav-link):not(.btn):not(.nav-logo) {
+            position: relative;
+        }
+
+        a:not(.nav-link):not(.btn):not(.nav-logo)::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-red);
+            transition: width 0.3s ease;
+        }
+
+        a:not(.nav-link):not(.btn):not(.nav-logo):hover::after {
+            width: 100%;
+        }
+
+        /* Table row hover */
+        tbody tr {
+            transition: background 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(207, 46, 46, 0.05);
+        }
+
+        /* Checklist item animation */
+        .checklist li {
+            transition: transform 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .checklist li:hover {
+            transform: translateX(5px);
+            padding-left: calc(var(--spacing-md) + 5px);
+        }
+
+        /* Tag pulse on nav links */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--color-red);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        /* Success/Warning box icons */
+        .success, .warning {
+            position: relative;
+            padding-left: calc(var(--spacing-md) + 30px);
+        }
+
+        .success::before {
+            content: '✓';
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: var(--color-green);
+        }
+
+        .warning::before {
+            content: '!';
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--color-orange);
+        }
+
+        /* Footer social hover */
+        .footer a {
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer a:hover {
+            color: var(--color-red);
+            transform: translateY(-3px);
+        }
+
+        /* Parallax effect for banners */
+        @media (min-width: 769px) {
+            .hero {
+                background-attachment: fixed;
+            }
+        }
+
+        /* ÍNDICE FLOTANTE */
+        .toc {
+            position: sticky;
+            top: 100px;
+            background: var(--color-white);
+            border: 2px solid var(--color-red);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .toc h3 {
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-extrabold);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-red);
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .toc a {
+            color: var(--color-black);
+            text-decoration: none;
+            font-size: var(--font-size-xs);
+            transition: color var(--transition-fast);
+        }
+
+        .toc a:hover {
+            color: var(--color-red);
+            font-weight: var(--font-weight-bold);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">
+                <img src="assets/zoopa_logo_blanco.jpg" alt="ZOOPA" style="height: 40px; vertical-align: middle; border-radius: 4px;">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#principios" class="nav-link">Principios</a></li>
+                <li><a href="#herramientas" class="nav-link">Herramientas</a></li>
+                <li><a href="#community" class="nav-link">Community</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio" style="background: url('assets/hero_portaventura.jpg') center center / cover no-repeat; position: relative; overflow: hidden;">
+        <!-- Overlay oscuro -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(207,46,46,0.4) 50%, rgba(0,0,0,0.8) 100%);"></div>
+        <div style="position: relative; z-index: 1;">
+            <img src="assets/zoopa_logo_blanco.jpg" alt="ZOOPA" style="height: 80px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+            <h1>Bienvenido a Zoopa</h1>
+            <p style="font-size: var(--font-size-lg);">Guía de Onboarding para Nuevas Incorporaciones</p>
+            <div style="margin-top: var(--spacing-lg); display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-sm);">
+                <span class="tag tag-red" style="font-size: var(--font-size-base); padding: 12px 20px;">+15 años de experiencia</span>
+                <span class="tag tag-orange" style="font-size: var(--font-size-base); padding: 12px 20px;">Agencia Creativa & Productora</span>
+                <span class="tag tag-green" style="font-size: var(--font-size-base); padding: 12px 20px;">MCN + IA Innovation</span>
+            </div>
+            <p style="margin-top: var(--spacing-lg); font-size: var(--font-size-sm); opacity: 0.8;">Barcelona | Ribes | St. Margarida</p>
+        </div>
+    </section>
+
+    <!-- QUOTE INSPIRACIONAL 1 -->
+    <section style="background: var(--color-black); color: var(--color-white); padding: var(--spacing-xl) var(--spacing-lg); text-align: center;">
+        <div class="container">
+            <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); line-height: 1.3; margin: 0;">
+                "ACTÚA RÁPIDO.<br><span style="color: var(--color-red);">NO ESPERES A LA PERFECCIÓN.</span>"
+            </p>
+            <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); opacity: 0.7;">Principio #1 de Zoopa</p>
+        </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">QUIÉNES SOMOS</h2>
+
+            <p><strong>Zoopa</strong> es una <strong>agencia creativa digital y productora audiovisual</strong> con sede en Barcelona, especializada en creatividad, estrategia, producción y marketing digital para marcas líderes a nivel global.</p>
+
+            <!-- THE SMART AGENCY -->
+            <div class="card card-highlight" style="margin-top: var(--spacing-lg); border-left: 4px solid var(--color-red); background: linear-gradient(135deg, rgba(207, 46, 46, 0.08) 0%, rgba(0,0,0,0.02) 100%);">
+                <h3 style="color: var(--color-red); margin-bottom: var(--spacing-sm);">¿Por qué somos "The Smart Agency"?</h3>
+                <p style="font-size: var(--font-size-md); line-height: 1.6; margin: 0;">
+                    Porque <strong>rechazamos lo obvio y la mediocridad</strong>. Buscamos caminos nuevos, actuamos de forma <strong>audaz e inteligente</strong>.
+                </p>
+                <p style="font-size: var(--font-size-base); margin-top: var(--spacing-md); font-style: italic; opacity: 0.9;">
+                    "Smart" no es solo ser listos. Es cuestionar, innovar y encontrar la solución más efectiva, aunque nadie la haya intentado antes.
+                </p>
+            </div>
+
+            <div class="grid grid-2" style="margin-top: var(--spacing-lg);">
+                <div class="card">
+                    <h3>Nuestros Números</h3>
+                    <ul>
+                        <li><strong>+15 años</strong> de experiencia en la industria creativa y audiovisual</li>
+                        <li><strong>+200 proyectos</strong> para marcas internacionales</li>
+                        <li><strong>+30 documentales, series y programas</strong> producidos</li>
+                        <li>Presencia en <strong>mercados globales</strong>: España, Europa, LATAM, USA</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Nuestros Servicios</h3>
+                    <ul>
+                        <li><strong>Branding y Diseño:</strong> Identidad visual, naming, brand guidelines</li>
+                        <li><strong>Creatividad:</strong> Campañas, conceptos creativos, dirección de arte</li>
+                        <li><strong>Producción Audiovisual:</strong> Spots, documentales, branded content</li>
+                        <li><strong>Marketing Digital:</strong> Social Media, Paid Media, Influencers, GEO</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CLIENTES -->
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Clientes Destacados</h3>
+
+            <div class="grid grid-4" style="gap: var(--spacing-sm);">
+                <div class="card" style="text-align: center; padding: var(--spacing-md);">
+                    <strong style="color: var(--color-red);">TV / Producción</strong>
+                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">3CAT · CRIMS · Carles Porta · El Periódico Podcast</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--spacing-md);">
+                    <strong style="color: var(--color-red);">Banca / Finanzas</strong>
+                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">CaixaBank · imagin · Banco Sabadell · RENTA</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--spacing-md);">
+                    <strong style="color: var(--color-red);">Marcas / FMCG</strong>
+                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">Bacardi · Martini · VIENA · Frit Ravich · Haier</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--spacing-md);">
+                    <strong style="color: var(--color-red);">Turismo / Ocio</strong>
+                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">PortAventura · Camiral Golf · RIU Hotels</p>
+                </div>
+            </div>
+
+            <div class="grid grid-4" style="gap: var(--spacing-sm); margin-top: var(--spacing-sm);">
+                <div class="card" style="text-align: center; padding: var(--spacing-md);">
+                    <strong style="color: var(--color-red);">Institucional</strong>
+                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">DIBA · FEDA · Generalitat · Castelldefels</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--spacing-md);">
+                    <strong style="color: var(--color-red);">Fundaciones</strong>
+                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">Fundación La Caixa · Fund. Ave María · CSIC</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--spacing-md);">
+                    <strong style="color: var(--color-red);">Automotive / Tech</strong>
+                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">Ford · GroupM · Annalect · HubSpot</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--spacing-md);">
+                    <strong style="color: var(--color-red);">Salud / Otros</strong>
+                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">Adeslas · Dexeus · Veolia · Iberostar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER PROYECTOS 1: Adidas + PortAventura -->
+    <section style="display: flex; width: 100%; height: 200px; overflow: hidden;">
+        <div style="flex: 1; background: url('assets/adidas_project.jpg') center center / cover no-repeat;"></div>
+        <div style="flex: 1; background: url('assets/portaventura_project.gif') center center / cover no-repeat;"></div>
+    </section>
+
+    <!-- UNIDADES DE NEGOCIO -->
+    <section class="section" style="background: rgba(0,0,0,0.02);">
+        <div class="container">
+            <h2 class="section-title">UNIDADES DE NEGOCIO</h2>
+
+            <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-lg);">Zoopa opera a través de <strong>4 unidades de negocio especializadas</strong> que trabajan de forma integrada:</p>
+
+            <div class="grid grid-2">
+                <!-- AGENCIA CREATIVA 360 -->
+                <div class="card card-highlight">
+                    <h3>1. AGENCIA CREATIVA 360</h3>
+                    <p>Agencia de servicios integrales que combina creatividad, estrategia y ejecución para marcas líderes.</p>
+                    <ul>
+                        <li><strong>Branding y Diseño:</strong> Identidad visual, naming, brand guidelines</li>
+                        <li><strong>Creatividad:</strong> Conceptos creativos, campañas 360, dirección de arte</li>
+                        <li><strong>Social Media:</strong> Community management, content strategy</li>
+                        <li><strong>Marketing de Influencers:</strong> Campañas con creadores, talent management</li>
+                        <li><strong>Performance Marketing:</strong> Google Ads, Meta Ads, programática</li>
+                        <li><strong>LinkedIn B2B:</strong> Gestión LinkedIn, thought leadership</li>
+                        <li><strong>GEO (AI Visibility):</strong> Visibilidad en ChatGPT, Claude, Perplexity</li>
+                    </ul>
+                </div>
+
+                <!-- PRODUCTORA AUDIOVISUAL -->
+                <div class="card card-highlight">
+                    <h3>2. PRODUCTORA AUDIOVISUAL</h3>
+                    <p>Productora audiovisual de referencia con <strong>+30 documentales, series, late night shows y concursos</strong> producidos para plataformas, TV y cine.</p>
+                    <ul>
+                        <li><strong>Documentales y Series:</strong> +30 producciones para plataformas y TV</li>
+                        <li><strong>Entretenimiento:</strong> Late night shows, concursos, magazines</li>
+                        <li><strong>True Crime:</strong> Especialización en narrativa criminal</li>
+                        <li><strong>Spots Publicitarios:</strong> Producción para TV y digital</li>
+                        <li><strong>Branded Content:</strong> Contenido de marca narrativo y emocional</li>
+                        <li><strong>Cine:</strong> Producciones cinematográficas</li>
+                        <li><strong>Postproducción:</strong> Edición, colorimetría, sonido, VFX</li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-xs);"><strong>Destino:</strong> Plataformas (Netflix, Prime, etc.) | TV | Cine | Digital</p>
+                </div>
+
+                <!-- ZOOPA NETWORK MCN -->
+                <div class="card card-highlight">
+                    <h3>3. ZOOPA NETWORK (MCN)</h3>
+                    <p>Multi-Channel Network certificada de YouTube, gestionando una red de creadores de contenido digital.</p>
+                    <ul>
+                        <li><strong>+60 creadores</strong> en la network</li>
+                        <li><strong>+1.500 millones</strong> de reproducciones acumuladas</li>
+                        <li>Especialización en True Crime, documentales y entretenimiento</li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm);"><strong>Certificaciones:</strong> Google Certified (Derechos Digitales), YouTube Certified (Content Creation), Partnership Manager, Content ID Management</p>
+                </div>
+
+                <!-- 498AS INNOVATION LAB -->
+                <div class="card card-highlight">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                        <img src="assets/498as_logo.png" alt="498AS" style="height: 35px; border-radius: 4px;">
+                        <h3 style="margin: 0;">4. 498AS INNOVATION LAB</h3>
+                    </div>
+                    <p>Primera consultora europea especializada en visibilidad de marcas en sistemas de IA.</p>
+                    <p style="font-style: italic; font-size: var(--font-size-xs); color: var(--color-gray-dark);">El nombre 498AS hace referencia a los 498 segundos que tarda la luz del sol en llegar a la Tierra.</p>
+                    <p style="margin-top: var(--spacing-sm);"><strong>Servicios:</strong></p>
+                    <ul>
+                        <li><strong>GEO y Visibilidad en IA:</strong> Posicionamiento en ChatGPT, Claude, Gemini</li>
+                        <li><strong>Consultoría Estratégica IA:</strong> Roadmaps ejecutables</li>
+                        <li><strong>Desarrollo de Agentes IA:</strong> Agentes digitales 24/7</li>
+                        <li><strong>Automatización Inteligente:</strong> Conexión de herramientas</li>
+                        <li><strong>Data Science:</strong> Modelos predictivos, dashboards</li>
+                        <li><strong>Gobernanza IA:</strong> Compliance EU AI Act</li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm);"><strong>Productos:</strong> GEOradar, S.A.M., Prompt Atlas, GERARD, AI Agents Family, StarDesk, InsightDesk</p>
+                    <p style="margin-top: var(--spacing-xs); font-size: var(--font-size-xs);"><strong>Credenciales:</strong> Metodología validada por UB y CSIC | UNESCO AI Governance | EU Next Generation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE INSPIRACIONAL 2 -->
+    <section style="background: linear-gradient(135deg, var(--color-red) 0%, #1a1a1a 100%); color: var(--color-white); padding: var(--spacing-xl) var(--spacing-lg); text-align: center;">
+        <div class="container">
+            <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); line-height: 1.3; margin: 0;">
+                "¡BUSCA ATAJOS!<br><span style="color: var(--color-orange);">TRABAJA INTELIGENTE.</span>"
+            </p>
+            <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); opacity: 0.7;">Principio #2 de Zoopa</p>
+        </div>
+    </section>
+
+    <!-- TU ROL EN ZOOPA -->
+    <section class="section" style="background: var(--color-white);">
+        <div class="container">
+            <h2 class="section-title">TU ROL EN ZOOPA</h2>
+
+            <div class="highlight">
+                <p><strong>Como profesional de Zoopa, no eres solo un ejecutor de tareas. Eres un experto en tu área.</strong></p>
+            </div>
+
+            <p>Eres responsable de:</p>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>1. Dominar tu proyecto</h3>
+                    <p>Debes conocer tu cliente y proyecto mejor que ellos mismos</p>
+                </div>
+
+                <div class="card">
+                    <h3>2. Innovar constantemente</h3>
+                    <p>Proponer soluciones escalables y sostenibles</p>
+                </div>
+
+                <div class="card">
+                    <h3>3. Crecer profesionalmente</h3>
+                    <p>Tu desarrollo es tu responsabilidad</p>
+                </div>
+
+                <div class="card">
+                    <h3>4. Contribuir al ecosistema</h3>
+                    <p>Ser parte activa de la comunidad Zoopa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRINCIPIOS DE ACTUACIÓN -->
+    <section class="section" id="principios" style="background: rgba(0,0,0,0.02);">
+        <div class="container">
+            <h2 class="section-title">PRINCIPIOS DE ACTUACIÓN ZOOPA</h2>
+
+            <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-lg);">16 principios organizados en 4 bloques temáticos que guían nuestra forma de trabajar:</p>
+
+            <!-- BLOQUE 1 -->
+            <h3 class="section-subtitle">BLOQUE 1: Acción, Enfoque y Autonomía</h3>
+
+            <div class="principle">
+                <span class="principle-number">1</span>
+                <h4>Actúa Rápido, No Esperes a la Perfección</h4>
+                <p><strong>La acción es clave.</strong> No esperes el momento perfecto; comienza de inmediato y ajusta mientras avanzas. La rapidez es vital para mantener el impulso, pero siempre busca la calidad en lo que haces.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Lanza MVPs (Minimum Viable Products) y mejora iterativamente</li>
+                        <li>No dediques más de 2 horas a planificar sin ejecutar</li>
+                        <li>Prioriza el feedback real sobre la especulación</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">2</span>
+                <h4>¡Busca Atajos! Trabaja Inteligente</h4>
+                <p><strong>Enfócate en lo esencial</strong> y hazlo de manera excepcional. La eficiencia se basa en la simplicidad. <strong>Menos es más</strong>, pero cada tarea debe ejecutarse con la máxima dedicación.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Identifica las 3 prioridades críticas del día</li>
+                        <li>Rechaza tareas que no aporten valor estratégico</li>
+                        <li>Calidad sobre cantidad en cada entregable</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">3</span>
+                <h4>Vive de los Recursos Disponibles</h4>
+                <p><strong>Maximiza lo que tienes.</strong> Vive de los recursos disponibles y busca maneras inteligentes de ejecutar tareas. Cada tarea tiene unos recursos (tiempo, equipo) y un briefing: ten siempre presente ambas cosas.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Antes de pedir presupuesto, explora soluciones con recursos actuales</li>
+                        <li>Reutiliza assets, templates y workflows existentes</li>
+                        <li>Sé creativo con limitaciones</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">4</span>
+                <h4>Comunicación Directa y Transparente</h4>
+                <p><strong>La honestidad es fundamental.</strong> Habla con claridad y asegúrate de que todos en el equipo estén alineados. La transparencia y la comunicación abierta fomentan una cultura de confianza y colaboración.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Si no sabes algo, dilo inmediatamente</li>
+                        <li>Comunica blockers antes de que se vuelvan críticos</li>
+                        <li>Reporta avances y retrocesos con la misma transparencia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- BLOQUE 2 -->
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xxl);">BLOQUE 2: Crecimiento Continuo y Responsabilidad</h3>
+
+            <div class="principle">
+                <span class="principle-number">5</span>
+                <h4>Nunca Dejes de Estudiar</h4>
+                <p><strong>El aprendizaje constante es esencial</strong> para el crecimiento. No estás aquí solo para hacer tareas, sino también para aprender, crecer y resolver problemas de manera innovadora.</p>
+                <p><strong>Debes ser un experto en tu área y el que más sabe de tu proyecto y cliente, más que ellos mismos. ¡Sí!</strong></p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Dedica 1 hora semanal a formación en tu área</li>
+                        <li>Mantente actualizado en tendencias de la industria</li>
+                        <li>Comparte aprendizajes con el equipo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">6</span>
+                <h4>Rompe las Reglas Cuando Sea Necesario</h4>
+                <p>Si las reglas limitan tu capacidad de innovar, <strong>rompe las normas</strong>. La agilidad requiere ser flexible, pero siempre con un propósito claro. <strong>Lucha por lo que es mejor, inventa cuando haga falta, no por lo que es fácil.</strong></p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Si un proceso bloquea la innovación, propón alternativas</li>
+                        <li>Justifica tus decisiones con datos y razonamiento</li>
+                        <li>Asume la responsabilidad de tus experimentos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">7</span>
+                <h4>Ve Rápido, Pero No Con Prisas</h4>
+                <p><strong>Actúa rápido, pero con reflexión.</strong> La rapidez es importante, pero no a costa de la calidad ni del impacto. Aprovecha la agilidad para avanzar, pero tómate el tiempo para resolver lo que realmente importa.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Diferencia entre urgente e importante</li>
+                        <li>Automatiza lo repetitivo para tener tiempo para lo estratégico</li>
+                        <li>No sacrifiques calidad por velocidad en entregables críticos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">8</span>
+                <h4>Asume Responsabilidad</h4>
+                <p><strong>Tu trabajo no está terminado hasta que esté completamente resuelto.</strong> No te limites a hacer lo mínimo; haz que las cosas sucedan, sin importar los obstáculos. La responsabilidad total es esencial para lograr resultados excepcionales.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>No digas "no es mi responsabilidad" si puedes solucionarlo</li>
+                        <li>Sigue los proyectos hasta su cierre completo</li>
+                        <li>Anticipa problemas y resuelve proactivamente</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- BLOQUE 3 -->
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xxl);">BLOQUE 3: Superación y Colaboración</h3>
+
+            <div class="principle">
+                <span class="principle-number">9</span>
+                <h4>Empuja los Límites, Supera las Expectativas</h4>
+                <p><strong>Supera tus propios límites</strong> y los de los demás. Desafía lo posible y busca constantemente formas de mejorar el rendimiento. El cambio continuo y la evolución son la clave para avanzar.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Establece KPIs personales más ambiciosos que los oficiales</li>
+                        <li>Propón mejoras antes de que te las pidan</li>
+                        <li>Celebra los pequeños logros en el camino</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">10</span>
+                <h4>Tu Objetivo es Crecer Profesionalmente con Todos Nosotros</h4>
+                <p><strong>Tu crecimiento profesional es tu responsabilidad.</strong> Zoopa te brinda las herramientas, pero eres tú quien marca el ritmo. Aprovéchalo para desarrollarte constantemente y contribuir al éxito del equipo.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Define tu plan de desarrollo profesional trimestral</li>
+                        <li>Solicita feedback regularmente</li>
+                        <li>Busca mentores dentro y fuera de Zoopa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">11</span>
+                <h4>Hazlo Tú Mismo y Colabora</h4>
+                <p><strong>No esperes instrucciones.</strong> Toma la iniciativa, pero al mismo tiempo, trabaja en equipo. La colaboración activa y el apoyo mutuo son la base para alcanzar grandes logros.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Resuelve de forma autónoma pero comparte el proceso</li>
+                        <li>Ofrece ayuda a compañeros sin que te la pidan</li>
+                        <li>Documenta tus procesos para que otros aprendan</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">12</span>
+                <h4>Sé Auténtico y Fiel a Ti Mismo</h4>
+                <p><strong>La autenticidad es crucial.</strong> No imites a otros ni sigas ciegamente tendencias. Sé tú mismo, mantén tu integridad y aporta valor único al equipo y a la empresa.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Aporta tu perspectiva única en reuniones</li>
+                        <li>No tengas miedo de disentir constructivamente</li>
+                        <li>Tus diferencias son tu valor, no tu debilidad</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- BLOQUE 4 -->
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xxl);">BLOQUE 4: Resiliencia, Competencia y Gestión Eficiente</h3>
+
+            <div class="principle">
+                <span class="principle-number">13</span>
+                <h4>Somos Competitivos Pero Grandes Compañeros</h4>
+                <p><strong>Enfréntate a los desafíos</strong> con mentalidad competitiva, pero en el interior del equipo, busca siempre la colaboración. Crece junto a los demás, ya que todos ganamos cuando el equipo progresa.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Compite contra el mercado, no contra tus compañeros</li>
+                        <li>Comparte conocimientos y casos de éxito</li>
+                        <li>El éxito del equipo es tu éxito</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">14</span>
+                <h4>Minimiza las Reuniones, Maximiza la Acción</h4>
+                <p><strong>Las reuniones largas y complejas retrasan el progreso.</strong> Enfócate en la acción real. Has de estar donde aportas; si acudes a una reunión es para participar.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>No asistas a reuniones donde no aportes valor</li>
+                        <li>Si organizas una reunión, ten agenda clara y timeboxing</li>
+                        <li>Prefiere Teams/email para updates, reuniones para decisiones</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">15</span>
+                <h4>Nunca Critiques a los Clientes</h4>
+                <p><strong>Los clientes son nuestros compañeros y clave</strong> para el éxito. No los critiques porque sí, pero <strong>cuestionálos cuando sea necesario</strong>, y hazlo de manera respetuosa y constructiva.</p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Critica en privado, apoya en público</li>
+                        <li>Transforma quejas en propuestas de mejora</li>
+                        <li>Recuerda: sin clientes, no hay Zoopa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle">
+                <span class="principle-number">16</span>
+                <h4>Sé Resiliente y Aprende del Fracaso</h4>
+                <p><strong>No temas al fracaso</strong>; es parte del proceso de aprendizaje. La resiliencia es una de las claves del éxito.</p>
+                <p><strong>¡Atrévete! Nunca hemos castigado un error; lo que es imperdonable es no atreverse o no aprender de ellos.</strong></p>
+                <div class="principle-application">
+                    <strong>Aplicación práctica:</strong>
+                    <ul>
+                        <li>Documenta tus errores y aprendizajes</li>
+                        <li>Comparte fallos con el equipo para que aprendan</li>
+                        <li>El fracaso rápido es mejor que el éxito tardío</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER PROYECTOS 2: Hot Wheels + Rakuten/Barça -->
+    <section style="display: flex; width: 100%; height: 200px; overflow: hidden;">
+        <div style="flex: 1; background: url('assets/hotwheels_project.jpg') center center / cover no-repeat;"></div>
+        <div style="flex: 1; background: url('assets/rakuten_project.jpg') center center / cover no-repeat;"></div>
+    </section>
+
+    <!-- QUOTE INSPIRACIONAL 3 -->
+    <section style="background: var(--color-black); color: var(--color-white); padding: var(--spacing-xl) var(--spacing-lg); text-align: center;">
+        <div class="container">
+            <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); line-height: 1.3; margin: 0;">
+                "NUNCA DEJES<br><span style="color: var(--color-green);">DE ESTUDIAR.</span>"
+            </p>
+            <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); opacity: 0.7;">Principio #5 de Zoopa</p>
+        </div>
+    </section>
+
+    <!-- HERRAMIENTAS -->
+    <section class="section" id="herramientas">
+        <div class="container-wide">
+            <h2 class="section-title">HERRAMIENTAS Y TECNOLOGÍAS EN ZOOPA</h2>
+
+            <h3 class="section-subtitle">Stack Principal de Comunicación y Organización</h3>
+
+            <div class="grid grid-2">
+                <div class="card card-highlight">
+                    <h3>Microsoft Teams</h3>
+                    <p><strong>Comunicación interna</strong></p>
+                    <ul>
+                        <li>Toda la comunicación diaria del equipo</li>
+                        <li>Videoconferencias y llamadas</li>
+                        <li>Canales por proyecto y área</li>
+                    </ul>
+                    <div class="warning">
+                        <strong>IMPORTANTE:</strong> Email solo para comunicación externa con clientes
+                    </div>
+                </div>
+
+                <div class="card card-highlight">
+                    <h3>Microsoft Planner</h3>
+                    <p><strong>Gestión de tareas</strong></p>
+                    <ul>
+                        <li>Cada persona gestiona sus tareas en Planner</li>
+                        <li>Sincronización con tu calendario</li>
+                        <li>Actualiza diariamente el estado de tus tareas</li>
+                    </ul>
+                </div>
+
+                <div class="card card-highlight">
+                    <h3>Clockify</h3>
+                    <p><strong>Time tracking obligatorio</strong></p>
+                    <ul>
+                        <li>Registra TODO el tiempo invertido en cada proyecto</li>
+                        <li>Permite análisis de rentabilidad por cliente</li>
+                        <li>Categoriza por tipo de actividad</li>
+                    </ul>
+                    <div class="warning">
+                        <strong>IMPORTANTE:</strong> Completa diariamente, no acumules al final de la semana
+                    </div>
+                </div>
+
+                <div class="card card-highlight">
+                    <h3>SharePoint</h3>
+                    <p><strong>Repositorio central</strong></p>
+                    <ul>
+                        <li>TODO debe estar en SharePoint</li>
+                        <li>Nomenclatura estándar de archivos</li>
+                        <li>Sincroniza con tu equipo local</li>
+                    </ul>
+                    <div class="highlight">
+                        <strong>REGLA DE ORO:</strong> NUNCA guardes archivos solo en tu ordenador local
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Nomenclatura de Archivos</h3>
+
+            <pre><code>[CLIENTE]_[PROYECTO]_[TIPO]_[VERSION]_[FECHA]
+
+Ejemplo: MARCA_CampanaQ1_Guion_v03_20250117</code></pre>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Suite Creativa Completa</h3>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3>Adobe Creative Cloud</h3>
+                    <ul>
+                        <li>Premiere Pro</li>
+                        <li>After Effects</li>
+                        <li>Photoshop</li>
+                        <li>Illustrator</li>
+                        <li>Audition</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Plataformas de IA</h3>
+                    <ul>
+                        <li>Claude Pro</li>
+                        <li>ChatGPT Plus/Team</li>
+                        <li>Microsoft Copilot</li>
+                        <li>Midjourney</li>
+                        <li>Runway ML</li>
+                        <li>ElevenLabs</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Analítica y SEO</h3>
+                    <ul>
+                        <li>Ahrefs</li>
+                        <li>SEMrush</li>
+                        <li>Hootsuite</li>
+                        <li>Google Analytics 4</li>
+                        <li>YouTube Studio</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Gestión de Equipo y CRM</h3>
+
+            <div class="grid grid-3">
+                <div class="card card-highlight">
+                    <h3>Factorial</h3>
+                    <p><strong>Gestión de recursos humanos</strong></p>
+                    <ul>
+                        <li>Control horario y fichajes</li>
+                        <li>Gestión de vacaciones y ausencias</li>
+                        <li>Documentos y contratos</li>
+                        <li>Evaluaciones de desempeño</li>
+                    </ul>
+                </div>
+
+                <div class="card card-highlight">
+                    <h3>Zoho One</h3>
+                    <p><strong>Suite empresarial completa</strong></p>
+                    <ul>
+                        <li>Zoho CRM - Gestión de clientes</li>
+                        <li>Zoho Books - Presupuestos y facturación</li>
+                        <li>Zoho Campaigns - Email marketing</li>
+                        <li>Zoho Projects - Gestión de proyectos</li>
+                        <li>+40 módulos integrados</li>
+                    </ul>
+                </div>
+
+                <div class="card card-highlight">
+                    <h3>HubSpot</h3>
+                    <p><strong>Partner oficial de HubSpot</strong></p>
+                    <ul>
+                        <li>Marketing Hub</li>
+                        <li>Sales Hub</li>
+                        <li>CRM avanzado</li>
+                        <li>Automatización de marketing</li>
+                        <li>Analítica y reporting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Herramientas de Productividad Avanzada</h3>
+
+            <div class="grid grid-2">
+                <div class="card card-highlight">
+                    <h3>Claude Code</h3>
+                    <p><strong>Asistente de desarrollo en terminal</strong> para automatización, código, análisis y tareas complejas.</p>
+                    <ul>
+                        <li>Generación y revisión de código</li>
+                        <li>Automatización de flujos de trabajo</li>
+                        <li>Análisis de datos y documentación</li>
+                        <li>Integración con Git y sistemas de archivos</li>
+                        <li>Creación de reportes y presentaciones</li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-xs);"><strong>Uso:</strong> Terminal / VS Code / Cursor</p>
+                </div>
+
+                <div class="card card-highlight">
+                    <h3>Obsidian</h3>
+                    <p><strong>Sistema de gestión del conocimiento</strong> basado en markdown y enlaces bidireccionales.</p>
+                    <ul>
+                        <li>Notas interconectadas (Second Brain)</li>
+                        <li>Documentación de proyectos y clientes</li>
+                        <li>MOCs (Maps of Content) por área</li>
+                        <li>Templates estandarizados</li>
+                        <li>Sincronización con vault de Zoopa</li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-xs);"><strong>Vault:</strong> BIBLIOTECA_COP_2026</p>
+                </div>
+            </div>
+
+            <div class="success" style="margin-top: var(--spacing-lg);">
+                <p><strong>IMPORTANTE sobre IA:</strong> Usa estas herramientas para optimizar tu trabajo, pero siempre revisa y edita el output. La IA es tu asistente, no tu reemplazo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER PROYECTOS 3: PlayStation/DMAX + Tag Heuer -->
+    <section style="display: flex; width: 100%; height: 200px; overflow: hidden;">
+        <div style="flex: 1; background: url('assets/playstation_dmax.jpg') center center / cover no-repeat;"></div>
+        <div style="flex: 1; background: url('assets/tagheuer_crack.jpg') center center / cover no-repeat;"></div>
+    </section>
+
+    <!-- RITMO DE TRABAJO -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">RITMO Y RUTINAS DE TRABAJO</h2>
+
+            <h3 class="section-subtitle">Reunión Semanal - Viernes a Mediodía</h3>
+
+            <div class="card card-highlight">
+                <h3>La única reunión interna obligatoria de la semana</h3>
+                <p><strong>Objetivo:</strong> Mantener a todo el equipo alineado y al tanto de todos los proyectos.</p>
+                <p><strong>Duración:</strong> 60-90 minutos máximo</p>
+
+                <h4 style="margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Formato:</h4>
+                <ul>
+                    <li>Cada persona comparte avances, blockers y próximos pasos</li>
+                    <li>Updates de proyectos críticos</li>
+                    <li>Decisiones que requieren consenso de equipo</li>
+                </ul>
+
+                <h4 style="margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Reglas:</h4>
+                <ul>
+                    <li>Asistencia obligatoria (salvo causa justificada)</li>
+                    <li>Si asistes, participas activamente</li>
+                    <li>No multitasking: estás presente al 100%</li>
+                    <li>Prepara tus updates con antelación</li>
+                </ul>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Ficha de Status Semanal</h3>
+
+            <div class="warning">
+                <strong>Entrega obligatoria cada semana</strong><br>
+                Viernes antes de la reunión de equipo (antes de las 12:00h)
+            </div>
+
+            <pre style="margin-top: var(--spacing-md);"><code>FICHA DE STATUS SEMANAL - [TU NOMBRE] - [FECHA]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 PROYECTOS ACTIVOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[CLIENTE] - [PROYECTO]
+└─ Estado: [En curso / Bloqueado / Finalizado]
+└─ Progreso esta semana: [Descripción breve]
+└─ Horas invertidas: [XX h en Clockify]
+└─ Próximos pasos: [Acciones concretas]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ LOGROS DE LA SEMANA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [Logro 1 con métricas si aplica]
+- [Logro 2]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚧 BLOCKERS / DESAFÍOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [Blocker 1 + acción propuesta]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎓 APRENDIZAJES / INSIGHTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [Aprendizaje relevante]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📅 PRÓXIMA SEMANA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [Prioridad 1]
+- [Prioridad 2]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⏱️ TIME TRACKING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total horas semana: [XX h]
+Distribución por proyecto: [según Clockify]</code></pre>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Rutina Diaria Obligatoria</h3>
+
+            <div class="highlight">
+                <p><strong>CHECKLIST DE INICIO DEL DÍA (9:00-9:30)</strong></p>
+                <p>Este es el proceso obligatorio de inicio de jornada. Síguelo en este orden exacto.</p>
+            </div>
+
+            <table style="margin-top: var(--spacing-md);">
+                <thead>
+                    <tr>
+                        <th>Paso</th>
+                        <th>Acción</th>
+                        <th>Herramienta</th>
+                        <th>Objetivo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>Check Agenda</td>
+                        <td>Outlook Calendar</td>
+                        <td>Ver reuniones del día, preparar materiales</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>Check Email (externo)</td>
+                        <td>Outlook</td>
+                        <td>Revisar comunicaciones de clientes, urgencias</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>Check Planner</td>
+                        <td>Microsoft Planner</td>
+                        <td>Revisar tareas asignadas, priorizar el día</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>Check Teams</td>
+                        <td>Microsoft Teams</td>
+                        <td>Mensajes internos, notificaciones de equipo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td>Iniciar Clockify</td>
+                        <td>Clockify</td>
+                        <td>Activar timer del primer bloque de trabajo</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="grid grid-2" style="margin-top: var(--spacing-lg);">
+                <div class="card">
+                    <h3>1. Check Agenda</h3>
+                    <ul class="checklist">
+                        <li>Ver todas las reuniones programadas para hoy</li>
+                        <li>Preparar materiales necesarios para cada reunión</li>
+                        <li>Bloquear tiempo de trabajo profundo</li>
+                        <li>Confirmar asistencia a reuniones pendientes</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>2. Check Email Externo</h3>
+                    <ul class="checklist">
+                        <li>Revisar emails de clientes recibidos</li>
+                        <li>Identificar urgencias que requieren respuesta inmediata</li>
+                        <li>Marcar emails que requieren acción posterior</li>
+                        <li>Responder emails urgentes (máx. 15 min)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>3. Check Planner</h3>
+                    <ul class="checklist">
+                        <li>Revisar tareas asignadas y sus deadlines</li>
+                        <li>Actualizar estado de tareas en progreso</li>
+                        <li>Identificar las 3 prioridades críticas del día</li>
+                        <li>Añadir nuevas tareas surgidas de emails/agenda</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>4. Check Teams</h3>
+                    <ul class="checklist">
+                        <li>Revisar mensajes directos sin leer</li>
+                        <li>Revisar canales de proyectos activos</li>
+                        <li>Responder mensajes que requieren respuesta rápida</li>
+                        <li>Marcar mensajes que requieren acción elaborada</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning" style="margin-top: var(--spacing-md);">
+                <strong>IMPORTANTE:</strong> Sigue este orden exacto. Primero agenda (para saber qué tienes), luego email externo (clientes son prioridad), después tareas internas (Planner), luego comunicación interna (Teams), y finalmente activa el timer de trabajo.
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMA BUDDY -->
+    <section class="section" style="background: rgba(0,0,0,0.02);">
+        <div class="container">
+            <h2 class="section-title">PROGRAMA DE BUDDY / MENTOR</h2>
+
+            <div class="highlight">
+                <p><strong>Al incorporarte a Zoopa, se te asignará un Buddy</strong> que te acompañará durante tus primeros 90 días.</p>
+            </div>
+
+            <div class="grid grid-2" style="margin-top: var(--spacing-lg);">
+                <div class="card">
+                    <h3>Rol del Buddy</h3>
+                    <ul>
+                        <li><strong>Orientación cultural:</strong> Normas no escritas y cultura Zoopa</li>
+                        <li><strong>Soporte operativo:</strong> Ayuda con herramientas y procesos</li>
+                        <li><strong>Integración social:</strong> Presentaciones con el equipo</li>
+                        <li><strong>Resolución de dudas:</strong> Preguntas del día a día</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Frecuencia de Reuniones</h3>
+                    <ul>
+                        <li><strong>Semana 1:</strong> Reunión diaria de 15 min</li>
+                        <li><strong>Semanas 2-4:</strong> Reunión semanal de 30 min</li>
+                        <li><strong>Mes 2-3:</strong> Reunión quincenal de 30 min</li>
+                        <li><strong>Después:</strong> Disponible cuando lo necesites</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="success" style="margin-top: var(--spacing-md);">
+                <p><strong>Diferencia clave:</strong> Tu Buddy te ayuda con el día a día y la cultura. Tu Manager es responsable de tus objetivos, evaluación y desarrollo profesional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLAN 30-60-90 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">PLAN 30-60-90 DÍAS</h2>
+
+            <p style="margin-bottom: var(--spacing-lg);">Tu manager creará contigo un <strong>Plan 30-60-90</strong> personalizado en tu primera semana con objetivos claros y medibles.</p>
+
+            <div class="grid grid-3">
+                <div class="card" style="border-left: 6px solid var(--color-green);">
+                    <h3 style="color: var(--color-green);">Días 1-30: APRENDER</h3>
+                    <p><strong>Objetivo:</strong> Absorber contexto, conocer el equipo, quick wins.</p>
+                    <ul class="checklist">
+                        <li>Completar onboarding y dominar herramientas</li>
+                        <li>1:1 con todos los miembros del equipo</li>
+                        <li>Mapa de stakeholders completado</li>
+                        <li>Quick win identificado o ejecutado</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-left: 6px solid var(--color-orange);">
+                    <h3 style="color: var(--color-orange);">Días 31-60: CONTRIBUIR</h3>
+                    <p><strong>Objetivo:</strong> Ejecutar independientemente, proponer mejoras.</p>
+                    <ul class="checklist">
+                        <li>Responsabilidad sobre tareas/proyectos</li>
+                        <li>Propuesta de mejora documentada</li>
+                        <li>Presentación a cliente (shadowing)</li>
+                        <li>Feedback 360 solicitado</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-left: 6px solid var(--color-red);">
+                    <h3 style="color: var(--color-red);">Días 61-90: LIDERAR</h3>
+                    <p><strong>Objetivo:</strong> Independencia total, plan trimestral.</p>
+                    <ul class="checklist">
+                        <li>Ownership completo de proyectos</li>
+                        <li>Resultados medibles documentados</li>
+                        <li>Playbook o documentación creada</li>
+                        <li>Plan Q+1 acordado con manager</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="subsection-title" style="margin-top: var(--spacing-xl);">Reuniones de Seguimiento</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Día</th>
+                        <th>Reunión</th>
+                        <th>Participantes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>15</td><td>Check-in intermedio</td><td>Manager + Buddy</td></tr>
+                    <tr><td>30</td><td>Review Mes 1</td><td>Manager</td></tr>
+                    <tr><td>45</td><td>Check-in intermedio</td><td>Manager</td></tr>
+                    <tr><td>60</td><td>Review Mes 2</td><td>Manager</td></tr>
+                    <tr><td>75</td><td>Check-in intermedio</td><td>Manager</td></tr>
+                    <tr><td>90</td><td>Evaluación Final</td><td>Manager + RRHH</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- PRIMEROS 30 DÍAS -->
+    <section class="section" style="background: rgba(0,0,0,0.02);">
+        <div class="container">
+            <h2 class="section-title">PRIMEROS 30 DÍAS EN ZOOPA</h2>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Semana 1: Inmersión</h3>
+                    <ul class="checklist">
+                        <li>Onboarding con tu manager</li>
+                        <li>Acceso a todas las herramientas (Teams, Planner, Clockify, SharePoint, Adobe, IAs)</li>
+                        <li>Configuración de Clockify y primer registro de tiempo</li>
+                        <li>Primera reunión de equipo del viernes</li>
+                        <li>Entrega de tu primera ficha de status semanal</li>
+                        <li>Familiarización con nomenclatura de archivos</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Semana 2: Conocimiento</h3>
+                    <ul class="checklist">
+                        <li>Estudio profundo de tus proyectos asignados</li>
+                        <li>Análisis de la competencia</li>
+                        <li>Benchmark de KPIs actuales</li>
+                        <li>Propuesta de quick wins</li>
+                        <li>Práctica con herramientas de IA</li>
+                        <li>Segunda ficha de status con más detalle</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Semana 3: Ejecución</h3>
+                    <ul class="checklist">
+                        <li>Implementación de primeras mejoras</li>
+                        <li>Primera presentación a cliente (shadowing)</li>
+                        <li>Optimización de procesos existentes</li>
+                        <li>Feedback session con tu manager</li>
+                        <li>Uso autónomo de suite Adobe</li>
+                        <li>Tercera ficha de status con resultados medibles</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Semana 4: Autonomía</h3>
+                    <ul class="checklist">
+                        <li>Gestión autónoma de tareas en Planner</li>
+                        <li>Primera propuesta estratégica completa</li>
+                        <li>Participación activa en reunión de equipo</li>
+                        <li>Revisión de objetivos del primer mes</li>
+                        <li>Análisis de tu time tracking en Clockify</li>
+                        <li>Cuarta ficha con plan para el segundo mes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CULTURA ZOOPA -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">CULTURA ZOOPA</h2>
+
+            <div class="grid grid-2">
+                <div>
+                    <h3 class="section-subtitle">Lo que valoramos</h3>
+                    <div class="card">
+                        <ul>
+                            <li><strong>Proactividad:</strong> No esperes instrucciones, propón soluciones</li>
+                            <li><strong>Datos:</strong> Toda decisión debe estar respaldada por métricas</li>
+                            <li><strong>Innovación:</strong> Cuestiona el status quo, propón mejoras</li>
+                            <li><strong>Transparencia:</strong> Comunica abiertamente logros y fracasos</li>
+                            <li><strong>Excelencia:</strong> La mediocridad no es una opción</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="section-subtitle">Lo que NO toleramos</h3>
+                    <div class="card" style="border-color: var(--color-red);">
+                        <ul>
+                            <li>Falta de responsabilidad</li>
+                            <li>Comunicación opaca o tardía</li>
+                            <li>Estancamiento profesional</li>
+                            <li>Crítica destructiva sin propuestas</li>
+                            <li>Mediocridad conformista</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TU COMPROMISO -->
+    <section class="section" style="background: linear-gradient(135deg, var(--color-black) 0%, var(--color-gray-dark) 100%); color: var(--color-white);">
+        <div class="container">
+            <h2 class="section-subtitle" style="color: var(--color-white); text-align: center;">TU COMPROMISO</h2>
+
+            <p style="text-align: center; font-size: var(--font-size-md); margin-bottom: var(--spacing-lg);">Al unirte a Zoopa, te comprometes a:</p>
+
+            <div class="grid grid-2">
+                <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 8px;">
+                    <h3 style="color: var(--color-red); margin-bottom: var(--spacing-sm);">1-4</h3>
+                    <ol>
+                        <li>Actuar con autonomía y responsabilidad en tu rol</li>
+                        <li>Buscar la excelencia en cada tarea</li>
+                        <li>Comunicar de forma transparente avances y blockers</li>
+                        <li>Aprender continuamente y compartir conocimientos</li>
+                    </ol>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 8px;">
+                    <h3 style="color: var(--color-red); margin-bottom: var(--spacing-sm);">5-8</h3>
+                    <ol start="5">
+                        <li>Colaborar activamente con el equipo</li>
+                        <li>Cuestionar constructivamente procesos y decisiones</li>
+                        <li>Asumir riesgos calculados para innovar</li>
+                        <li>Crecer profesionalmente y contribuir al crecimiento de Zoopa</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIENVENIDA FINAL -->
+    <section class="section" style="background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%); color: var(--color-white); text-align: center;">
+        <div class="container">
+            <h2 class="section-subtitle" style="color: var(--color-white); font-size: var(--font-size-lg);">BIENVENIDO AL EQUIPO</h2>
+
+            <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-md);">Estás aquí porque creemos en tu talento y potencial.</p>
+
+            <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-lg);">Zoopa es un lugar donde la <strong>autonomía, la excelencia y la innovación</strong> no son solo palabras, sino la forma en que trabajamos cada día.</p>
+
+            <div style="background: rgba(0,0,0,0.2); padding: var(--spacing-lg); border-radius: 8px; margin-bottom: var(--spacing-lg);">
+                <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold);">Estamos muy ilusionados por compartir este proyecto contigo.</p>
+                <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); margin-top: var(--spacing-sm);">¡Diviértete!</p>
+            </div>
+
+            <!-- PRINCIPIOS DESTACADOS: EXCELENCIA -->
+            <div style="background: rgba(207, 46, 46, 0.3); padding: var(--spacing-lg); border-radius: 8px; margin-bottom: var(--spacing-lg); border: 2px solid var(--color-red);">
+                <p style="font-size: var(--font-size-md); font-weight: var(--font-weight-extrabold); margin-bottom: var(--spacing-sm);">RECUERDA:</p>
+                <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-sm);"><strong>La mediocridad no es una opción.</strong> Simplemente "hacer la tarea" no es suficiente. En Zoopa, cada entrega debe ser <strong>extraordinaria</strong>.</p>
+                <p style="font-size: var(--font-size-md);"><strong>No entregues nada de lo que no estés orgulloso/a.</strong> Si no te emociona lo que has hecho, vuelve a empezar. Tus clientes y tu equipo merecen tu mejor versión.</p>
+            </div>
+
+            <!-- LA CAMPANA -->
+            <div style="background: rgba(255, 215, 0, 0.15); padding: var(--spacing-lg); border-radius: 8px; margin-bottom: var(--spacing-lg); border: 2px solid #FFD700; text-align: center;">
+                <p style="font-size: 3rem; margin-bottom: var(--spacing-sm);">🔔</p>
+                <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold); color: #FFD700;">¡TOCA LA CAMPANA!</p>
+                <p style="font-size: var(--font-size-md); margin-top: var(--spacing-sm);">En la oficina hay una <strong>campana disponible</strong> para tocarla cuando estés orgulloso/a de algo:</p>
+                <ul style="text-align: left; display: inline-block; margin-top: var(--spacing-sm);">
+                    <li>Un documento brillante que te ha quedado increíble</li>
+                    <li>Un feedback positivo de un cliente</li>
+                    <li>Un proyecto nuevo que acabas de cerrar</li>
+                    <li>Algo que por fin has aprendido y se te resistía</li>
+                    <li>Cualquier logro del que estés genuinamente orgulloso/a</li>
+                </ul>
+                <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); font-style: italic;">Celebrar las victorias, grandes y pequeñas, es parte de nuestra cultura.</p>
+            </div>
+
+            <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold);">Ahora, actúa rápido, rompe límites y haz que las cosas sucedan.</p>
+
+            <h1 style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); margin-top: var(--spacing-lg);">Welcome to Zoopa.</h1>
+        </div>
+    </section>
+
+    <!-- QUOTE INSPIRACIONAL 4 -->
+    <section style="background: linear-gradient(135deg, #1a1a1a 0%, var(--color-red) 100%); color: var(--color-white); padding: var(--spacing-xl) var(--spacing-lg); text-align: center;">
+        <div class="container">
+            <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); line-height: 1.3; margin: 0;">
+                "SÉ RESILIENTE.<br><span style="color: var(--color-orange);">APRENDE DEL FRACASO.</span>"
+            </p>
+            <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); opacity: 0.7;">Principio #16 de Zoopa</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">PREGUNTAS FRECUENTES (FAQ)</h2>
+
+            <h3 class="section-subtitle">Sobre tu Incorporación</h3>
+            <div class="card">
+                <p><strong>¿Qué debo hacer antes de mi primer día?</strong><br>
+                Recibirás un email de bienvenida con instrucciones para configurar tu cuenta de Microsoft 365. Revísalo y sigue los pasos antes de tu primer día.</p>
+            </div>
+            <div class="card">
+                <p><strong>¿Cuál es el horario de trabajo?</strong><br>
+                El horario estándar es de 9:00 a 18:00 con flexibilidad. Lo importante es cumplir entregas y estar disponible en horas de solapamiento (10:00-14:00 y 16:00-18:00).</p>
+            </div>
+            <div class="card">
+                <p><strong>¿Hay periodo de prueba?</strong><br>
+                Sí, 90 días. Tendrás reuniones de seguimiento regulares con tu manager (días 15, 30, 45, 60, 75 y 90).</p>
+            </div>
+            <div class="card">
+                <p><strong>¿Puedo trabajar en remoto?</strong><br>
+                Zoopa tiene modelo híbrido. Consulta con tu manager las políticas específicas de tu equipo.</p>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Sobre Herramientas y Procesos</h3>
+            <div class="card">
+                <p><strong>¿Dónde guardo mis archivos?</strong><br>
+                SIEMPRE en SharePoint, nunca solo en local. Sigue la nomenclatura: <code>[CLIENTE]_[PROYECTO]_[TIPO]_[VERSION]_[FECHA]</code></p>
+            </div>
+            <div class="card">
+                <p><strong>¿Es obligatorio registrar tiempo en Clockify?</strong><br>
+                Sí, es obligatorio y diario. Es la base para análisis de rentabilidad. Si olvidas un día, hazlo al día siguiente.</p>
+            </div>
+            <div class="card">
+                <p><strong>¿Cuándo uso Teams vs Email?</strong><br>
+                <strong>Teams:</strong> Comunicación interna (siempre). <strong>Email:</strong> Comunicación externa con clientes (siempre).</p>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Sobre Proyectos y Clientes</h3>
+            <div class="card">
+                <p><strong>¿Puedo contactar directamente con el cliente?</strong><br>
+                Consulta con tu manager primero. Las comunicaciones con cliente generalmente pasan por el responsable de cuenta.</p>
+            </div>
+            <div class="card">
+                <p><strong>¿Qué hago si un cliente me pide algo fuera del scope?</strong><br>
+                No digas que sí inmediatamente. Anota la petición y comunícala a tu manager. Las ampliaciones deben ser aprobadas.</p>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Sobre IA y Herramientas 498AS</h3>
+            <div class="card">
+                <p><strong>¿Puedo usar ChatGPT o Claude para mi trabajo?</strong><br>
+                Sí, Zoopa tiene licencias profesionales. SIEMPRE revisa el output. La IA es tu asistente, no tu sustituto.</p>
+            </div>
+            <div class="card">
+                <p><strong>¿Puedo compartir información confidencial con herramientas de IA externas?</strong><br>
+                <strong>NO.</strong> Nunca introduzcas información confidencial de clientes en herramientas de IA públicas.</p>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Sobre Cultura y Equipo</h3>
+            <div class="card">
+                <p><strong>¿Qué pasa si cometo un error?</strong><br>
+                Comunicarlo inmediatamente. En Zoopa no castigamos errores; lo imperdonable es ocultarlos o no aprender de ellos.</p>
+            </div>
+            <div class="card">
+                <p><strong>¿Cómo doy feedback a un compañero o manager?</strong><br>
+                De forma directa, constructiva y en privado. La comunicación transparente es un principio Zoopa.</p>
+            </div>
+
+            <div class="warning" style="margin-top: var(--spacing-lg);">
+                <strong>¿Más preguntas?</strong> Consulta el documento completo en Markdown o pregunta a tu Buddy o Manager. No hay preguntas tontas.
+            </div>
+        </div>
+    </section>
+
+    <!-- GLOSARIO -->
+    <section class="section" style="background: rgba(0,0,0,0.02);">
+        <div class="container">
+            <h2 class="section-title">GLOSARIO DE TÉRMINOS ZOOPA</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Término</th>
+                        <th>Definición</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>498AS</strong></td><td>Unidad de innovación e IA de Zoopa</td></tr>
+                    <tr><td><strong>Buddy</strong></td><td>Compañero asignado para apoyarte en tus primeros 90 días</td></tr>
+                    <tr><td><strong>Clockify</strong></td><td>Herramienta de registro de tiempo obligatoria</td></tr>
+                    <tr><td><strong>GEO</strong></td><td>Generative Engine Optimization (visibilidad en LLMs)</td></tr>
+                    <tr><td><strong>GEOradar</strong></td><td>Producto 498AS para análisis de visibilidad en IA</td></tr>
+                    <tr><td><strong>MCN</strong></td><td>Multi-Channel Network (red de canales de YouTube)</td></tr>
+                    <tr><td><strong>S.A.M.</strong></td><td>Semantic Alignment Machine (producto 498AS)</td></tr>
+                    <tr><td><strong>Zoopa Network</strong></td><td>Unidad de negocio MCN de Zoopa (+60 creadores)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- COMMUNITY MANAGER GUIDE -->
+    <section class="section" id="community" style="background: rgba(0,0,0,0.02);">
+        <div class="container">
+            <h2 class="section-title">ANEXO: COMMUNITY MANAGER GUIDE</h2>
+
+            <div class="highlight">
+                <p><strong>Un Community Manager es el enlace estratégico entre una Marca y su público.</strong></p>
+                <p>No es solo quien publica contenido, sino <strong>quien más sabe sobre la comunidad</strong>: quiénes son, qué les gusta, cómo actúan, qué valoran.</p>
+            </div>
+
+            <h3 class="section-subtitle">Tu Rol como Community Manager</h3>
+
+            <p>El Community trata los <strong>contenidos como HERRAMIENTA</strong> de gestión de la comunidad. Tu trabajo no es publicar o crecer sin más, es <strong>gestionar de forma óptima y maximizar el retorno a la Marca</strong>.</p>
+
+            <h3 class="section-subtitle">Conocimientos Básicos de la Comunidad</h3>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3>Datos Geográficos</h3>
+                    <ul>
+                        <li>¿Dónde vive la comunidad?</li>
+                        <li>Distribución por países/regiones</li>
+                        <li>Husos horarios relevantes</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Datos Demográficos</h3>
+                    <ul>
+                        <li>Edad, sexo, nivel socioeconómico</li>
+                        <li>Ocupación, educación</li>
+                        <li>Estructura familiar</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Cultura y Valores</h3>
+                    <ul>
+                        <li>Valores que mueven a la comunidad</li>
+                        <li>Intereses y pasiones</li>
+                        <li>Hábitos de consumo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">Checklist: Nuevo Cliente de RRSS</h3>
+
+            <ul class="checklist">
+                <li>Análisis completo de todas las RRSS actuales</li>
+                <li>Facebook: ¿Global Page o Fan Page?</li>
+                <li>Perfiles que sigue la marca</li>
+                <li>Contenido publicado histórico y KPIs to date</li>
+                <li>Colaboraciones con influencers y resultados</li>
+                <li>Seguir todas las RRSS desde tu cuenta personal</li>
+            </ul>
+
+            <h3 class="section-subtitle">Conocimiento de la Marca</h3>
+
+            <ul class="checklist">
+                <li>Nombre y CV de la persona responsable</li>
+                <li>Conocer mínimo 3 personas de la organización</li>
+                <li>A quién pertenece la marca</li>
+                <li>Protocolo de CRISIS definido</li>
+                <li>Conocer la web a fondo</li>
+                <li>Probar los productos personalmente</li>
+                <li>Calendario anual de la marca</li>
+                <li>Briefing dominado al 100%</li>
+            </ul>
+
+            <h3 class="section-subtitle">Datos Clave de los Canales</h3>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Datos Cuantitativos</h3>
+                    <ul>
+                        <li>Número de followers al día por canal</li>
+                        <li>Crecimiento medio mensual vs. previsión</li>
+                        <li>Nivel de engagement por tipo de post</li>
+                        <li>Marketing Personas y Buying Personas</li>
+                        <li>Contenido de más éxito (reach y engagement)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Datos Cualitativos</h3>
+                    <ul>
+                        <li>Tipo de consultas semanales (DM y público)</li>
+                        <li>Tono de marca claro</li>
+                        <li>Territorios de marca definidos</li>
+                        <li>10 super-users identificados</li>
+                        <li>Perfiles de peligro catalogados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Zoopa - Documento de Onboarding</p>
+            <p style="margin-top: var(--spacing-sm);">Documento vivo: Se actualiza continuamente con feedback del equipo</p>
+            <p style="margin-top: var(--spacing-md);">
+                <a href="onboarding_zoopa.md" style="color: var(--color-red); text-decoration: none; font-weight: var(--font-weight-bold);">Descargar versión Markdown</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: Scroll Reveal & Interacciones -->
+    <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        // Nav scroll effect
+        function handleNavScroll() {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add reveal classes to sections and cards
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add reveal to sections
+            document.querySelectorAll('.section').forEach((section, index) => {
+                section.classList.add('reveal');
+            });
+
+            // Add reveal to cards
+            document.querySelectorAll('.card').forEach((card, index) => {
+                card.classList.add('reveal');
+            });
+
+            // Add reveal to principles
+            document.querySelectorAll('.principle').forEach((principle, index) => {
+                if (index % 2 === 0) {
+                    principle.classList.add('reveal-left');
+                } else {
+                    principle.classList.add('reveal-right');
+                }
+            });
+
+            // Add quote-section class to quote blocks
+            document.querySelectorAll('section[style*="background: var(--color-black)"]').forEach(section => {
+                section.classList.add('quote-section');
+            });
+
+            // Add banner-project class to project banners
+            document.querySelectorAll('section[style*="display: flex"][style*="height: 200px"]').forEach(section => {
+                section.classList.add('banner-project');
+            });
+
+            // Trigger initial reveal check
+            reveal();
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('scroll', handleNavScroll);
+
+        // Intersection Observer for better performance (modern browsers)
+        if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+                    observer.observe(el);
+                });
+            });
+        }
+
+        // Counter animation for statistics
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            updateCounter();
+        }
+
+        // Typing effect for hero (optional enhancement)
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.textContent = '';
+
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Add loading complete class to body
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+
+</body>
+</html>

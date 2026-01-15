@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Componentes de Ejemplo - Zoopa Style</title>
+    <link rel="stylesheet" href="zoopa-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos adicionales para esta página de ejemplos */
+        .component-section {
+            padding: var(--spacing-xl) 0;
+            border-bottom: 2px solid var(--color-gray-blue);
+        }
+
+        .component-title {
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            display: inline-block;
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-extrabold);
+            text-transform: uppercase;
+        }
+
+        .code-snippet {
+            background: #f5f5f5;
+            padding: var(--spacing-md);
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin-top: var(--spacing-md);
+        }
+    </style>
+</head>
+<body style="padding-top: 40px;">
+
+    <div class="container">
+        <h1 class="text-center mb-xl">Biblioteca de Componentes Zoopa Style</h1>
+        <p class="text-center mb-xl">Ejemplos de todos los componentes disponibles listos para copiar y usar</p>
+    </div>
+
+    <!-- BOTONES -->
+    <section class="component-section">
+        <div class="container">
+            <span class="component-title">Botones</span>
+
+            <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap; margin-bottom: var(--spacing-lg);">
+                <button class="btn btn-primary">Botón Primario</button>
+                <button class="btn btn-secondary">Botón Secundario</button>
+                <button class="btn btn-accent">Botón de Acento</button>
+            </div>
+
+            <div class="code-snippet">
+&lt;button class="btn btn-primary"&gt;Botón Primario&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Botón Secundario&lt;/button&gt;
+&lt;button class="btn btn-accent"&gt;Botón de Acento&lt;/button&gt;
+            </div>
+        </div>
+    </section>
+
+    <!-- TAGS/PILLS -->
+    <section class="component-section">
+        <div class="container">
+            <span class="component-title">Tags / Pills</span>
+
+            <div style="display: flex; gap: var(--spacing-sm); flex-wrap: wrap; margin-bottom: var(--spacing-lg);">
+                <span class="tag">Estrategia</span>
+                <span class="tag">Creatividad</span>
+                <span class="tag">Producción</span>
+                <span class="tag">Social Media</span>
+                <span class="tag">AR/VR</span>
+            </div>
+
+            <div class="code-snippet">
+&lt;span class="tag"&gt;Estrategia&lt;/span&gt;
+            </div>
+        </div>
+    </section>
+
+    <!-- TIPOGRAFÍA -->
+    <section class="component-section">
+        <div class="container">
+            <span class="component-title">Tipografía</span>
+
+            <h1>Heading 1 - Título Principal (42px)</h1>
+            <h2>Heading 2 - Título de Sección (36px)</h2>
+            <h3>Heading 3 - Subtítulo (20px)</h3>
+            <p>Párrafo normal - Lorem ipsum dolor sit amet, consectetur adipiscing elit. (16px)</p>
+            <p class="text-small">Texto pequeño - Metadata, labels, información secundaria (13px)</p>
+
+            <div class="code-snippet">
+&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;p&gt;Párrafo normal&lt;/p&gt;
+&lt;p class="text-small"&gt;Texto pequeño&lt;/p&gt;
+            </div>
+        </div>
+    </section>
+
+    <!-- CARDS DE PROYECTO -->
+    <section class="component-section">
+        <div class="container-wide">
+            <span class="component-title">Cards de Proyecto</span>
+
+            <div class="grid grid-3 mb-lg">
+                <a href="#" class="card card-project" style="background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="card-overlay">
+                        <h3 class="card-title">Proyecto Ejemplo 1</h3>
+                        <p class="card-description">Descripción breve del proyecto y servicios aplicados.</p>
+                    </div>
+                </a>
+
+                <a href="#" class="card card-project" style="background-image: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="card-overlay">
+                        <h3 class="card-title">Proyecto Ejemplo 2</h3>
+                        <p class="card-description">Descripción breve del proyecto y servicios aplicados.</p>
+                    </div>
+                </a>
+
+                <a href="#" class="card card-project" style="background-image: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="card-overlay">
+                        <h3 class="card-title">Proyecto Ejemplo 3</h3>
+                        <p class="card-description">Descripción breve del proyecto y servicios aplicados.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="code-snippet">
+&lt;a href="#" class="card card-project" style="background-image: url('imagen.jpg');"&gt;
+  &lt;div class="card-overlay"&gt;
+    &lt;h3 class="card-title"&gt;Título&lt;/h3&gt;
+    &lt;p class="card-description"&gt;Descripción&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+            </div>
+        </div>
+    </section>
+
+    <!-- CARDS DE SERVICIO -->
+    <section class="component-section">
+        <div class="container-wide">
+            <span class="component-title">Cards de Servicio</span>
+
+            <div class="grid grid-2 mb-lg">
+                <div class="card-service">
+                    <div class="card-service-icon" style="width: 80px; height: 80px; background: var(--color-red); border-radius: 8px;"></div>
+                    <div class="card-service-content">
+                        <h3 class="card-service-title">Servicio Ejemplo 1</h3>
+                        <p class="card-service-description">
+                            Descripción detallada del servicio que explica los beneficios
+                            y cómo puede ayudar al cliente.
+                        </p>
+                        <a href="#" class="card-service-link">Descubre más →</a>
+                    </div>
+                </div>
+
+                <div class="card-service">
+                    <div class="card-service-icon" style="width: 80px; height: 80px; background: var(--color-orange); border-radius: 8px;"></div>
+                    <div class="card-service-content">
+                        <h3 class="card-service-title">Servicio Ejemplo 2</h3>
+                        <p class="card-service-description">
+                            Descripción detallada del servicio que explica los beneficios
+                            y cómo puede ayudar al cliente.
+                        </p>
+                        <a href="#" class="card-service-link">Descubre más →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-snippet">
+&lt;div class="card-service"&gt;
+  &lt;img src="icono.svg" class="card-service-icon"&gt;
+  &lt;div class="card-service-content"&gt;
+    &lt;h3 class="card-service-title"&gt;Servicio&lt;/h3&gt;
+    &lt;p class="card-service-description"&gt;Descripción&lt;/p&gt;
+    &lt;a href="#" class="card-service-link"&gt;Descubre más →&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+            </div>
+        </div>
+    </section>
+
+    <!-- GRIDS -->
+    <section class="component-section">
+        <div class="container-wide">
+            <span class="component-title">Sistema de Grid</span>
+
+            <h3 class="mt-lg mb-md">Grid 2 Columnas</h3>
+            <div class="grid grid-2 mb-lg">
+                <div style="background: var(--color-gray-blue); padding: var(--spacing-lg); text-align: center; border-radius: 8px;">Columna 1</div>
+                <div style="background: var(--color-gray-blue); padding: var(--spacing-lg); text-align: center; border-radius: 8px;">Columna 2</div>
+            </div>
+
+            <h3 class="mb-md">Grid 3 Columnas</h3>
+            <div class="grid grid-3 mb-lg">
+                <div style="background: var(--color-gray-blue); padding: var(--spacing-lg); text-align: center; border-radius: 8px;">Columna 1</div>
+                <div style="background: var(--color-gray-blue); padding: var(--spacing-lg); text-align: center; border-radius: 8px;">Columna 2</div>
+                <div style="background: var(--color-gray-blue); padding: var(--spacing-lg); text-align: center; border-radius: 8px;">Columna 3</div>
+            </div>
+
+            <div class="code-snippet">
+&lt;div class="grid grid-2"&gt;...&lt;/div&gt;
+&lt;div class="grid grid-3"&gt;...&lt;/div&gt;
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIOS -->
+    <section class="component-section">
+        <div class="container">
+            <span class="component-title">Formularios</span>
+
+            <form style="max-width: 500px;">
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label style="display: block; margin-bottom: var(--spacing-xs); font-weight: var(--font-weight-bold);">Nombre</label>
+                    <input type="text" placeholder="Tu nombre" style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--color-gray-blue); border-radius: 4px;">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label style="display: block; margin-bottom: var(--spacing-xs); font-weight: var(--font-weight-bold);">Email</label>
+                    <input type="email" placeholder="tu@email.com" style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--color-gray-blue); border-radius: 4px;">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label style="display: block; margin-bottom: var(--spacing-xs); font-weight: var(--font-weight-bold);">Mensaje</label>
+                    <textarea placeholder="Tu mensaje" rows="4" style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--color-gray-blue); border-radius: 4px; font-family: inherit;"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </form>
+
+            <div class="code-snippet mt-lg">
+&lt;input type="text" placeholder="..." style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--color-gray-blue); border-radius: 4px;"&gt;
+            </div>
+        </div>
+    </section>
+
+    <!-- ICONOS NUMERADOS -->
+    <section class="component-section">
+        <div class="container">
+            <span class="component-title">Pasos Numerados (Metodología)</span>
+
+            <div class="grid grid-3 mb-lg">
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: var(--color-red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; margin: 0 auto var(--spacing-md);">1</div>
+                    <h3>Paso 1</h3>
+                    <p>Descripción del primer paso en el proceso.</p>
+                </div>
+
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: var(--color-red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; margin: 0 auto var(--spacing-md);">2</div>
+                    <h3>Paso 2</h3>
+                    <p>Descripción del segundo paso en el proceso.</p>
+                </div>
+
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: var(--color-red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; margin: 0 auto var(--spacing-md);">3</div>
+                    <h3>Paso 3</h3>
+                    <p>Descripción del tercer paso en el proceso.</p>
+                </div>
+            </div>
+
+            <div class="code-snippet">
+&lt;div style="width: 60px; height: 60px; background: var(--color-red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; margin: 0 auto var(--spacing-md);"&gt;1&lt;/div&gt;
+            </div>
+        </div>
+    </section>
+
+    <!-- ESPACIADO -->
+    <section class="component-section">
+        <div class="container">
+            <span class="component-title">Clases de Utilidad - Espaciado</span>
+
+            <h3>Margins</h3>
+            <p><code>.mt-sm .mt-md .mt-lg .mt-xl</code> - Margin top</p>
+            <p><code>.mb-sm .mb-md .mb-lg .mb-xl</code> - Margin bottom</p>
+
+            <h3 class="mt-lg">Padding</h3>
+            <p><code>.pt-sm .pt-md .pt-lg .pt-xl</code> - Padding top</p>
+            <p><code>.pb-sm .pb-md .pb-lg .pb-xl</code> - Padding bottom</p>
+
+            <h3 class="mt-lg">Alineación de Texto</h3>
+            <p><code>.text-center .text-left .text-right</code></p>
+
+            <div class="code-snippet">
+&lt;div class="mb-lg"&gt;Elemento con margin-bottom large&lt;/div&gt;
+&lt;h2 class="text-center mt-xl"&gt;Título centrado con margin-top extra large&lt;/h2&gt;
+            </div>
+        </div>
+    </section>
+
+    <!-- PALETA DE COLORES -->
+    <section class="component-section">
+        <div class="container">
+            <span class="component-title">Paleta de Colores</span>
+
+            <div class="grid grid-3 mb-lg">
+                <div>
+                    <div style="width: 100%; height: 100px; background: var(--color-black); border-radius: 8px; margin-bottom: var(--spacing-sm);"></div>
+                    <p><strong>Negro</strong><br>#000000<br>var(--color-black)</p>
+                </div>
+
+                <div>
+                    <div style="width: 100%; height: 100px; background: var(--color-white); border: 1px solid var(--color-gray-blue); border-radius: 8px; margin-bottom: var(--spacing-sm);"></div>
+                    <p><strong>Blanco</strong><br>#ffffff<br>var(--color-white)</p>
+                </div>
+
+                <div>
+                    <div style="width: 100%; height: 100px; background: var(--color-gray-dark); border-radius: 8px; margin-bottom: var(--spacing-sm);"></div>
+                    <p><strong>Gris Oscuro</strong><br>#32373c<br>var(--color-gray-dark)</p>
+                </div>
+
+                <div>
+                    <div style="width: 100%; height: 100px; background: var(--color-red); border-radius: 8px; margin-bottom: var(--spacing-sm);"></div>
+                    <p><strong>Rojo</strong><br>#cf2e2e<br>var(--color-red)</p>
+                </div>
+
+                <div>
+                    <div style="width: 100%; height: 100px; background: var(--color-orange); border-radius: 8px; margin-bottom: var(--spacing-sm);"></div>
+                    <p><strong>Naranja</strong><br>#ff6900<br>var(--color-orange)</p>
+                </div>
+
+                <div>
+                    <div style="width: 100%; height: 100px; background: var(--color-green); border-radius: 8px; margin-bottom: var(--spacing-sm);"></div>
+                    <p><strong>Verde</strong><br>#00d084<br>var(--color-green)</p>
+                </div>
+            </div>
+
+            <div class="code-snippet">
+/* Usar variables CSS */
+background: var(--color-red);
+color: var(--color-white);
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO MINI EJEMPLO -->
+    <section class="component-section">
+        <div class="container-wide">
+            <span class="component-title">Hero Section (Mini Ejemplo)</span>
+
+            <div class="hero" style="min-height: 400px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px;">
+                <div class="hero-content">
+                    <h1 class="hero-title">Título Hero</h1>
+                    <p class="hero-subtitle">Subtítulo descriptivo que explica el propósito</p>
+                    <div class="hero-tags">
+                        <span class="tag">Tag 1</span>
+                        <span class="tag">Tag 2</span>
+                        <span class="tag">Tag 3</span>
+                    </div>
+                    <button class="btn btn-primary">Call to Action</button>
+                </div>
+            </div>
+
+            <div class="code-snippet mt-lg">
+&lt;section class="hero" style="background-image: url('hero.jpg');"&gt;
+  &lt;div class="hero-content"&gt;
+    &lt;h1 class="hero-title"&gt;Título&lt;/h1&gt;
+    &lt;p class="hero-subtitle"&gt;Subtítulo&lt;/p&gt;
+    &lt;div class="hero-tags"&gt;
+      &lt;span class="tag"&gt;Tag&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button class="btn btn-primary"&gt;CTA&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER SIMPLE -->
+    <footer class="footer mt-xl">
+        <div class="container text-center">
+            <p class="text-small">© 2024 Ejemplos de Componentes Zoopa Style</p>
+        </div>
+    </footer>
+
+</body>
+</html>

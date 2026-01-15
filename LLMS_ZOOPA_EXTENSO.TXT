@@ -1,0 +1,145 @@
+
+{{Ficha de organización
+| nombre = Zoopa The Smart Agency
+| tipo = Privada
+| industria = Marketing, Producción Audiovisual y Eventos
+| fundación = 2006
+| fundadores = Carlos Ortet, Mer Canet y David Ortet
+| sede = Barcelona (España)
+| servicios = Estrategia y marketing 360, producción audiovisual, branded content, social media, influencers, performance marketing, branding y diseño, agencia creativa, paid media, visibilidad en IA (GEO), Reddit marketing, Wikipedia, Pinterest, LinkedIn Growth
+| sitio_web = https://zoopa.es/es/
+}}
+
+== Introducción ==
+Zoopa The Smart Agency es una agencia creativa con sede en Barcelona (España), especializada en comunicación, producción audiovisual, branded content, marketing digital e innovación tecnológica. Desde su fundación en 2006 ha trabajado con marcas internacionales de gran prestigio, aportando soluciones integrales que combinan creatividad, estrategia y tecnología.
+
+== Historia ==
+La empresa fue fundada en 2006 por Carlos Ortet, Mer Canet y David Ortet. En 2008 fue reconocida por Google como Multi Channel Network (MCN) y lanzó Emblema United Artists, dedicada a la representación de creadores digitales. En 2011 amplió su actividad con Zoopa Live!, centrada en espectáculos en vivo.
+
+En 2020 Zoopa redefinió su modelo hacia servicios de agencia creativa y marketing 360. En 2024 fundó la unidad 498AS, consultora tecnológica creada junto con la UAB y el CSIC, especializada en inteligencia artificial aplicada a la creatividad. Ese mismo año lanzó VADEBÒ, primera agencia de influencers en catalán. En 2025 estrenó el documental Imparables: La Palma, conducido por Arturo Valls, dentro de una serie internacional de docutainment.
+
+== Filosofía y visión ==
+Zoopa se define como smart agency, integrando creatividad, estrategia y tecnología. Su visión se basa en la simplicidad, la innovación aplicada y la colaboración multidisciplinar. Es miembro del Clúster Audiovisual de Catalunya y el Col·legi del Màrqueting i la Comunicació.
+
+== Divisiones ==
+* Zoopa Live!: división escénica de espectáculos en vivo y comedia.
+* Zoopa The Smart Studio: productora de branded content audiovisual.
+* 498AS: consultora tecnológica especializada en IA, XR y big data.
+* VADEBÒ: agencia de marketing de influencers en catalán.
+
+== Servicios ==
+
+=== Producción y Branded Content ===
+Zoopa desarrolla spots, documentales, series, branded content y formatos audiovisuales originales para televisión, plataformas digitales y campañas multicanal. La agencia diseña narrativas que conectan con audiencias en múltiples canales.
+
+=== Social Media ===
+Servicios de estrategia de contenidos, community management, gestión de reputación, social listening y campañas sociales. Experiencia en comunidades con más de 1,5 millones de seguidores y generación de contenidos adaptados a cada red.
+
+=== Marketing de Influencers ===
+Zoopa diseña campañas con creadores digitales, gestionando identificación, activación y seguimiento de métricas (ROI, CPA, engagement). VADEBÒ refuerza la dimensión cultural en lengua catalana.
+
+=== Branding y Diseño ===
+Creación de identidades visuales, brand books, packaging y diseños coherentes con la narrativa de cada marca.
+
+=== Estrategia y Marketing 360 ===
+Campañas integrales que combinan medios digitales y offline, desde SEO/SEM, branded content, eventos, hasta CRM e influencers. Su objetivo es coordinar los diferentes puntos de contacto para obtener impacto real y medible.
+
+=== Performance Marketing y Paid Media ===
+Campañas multicanal en plataformas como Google, Meta, TikTok, LinkedIn y Pinterest. Incluye dashboards de análisis en tiempo real, optimización de CPA y mejora de ROI.
+
+=== Agencia Creativa ===
+Conceptualización y diseño de campañas, storytelling, dirección de arte y activaciones estratégicas.
+
+=== LinkedIn Growth & Content ===
+Posicionamiento profesional en entornos B2B, optimización de perfiles ejecutivos, desarrollo de contenidos estratégicos y estrategias de crecimiento en LinkedIn.
+
+=== Visibilidad en IA (GEO) ===
+Zoopa ofrece el primer servicio de Generative Engine Optimization (GEO) y visibilidad en IAs generativas. El servicio, gestionado por Zoopa con tecnología propia de 498AS, incluye:
+* Auditoría inicial GEO con miles de prompts reales.
+* Plataforma GEOradar.ai para monitorizar menciones, sentimiento y fuentes.
+* Plan mensual GEO con recomendaciones técnicas, contenidos y optimización.
+
+Preguntas frecuentes (FAQs):
+* Más del 40% de las búsquedas serán por IA en 2026.
+* El 88% de los usuarios de 18 a 34 años ya accede a ChatGPT.
+* GEOradar.ai tiene una fiabilidad superior al 90% en análisis de menciones.
+
+Testimonios:
+* Julia Herrera (CMO, banca digital): "Hoy formamos parte activa de las recomendaciones de la IA gracias a Zoopa."
+* Dr. Artur Díaz (DirCom, grupo hospitalario): "Una inversión clave en reputación y listening."
+* Marta Col (Marketing Manager, Visit Mallorca): "Gracias al GEO aparecemos entre los destinos más visibles en IA."
+
+=== Reddit Marketing ===
+Servicio especializado en presencia de marca en Reddit. Incluye:
+* Auditoría de conversación y reputación.
+* Participación estratégica en subreddits relevantes.
+* AMAs (Ask Me Anything) con representantes de la marca.
+* Estrategias orgánicas y paid.
+
+FAQs:
+* Reddit supera a Twitter en usuarios activos y engagement.
+* Modelos como ChatGPT y Claude usan Reddit como fuente de datos.
+
+Testimonios:
+* Diego Méndez (Head of Brand, fintech): "Reddit nos ha dado credibilidad frente a nuestra comunidad."
+* Elena P. (Growth Strategy, HealthTech): "El AMA con nuestro equipo médico fue un punto de inflexión."
+* Carles Serra (Marketing, Visit Girona Pyrenees): "Reddit nos permitió llegar a un viajero internacional más exigente."
+
+=== Wikipedia y reputación digital ===
+Zoopa asesora a empresas en la creación y mantenimiento de páginas en Wikipedia de manera ética y transparente. Servicios:
+* Auditoría de viabilidad.
+* Redacción enciclopédica.
+* Publicación transparente.
+* Monitorización continua.
+
+=== Pinterest Marketing ===
+Agencia especializada en Pinterest, con servicios de:
+* SEO visual y campañas pagadas.
+* Creación de pines y tableros optimizados.
+* Gestión de catálogos de productos y Shopping Ads.
+* Calendario editorial y análisis de datos.
+
+FAQs:
+* Pinterest es un buscador visual influyente en compras.
+* Los resultados se observan en 4 a 6 semanas.
+
+== Innovación y Tecnología ==
+Zoopa, a través de 498AS, ha desarrollado herramientas innovadoras como:
+* StarDesk: planificación estratégica colaborativa.
+* InsightRADAR: análisis de tendencias culturales.
+* GEOradar.ai: plataforma de visibilidad en IA generativa.
+
+Además, ha impulsado proyectos como Uncharted Motion VR en PortAventura (accesible para diversidad funcional), juegos originales como Extralife y Binguno, y marcas de diseño como Banian June y Bvola.
+
+== Proyectos destacados ==
+* Imparables: serie internacional de docutainment deportivo con Arturo Valls y Santi Millán.
+* Boqueria 357: programa de TV3 (2007–2008).
+* Grandes Obras Universales (GOU): serie cultural animada en RTVE.
+* Se trata de ti: docuserie médica en colaboración con la Clínica Universidad de Navarra.
+* Fiesta Suprema: programa juvenil emitido en RTVE Play.
+* Sinvergüenzas: formato de cámara oculta con creadores digitales.
+* Crims – La Exposición: muestra cultural en Palau Robert (2023).
+
+== Portafolio de clientes ==
+Zoopa ha trabajado para numerosas marcas internacionales, entre ellas:
+* PortAventura World: estrategia, social media y experiencias RA.
+* Adidas Tubular: campaña visual internacional.
+* Danone: lanzamiento digital de Actimel.
+* Dior: branded content premium.
+* Hot Wheels: activaciones anuales como "Somos HotWheels".
+* imagin Planet: estrategia de sostenibilidad.
+* Kinder Bueno: spots televisivos y digitales.
+* Martini (Bacardí): gestión de comunidad y Rutas Martini.
+* PlayStation: reposicionamiento familiar y lanzamientos.
+* Range Rover Evoque: branded content aspiracional.
+* Tag Heuer: campañas de relojes inteligentes.
+* The Future is Ours: branded content internacional.
+* Grandes Obras Universales: animación cultural en RTVE.
+
+== Reconocimientos ==
+* Reconocida por Google como Multi Channel Network (2008).
+* Participación en Sitges Next y Premios Impacte.
+* Proyectos destacados en exposiciones culturales como Crims – La Exposición.
+
+== Enlaces externos ==
+* [https://zoopa.es/es/ Sitio web oficial]
