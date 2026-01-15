@@ -16,6 +16,19 @@
             --color-orange: #ff6900;
             --color-green: #00d084;
 
+            /* Nueva paleta degradados fluidos */
+            --gradient-pink: #e84393;
+            --gradient-red: #fd4f6d;
+            --gradient-blue: #4a69bd;
+            --gradient-cyan: #00d2d3;
+            --gradient-violet: #9b59b6;
+            --gradient-light-blue: #54a0ff;
+
+            /* Degradados predefinidos */
+            --gradient-fluid-1: linear-gradient(135deg, #e84393 0%, #fd4f6d 25%, #4a69bd 50%, #00d2d3 75%, #54a0ff 100%);
+            --gradient-fluid-2: linear-gradient(45deg, #fd4f6d 0%, #9b59b6 50%, #4a69bd 100%);
+            --gradient-fluid-3: linear-gradient(180deg, #00d2d3 0%, #4a69bd 50%, #e84393 100%);
+
             --font-size-xs: 13px;
             --font-size-base: 16px;
             --font-size-md: 20px;
@@ -405,6 +418,7 @@
             margin-bottom: var(--spacing-sm);
         }
 
+        details.principle-explanation,
         details.principle-application {
             background: rgba(0,0,0,0.02);
             padding: var(--spacing-sm);
@@ -412,6 +426,7 @@
             margin-top: var(--spacing-sm);
         }
 
+        details.principle-explanation summary,
         details.principle-application summary {
             cursor: pointer;
             font-weight: bold;
@@ -422,22 +437,34 @@
             gap: 8px;
         }
 
+        details.principle-explanation summary::-webkit-details-marker,
         details.principle-application summary::-webkit-details-marker {
             display: none;
         }
 
+        details.principle-explanation summary::before,
         details.principle-application summary::before {
             content: "▶";
             font-size: 0.7em;
             transition: transform 0.2s ease;
         }
 
+        details.principle-explanation[open] summary::before,
         details.principle-application[open] summary::before {
             transform: rotate(90deg);
         }
 
+        details.principle-explanation .explanation-content,
         details.principle-application ul {
             margin-top: var(--spacing-xs);
+        }
+
+        details.principle-explanation .explanation-content p {
+            margin: var(--spacing-xs) 0;
+        }
+
+        details.principle-explanation .explanation-content p:first-child {
+            margin-top: 0;
         }
 
         /* UNIDADES DE NEGOCIO DESPLEGABLES */
@@ -445,8 +472,13 @@
             background: white;
             border: 1px solid var(--color-gray-light);
             border-radius: 12px;
-            padding: var(--spacing-md);
+            padding: var(--spacing-sm) var(--spacing-md);
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        details.business-unit[open] {
+            padding: var(--spacing-md);
         }
 
         details.business-unit summary {
@@ -455,6 +487,7 @@
             display: flex;
             align-items: center;
             gap: var(--spacing-sm);
+            padding: var(--spacing-xs) 0;
         }
 
         details.business-unit summary::-webkit-details-marker {
@@ -465,7 +498,7 @@
             content: "▶";
             font-size: 0.8em;
             color: var(--color-red);
-            transition: transform 0.2s ease;
+            transition: transform 0.3s ease;
         }
 
         details.business-unit[open] summary::before {
@@ -474,12 +507,67 @@
 
         details.business-unit summary h3 {
             margin: 0;
+            font-size: var(--font-size-md);
         }
 
         details.business-unit .unit-content {
             margin-top: var(--spacing-md);
             padding-top: var(--spacing-md);
             border-top: 1px solid var(--color-gray-light);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* FAQ DESPLEGABLES */
+        details.faq-item {
+            background: white;
+            border: 1px solid var(--color-gray-light);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-sm);
+            transition: all 0.3s ease;
+        }
+
+        details.faq-item:hover {
+            border-color: var(--color-red);
+            box-shadow: 0 4px 15px rgba(207, 46, 46, 0.1);
+        }
+
+        details.faq-item summary {
+            cursor: pointer;
+            padding: var(--spacing-md);
+            font-weight: var(--font-weight-bold);
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        details.faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.faq-item summary::before {
+            content: "+";
+            font-size: 1.2em;
+            color: var(--color-red);
+            font-weight: var(--font-weight-extrabold);
+            transition: transform 0.3s ease;
+            min-width: 20px;
+        }
+
+        details.faq-item[open] summary::before {
+            content: "−";
+        }
+
+        details.faq-item .faq-answer {
+            padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+            border-top: 1px solid var(--color-gray-light);
+            margin-top: 0;
+            animation: fadeIn 0.3s ease;
         }
 
         /* FOOTER */
@@ -1023,6 +1111,66 @@
             color: var(--color-red);
             font-weight: var(--font-weight-bold);
         }
+
+        /* ESTILOS DEGRADADOS FLUIDOS */
+        .gradient-fluid-section {
+            background: linear-gradient(135deg, #e84393 0%, #fd4f6d 20%, #9b59b6 40%, #4a69bd 60%, #54a0ff 80%, #00d2d3 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            color: white;
+        }
+
+        .gradient-fluid-card {
+            background: linear-gradient(135deg, rgba(232,67,147,0.1) 0%, rgba(74,105,189,0.1) 50%, rgba(0,210,211,0.1) 100%);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .gradient-fluid-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -2px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, #e84393, #4a69bd, #00d2d3);
+        }
+
+        .gradient-fluid-border {
+            border-image: linear-gradient(135deg, #e84393, #fd4f6d, #4a69bd, #00d2d3) 1;
+        }
+
+        .gradient-fluid-text {
+            background: linear-gradient(135deg, #e84393 0%, #4a69bd 50%, #00d2d3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Separador con degradado fluido */
+        .gradient-divider {
+            height: 4px;
+            background: linear-gradient(90deg, #e84393, #fd4f6d, #9b59b6, #4a69bd, #54a0ff, #00d2d3);
+            border: none;
+            margin: var(--spacing-xl) 0;
+            border-radius: 2px;
+        }
+
+        /* Blob decorativo */
+        .gradient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -1037,7 +1185,8 @@
                 <li><a href="#inicio" class="nav-link">Inicio</a></li>
                 <li><a href="#principios" class="nav-link">Principios</a></li>
                 <li><a href="#herramientas" class="nav-link">Herramientas</a></li>
-                <li><a href="#community" class="nav-link">Community</a></li>
+                <li><a href="#academia" class="nav-link">Academia</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
             </ul>
         </div>
     </nav>
@@ -1056,16 +1205,6 @@
                 <span class="tag tag-green" style="font-size: var(--font-size-base); padding: 12px 20px;">MCN + IA Innovation</span>
             </div>
             <p style="margin-top: var(--spacing-lg); font-size: var(--font-size-sm); opacity: 0.8;">Barcelona | Ribes | St. Margarida</p>
-        </div>
-    </section>
-
-    <!-- QUOTE INSPIRACIONAL 1 -->
-    <section style="background: var(--color-black); color: var(--color-white); padding: var(--spacing-xl) var(--spacing-lg); text-align: center;">
-        <div class="container">
-            <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); line-height: 1.3; margin: 0;">
-                "ACTÚA RÁPIDO.<br><span style="color: var(--color-red);">NO ESPERES A LA PERFECCIÓN.</span>"
-            </p>
-            <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); opacity: 0.7;">Principio #1 de Zoopa</p>
         </div>
     </section>
 
@@ -1122,7 +1261,7 @@
             <div class="grid grid-4" style="gap: var(--spacing-sm);">
                 <div class="card" style="text-align: center; padding: var(--spacing-md);">
                     <strong style="color: var(--color-red);">TV / Producción</strong>
-                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">3CAT · Antena 3 · Mediaset · Discovery · CRIMS · Carles Porta</p>
+                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">3CAT · Antena 3 · Mediaset · Discovery · TVE</p>
                 </div>
                 <div class="card" style="text-align: center; padding: var(--spacing-md);">
                     <strong style="color: var(--color-red);">Banca / Finanzas</strong>
@@ -1134,7 +1273,7 @@
                 </div>
                 <div class="card" style="text-align: center; padding: var(--spacing-md);">
                     <strong style="color: var(--color-red);">Ocio / Deporte</strong>
-                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">PortAventura · NBA · Nike · Adidas · Camiral Golf · RIU Hotels</p>
+                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">PortAventura · NBA · Nike · Adidas · Camiral Golf · RIU Hotels · Iberostar</p>
                 </div>
             </div>
 
@@ -1243,10 +1382,935 @@
         </div>
     </section>
 
+    <!-- TU ROL EN ZOOPA -->
+    <section class="section" style="background: var(--color-white);">
+        <div class="container">
+            <h2 class="section-title">TU ROL EN ZOOPA</h2>
+
+            <div class="highlight">
+                <p><strong>Como profesional de Zoopa, no eres solo un ejecutor de tareas. Eres un experto en tu área.</strong></p>
+            </div>
+
+            <p>Eres responsable de:</p>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>1. Dominar tu proyecto</h3>
+                    <p>Debes conocer tu cliente y proyecto mejor que ellos mismos</p>
+                </div>
+
+                <div class="card">
+                    <h3>2. Innovar constantemente</h3>
+                    <p>Proponer soluciones escalables y sostenibles</p>
+                </div>
+
+                <div class="card">
+                    <h3>3. Crecer profesionalmente</h3>
+                    <p>Tu desarrollo es tu responsabilidad</p>
+                </div>
+
+                <div class="card">
+                    <h3>4. Contribuir al ecosistema</h3>
+                    <p>Ser parte activa de la comunidad Zoopa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE INSPIRACIONAL 2 - Con degradado fluido -->
+    <section class="gradient-fluid-section" style="padding: var(--spacing-xl) var(--spacing-lg); text-align: center; position: relative; overflow: hidden;">
+        <div class="gradient-blob" style="width: 300px; height: 300px; background: #e84393; top: -100px; left: -100px;"></div>
+        <div class="gradient-blob" style="width: 400px; height: 400px; background: #00d2d3; bottom: -150px; right: -150px;"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); line-height: 1.3; margin: 0;">
+                "¡BUSCA ATAJOS!<br><span style="color: #00d2d3;">TRABAJA INTELIGENTE.</span>"
+            </p>
+            <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); opacity: 0.8;">Principio #2 de Zoopa</p>
+        </div>
+    </section>
+
+    <!-- PROGRAMA BUDDY -->
+    <section class="section" style="background: rgba(0,0,0,0.02);">
+        <div class="container">
+            <h2 class="section-title">PROGRAMA DE BUDDY / MENTOR</h2>
+
+            <div class="highlight">
+                <p><strong>Al incorporarte a Zoopa, se te asignará un Buddy</strong> que te acompañará durante tus primeros 90 días.</p>
+            </div>
+
+            <details class="business-unit" style="margin-top: var(--spacing-lg);">
+                <summary><h3 style="margin: 0;">Rol del Buddy</h3></summary>
+                <div class="unit-content">
+                    <ul>
+                        <li><strong>Orientación cultural:</strong> Normas no escritas y cultura Zoopa</li>
+                        <li><strong>Soporte operativo:</strong> Ayuda con herramientas y procesos</li>
+                        <li><strong>Integración social:</strong> Presentaciones con el equipo</li>
+                        <li><strong>Resolución de dudas:</strong> Preguntas del día a día</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="business-unit" style="margin-top: var(--spacing-md);">
+                <summary><h3 style="margin: 0;">Frecuencia de Reuniones</h3></summary>
+                <div class="unit-content">
+                    <ul>
+                        <li><strong>Semana 1:</strong> Reunión diaria de 15 min</li>
+                        <li><strong>Semanas 2-4:</strong> Reunión semanal de 30 min</li>
+                        <li><strong>Mes 2-3:</strong> Reunión quincenal de 30 min</li>
+                        <li><strong>Después:</strong> Disponible cuando lo necesites</li>
+                    </ul>
+                </div>
+            </details>
+
+            <div class="success" style="margin-top: var(--spacing-md);">
+                <p><strong>Diferencia clave:</strong> Tu Buddy te ayuda con el día a día y la cultura. Tu Manager es responsable de tus objetivos, evaluación y desarrollo profesional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLAN 30 DÍAS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">TU PRIMER MES EN ZOOPA</h2>
+
+            <p style="margin-bottom: var(--spacing-lg);">Tu manager creará contigo un <strong>Plan de 30 días</strong> personalizado en tu primera semana con objetivos claros y medibles.</p>
+
+            <!-- REDES SOCIALES - ACCIÓN INMEDIATA -->
+            <div class="highlight" style="margin-bottom: var(--spacing-lg); background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);">
+                <h3 style="margin-bottom: var(--spacing-sm);">NADA MÁS EMPEZAR...</h3>
+                <ul style="margin-left: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <li><strong>Sigue las redes sociales de Zoopa</strong> (Instagram, LinkedIn, YouTube, TikTok)</li>
+                    <li><strong>Sigue las redes de los clientes de Zoopa</strong> - ¡Conoce a quienes trabajamos!</li>
+                    <li><strong>¡Interactúa!</strong> Comenta, dale like, comparte - ¡SÍ, esperamos que participes!</li>
+                </ul>
+                <div style="background: rgba(255,255,255,0.2); padding: var(--spacing-md); border-radius: 8px;">
+                    <p style="font-size: var(--font-size-md); margin: 0;"><strong>Publica un post en LinkedIn</strong> anunciando tu incorporación a Zoopa. ¡Queremos darte cariño y celebrarlo contigo!</p>
+                </div>
+                <p style="margin-top: var(--spacing-md); font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold); text-align: center;">¡VAMOS!</p>
+            </div>
+
+            <!-- BIENVENIDA -->
+            <div class="card" style="border-left: 6px solid var(--color-green); margin-bottom: var(--spacing-lg);">
+                <h3 style="color: var(--color-green);">Desayuno de Bienvenida</h3>
+                <p>En tu primera semana celebraremos un <strong>desayuno de bienvenida</strong> para que conozcas a todo el equipo y todos te conozcan a ti. Es un momento informal para romper el hielo y empezar a crear conexiones.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card" style="border-left: 6px solid var(--color-green);">
+                    <h3 style="color: var(--color-green);">Semana 1: INMERSIÓN</h3>
+                    <p><strong>Objetivo:</strong> Conocer Zoopa y configurar todo.</p>
+                    <ul class="checklist">
+                        <li>Desayuno de bienvenida con el equipo</li>
+                        <li>Configurar herramientas (Teams, Planner, Clockify)</li>
+                        <li>Reunión con tu manager y buddy</li>
+                        <li>Conocer los proyectos activos</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-left: 6px solid var(--color-orange);">
+                    <h3 style="color: var(--color-orange);">Semanas 2-3: APRENDER</h3>
+                    <p><strong>Objetivo:</strong> Absorber contexto, observar procesos.</p>
+                    <ul class="checklist">
+                        <li>1:1 con miembros clave del equipo</li>
+                        <li>Shadowing en reuniones de proyecto</li>
+                        <li>Dominar las herramientas principales</li>
+                        <li>Identificar tu primer quick win</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-left: 6px solid var(--color-red);">
+                    <h3 style="color: var(--color-red);">Semana 4: CONTRIBUIR</h3>
+                    <p><strong>Objetivo:</strong> Empezar a aportar valor.</p>
+                    <ul class="checklist">
+                        <li>Ejecutar tu primer quick win</li>
+                        <li>Responsabilidad sobre tareas concretas</li>
+                        <li>Solicitar feedback a tu manager</li>
+                        <li>Review del primer mes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="subsection-title" style="margin-top: var(--spacing-xl);">Reuniones de Seguimiento</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Día</th>
+                        <th>Reunión</th>
+                        <th>Participantes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Bienvenida y setup</td><td>Manager + Buddy + RRHH</td></tr>
+                    <tr><td>7</td><td>Check-in primera semana</td><td>Manager + Buddy</td></tr>
+                    <tr><td>15</td><td>Check-in intermedio</td><td>Manager</td></tr>
+                    <tr><td>30</td><td>Review Mes 1</td><td>Manager</td></tr>
+                </tbody>
+            </table>
+
+            <!-- TRADICIÓN FUTBOLÍN -->
+            <div class="card" style="margin-top: var(--spacing-lg); background: linear-gradient(135deg, rgba(207, 46, 46, 0.05) 0%, rgba(0,0,0,0.02) 100%);">
+                <h3>Tradición Zoopa: El Futbolín</h3>
+                <p>En la oficina tenemos un futbolín y lo usamos bastante. <strong>Si juegas y pierdes, tendrás que pasar por debajo de la mesa.</strong></p>
+                <p style="margin-top: var(--spacing-xs);"><strong>No es personal, es tradición.</strong> Todos hemos pasado por ahí. Es parte de la cultura Zoopa y una forma divertida de integrarte con el equipo. ¡Acepta el reto!</p>
+            </div>
+        </div>
+    </section>
+
     <!-- BANNER PROYECTOS 1: Adidas + PortAventura -->
     <section style="display: flex; width: 100%; height: 200px; overflow: hidden;">
         <div style="flex: 1; background: url('assets/adidas_project.jpg') center center / cover no-repeat;"></div>
         <div style="flex: 1; background: url('assets/portaventura_project.gif') center center / cover no-repeat;"></div>
+    </section>
+
+    <!-- PRINCIPIOS DE ACTUACIÓN -->
+    <section class="section" id="principios" style="background: rgba(0,0,0,0.02);">
+        <div class="container">
+            <h2 class="section-title">PRINCIPIOS DE ACTUACIÓN ZOOPA</h2>
+
+            <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-lg);">16 principios en 4 bloques que definen cómo trabajamos. <strong>Haz clic en cada bloque para expandir.</strong></p>
+
+            <!-- BLOQUE 1 -->
+            <details class="business-unit" style="margin-bottom: var(--spacing-md);">
+                <summary><h3 style="color: var(--color-red);">BLOQUE 1: Acción, Enfoque y Autonomía</h3></summary>
+                <div class="unit-content">
+                    <div class="grid grid-2" style="margin-top: var(--spacing-md);">
+                        <div class="card" style="border-left: 4px solid var(--color-red);">
+                            <h4><span style="background: var(--color-red); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">1</span> Actúa Rápido, No Esperes a la Perfección</h4>
+                            <p>Comienza de inmediato y ajusta mientras avanzas. Lanza MVPs y mejora iterativamente.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--color-red);">
+                            <h4><span style="background: var(--color-red); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">2</span> ¡Busca Atajos! Trabaja Inteligente</h4>
+                            <p>Enfócate en lo esencial. Menos es más, pero con máxima dedicación.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--color-red);">
+                            <h4><span style="background: var(--color-red); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">3</span> Vive de los Recursos Disponibles</h4>
+                            <p>Maximiza lo que tienes. Sé creativo con las limitaciones antes de pedir más.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--color-red);">
+                            <h4><span style="background: var(--color-red); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">4</span> Comunicación Directa y Transparente</h4>
+                            <p>Si no sabes algo, dilo. Comunica blockers antes de que se vuelvan críticos.</p>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- BLOQUE 2 -->
+            <details class="business-unit" style="margin-bottom: var(--spacing-md);">
+                <summary><h3 style="color: var(--color-orange);">BLOQUE 2: Crecimiento Continuo y Responsabilidad</h3></summary>
+                <div class="unit-content">
+                    <div class="grid grid-2" style="margin-top: var(--spacing-md);">
+                        <div class="card" style="border-left: 4px solid var(--color-orange);">
+                            <h4><span style="background: var(--color-orange); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">5</span> Nunca Dejes de Estudiar</h4>
+                            <p>Sé el experto en tu área. Debes saber más de tu proyecto que el propio cliente.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--color-orange);">
+                            <h4><span style="background: var(--color-orange); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">6</span> Rompe las Reglas Cuando Sea Necesario</h4>
+                            <p>Si las reglas limitan la innovación, propón alternativas. Lucha por lo mejor, no lo fácil.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--color-orange);">
+                            <h4><span style="background: var(--color-orange); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">7</span> Ve Rápido, Pero No Con Prisas</h4>
+                            <p>Actúa rápido con reflexión. Diferencia entre urgente e importante.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--color-orange);">
+                            <h4><span style="background: var(--color-orange); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">8</span> Asume Responsabilidad</h4>
+                            <p>Tu trabajo no termina hasta que esté resuelto. Haz que las cosas sucedan.</p>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- BLOQUE 3 -->
+            <details class="business-unit" style="margin-bottom: var(--spacing-md);">
+                <summary><h3 style="color: var(--color-green);">BLOQUE 3: Superación y Colaboración</h3></summary>
+                <div class="unit-content">
+                    <div class="grid grid-2" style="margin-top: var(--spacing-md);">
+                        <div class="card" style="border-left: 4px solid var(--color-green);">
+                            <h4><span style="background: var(--color-green); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">9</span> Empuja los Límites</h4>
+                            <p>Supera tus propios límites. Propón mejoras antes de que te las pidan.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--color-green);">
+                            <h4><span style="background: var(--color-green); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">10</span> Crece Profesionalmente con Nosotros</h4>
+                            <p>Tu crecimiento es tu responsabilidad. Zoopa te da las herramientas, tú marcas el ritmo.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--color-green);">
+                            <h4><span style="background: var(--color-green); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">11</span> Hazlo Tú Mismo y Colabora</h4>
+                            <p>Toma la iniciativa. Resuelve autónomamente pero comparte el proceso.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--color-green);">
+                            <h4><span style="background: var(--color-green); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">12</span> Sé Auténtico</h4>
+                            <p>No imites a otros. Tus diferencias son tu valor, no tu debilidad.</p>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- BLOQUE 4 -->
+            <details class="business-unit" style="margin-bottom: var(--spacing-md);">
+                <summary><h3 style="color: var(--gradient-blue);">BLOQUE 4: Resiliencia y Gestión Eficiente</h3></summary>
+                <div class="unit-content">
+                    <div class="grid grid-2" style="margin-top: var(--spacing-md);">
+                        <div class="card" style="border-left: 4px solid var(--gradient-blue);">
+                            <h4><span style="background: var(--gradient-blue); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">13</span> Competitivos Pero Grandes Compañeros</h4>
+                            <p>Compite contra el mercado, no contra tus compañeros. El éxito del equipo es tu éxito.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--gradient-blue);">
+                            <h4><span style="background: var(--gradient-blue); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">14</span> Minimiza Reuniones, Maximiza Acción</h4>
+                            <p>No asistas donde no aportes. Teams para updates, reuniones para decisiones.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--gradient-blue);">
+                            <h4><span style="background: var(--gradient-blue); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">15</span> Nunca Critiques a los Clientes</h4>
+                            <p>Cuestiónalos cuando sea necesario, pero constructivamente. Sin clientes, no hay Zoopa.</p>
+                        </div>
+                        <div class="card" style="border-left: 4px solid var(--gradient-blue);">
+                            <h4><span style="background: var(--gradient-blue); color: white; padding: 2px 8px; border-radius: 50%; margin-right: 8px;">16</span> Sé Resiliente, Aprende del Fracaso</h4>
+                            <p><strong>¡Atrévete!</strong> Nunca castigamos errores; lo imperdonable es no atreverse o no aprender.</p>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <div class="highlight" style="margin-top: var(--spacing-md);">
+                <strong>Resumen:</strong> Actúa rápido, sé transparente, aprende siempre, asume responsabilidad, colabora y atrévete a fallar.
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER PROYECTOS 2: Hot Wheels + Rakuten/Barça -->
+    <section style="display: flex; width: 100%; height: 200px; overflow: hidden;">
+        <div style="flex: 1; background: url('assets/hotwheels_project.jpg') center center / cover no-repeat;"></div>
+        <div style="flex: 1; background: url('assets/rakuten_project.jpg') center center / cover no-repeat;"></div>
+    </section>
+
+    <!-- QUOTE INSPIRACIONAL 3 - Degradado fluido inverso -->
+    <section style="background: linear-gradient(225deg, #00d2d3 0%, #4a69bd 30%, #9b59b6 60%, #e84393 100%); background-size: 300% 300%; animation: gradientFlow 12s ease infinite; color: var(--color-white); padding: var(--spacing-xl) var(--spacing-lg); text-align: center; position: relative; overflow: hidden;">
+        <div class="gradient-blob" style="width: 250px; height: 250px; background: #fd4f6d; top: -80px; right: 10%;"></div>
+        <div class="gradient-blob" style="width: 200px; height: 200px; background: #54a0ff; bottom: -60px; left: 20%;"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); line-height: 1.3; margin: 0;">
+                "NUNCA DEJES<br><span style="color: #00d2d3;">DE ESTUDIAR.</span>"
+            </p>
+            <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); opacity: 0.8;">Principio #5 de Zoopa</p>
+        </div>
+    </section>
+
+    <!-- HERRAMIENTAS -->
+    <section class="section" id="herramientas">
+        <div class="container-wide">
+            <h2 class="section-title">HERRAMIENTAS Y TECNOLOGÍAS EN ZOOPA</h2>
+
+            <h3 class="section-subtitle">Stack Principal de Comunicación y Organización</h3>
+
+            <!-- MICROSOFT TEAMS - EXPLICACIÓN COMPLETA -->
+            <div class="card" style="margin-bottom: var(--spacing-lg); border-left: 4px solid #6264A7;">
+                <h3 style="color: #6264A7;">Microsoft Teams - Nuestra herramienta central</h3>
+                <p><strong>Teams es el centro de toda la comunicación interna.</strong> Entender su estructura es fundamental para trabajar eficientemente en Zoopa.</p>
+
+                <details class="business-unit" style="margin-top: var(--spacing-md);">
+                    <summary><h4 style="margin: 0;">¿Qué es un Team?</h4></summary>
+                    <div class="unit-content">
+                        <p>Un <strong>Team</strong> es un espacio de trabajo compartido para un grupo de personas. En Zoopa tenemos Teams por departamento, por proyecto y por cliente. Cada Team agrupa a las personas que necesitan colaborar juntas.</p>
+                    </div>
+                </details>
+
+                <details class="business-unit" style="margin-top: var(--spacing-sm);">
+                    <summary><h4 style="margin: 0;">¿Qué es un Canal?</h4></summary>
+                    <div class="unit-content">
+                        <p>Dentro de cada Team hay <strong>Canales</strong>, que son espacios temáticos para organizar conversaciones. Por ejemplo, un Team de proyecto puede tener canales como "General", "Creatividad", "Producción", "Cliente".</p>
+                        <p style="margin-top: var(--spacing-xs);"><strong>Cada canal tiene dos secciones clave:</strong></p>
+                        <ul>
+                            <li><strong>Posts:</strong> Conversaciones y anuncios del equipo</li>
+                            <li><strong>Archivos:</strong> Documentos compartidos del canal (sincronizados con SharePoint)</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="business-unit" style="margin-top: var(--spacing-sm);">
+                    <summary><h4 style="margin: 0;">Reglas de archivos en Teams</h4></summary>
+                    <div class="unit-content">
+                        <p><strong>NUNCA compartas archivos por chats individuales.</strong> Los archivos enviados por chat se pierden y no son accesibles para el resto del equipo.</p>
+                        <p style="margin-top: var(--spacing-xs);"><strong>Flujo correcto:</strong></p>
+                        <ol>
+                            <li>Guarda el archivo en la sección <strong>Archivos</strong> del canal correspondiente</li>
+                            <li>Copia el link del archivo</li>
+                            <li>Comparte el link en el chat o conversación</li>
+                        </ol>
+                        <p style="margin-top: var(--spacing-xs);">Así el archivo queda organizado, versionado y accesible para todo el equipo.</p>
+                    </div>
+                </details>
+
+                <details class="business-unit" style="margin-top: var(--spacing-sm);">
+                    <summary><h4 style="margin: 0;">OneDrive vs SharePoint</h4></summary>
+                    <div class="unit-content">
+                        <p>Microsoft te proporciona dos espacios de almacenamiento:</p>
+                        <ul>
+                            <li><strong>OneDrive:</strong> Espacio personal. <span style="color: var(--color-red);">EVITA usarlo para trabajo.</span> Es para archivos personales que no necesitas compartir.</li>
+                            <li><strong>SharePoint (Archivos de Teams):</strong> Espacio colaborativo. <span style="color: var(--color-green);">USA siempre este.</span> Es donde deben estar todos los archivos de trabajo.</li>
+                        </ul>
+                        <p style="margin-top: var(--spacing-xs);"><strong>¿Por qué?</strong> Si guardas en OneDrive y te vas de vacaciones o de la empresa, nadie puede acceder. En SharePoint, el equipo siempre tiene acceso.</p>
+                    </div>
+                </details>
+
+                <details class="business-unit" style="margin-top: var(--spacing-sm);">
+                    <summary><h4 style="margin: 0;">Tu ordenador local</h4></summary>
+                    <div class="unit-content">
+                        <p><strong>Minimiza los archivos que guardas solo en tu ordenador.</strong> Si tu portátil se rompe o lo pierdes, perderás ese trabajo.</p>
+                        <p style="margin-top: var(--spacing-xs);">Trabaja siempre desde la carpeta de Teams/SharePoint sincronizada. Así tienes:</p>
+                        <ul>
+                            <li>Backup automático en la nube</li>
+                            <li>Acceso desde cualquier dispositivo</li>
+                            <li>Historial de versiones</li>
+                            <li>Colaboración en tiempo real</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <div class="warning" style="margin-top: var(--spacing-md);">
+                    <strong>IMPORTANTE:</strong> Teams para comunicación interna, email para clientes externos. Todo lo organizamos para facilitar el trabajo en equipo.
+                </div>
+            </div>
+
+            <div class="grid grid-2">
+
+                <div class="card card-highlight">
+                    <h3>Microsoft Outlook</h3>
+                    <p><strong>Email corporativo</strong></p>
+                    <ul>
+                        <li>Comunicación oficial con clientes y proveedores</li>
+                        <li>Gestión de calendario y citas</li>
+                        <li>Invitaciones a reuniones externas</li>
+                    </ul>
+                    <div class="highlight">
+                        <strong>Tu email:</strong> nombre.apellido@zoopa.es
+                    </div>
+                </div>
+
+                <div class="card card-highlight">
+                    <h3>Microsoft Planner</h3>
+                    <p><strong>Gestión de tareas</strong></p>
+                    <ul>
+                        <li>Cada persona gestiona sus tareas en Planner</li>
+                        <li>Sincronización con tu calendario</li>
+                        <li>Actualiza diariamente el estado de tus tareas</li>
+                    </ul>
+                </div>
+
+                <div class="card card-highlight" style="border: 2px solid var(--color-red);">
+                    <h3>Clockify - Seguimiento de Tiempo por Proyecto</h3>
+                    <ul>
+                        <li>Registra TODO el tiempo invertido en cada proyecto</li>
+                        <li>Permite análisis de rentabilidad por cliente</li>
+                        <li>Categoriza por tipo de actividad</li>
+                    </ul>
+                    <details class="principle-explanation" style="margin-top: var(--spacing-sm);">
+                        <summary>¿Por qué es necesario?</summary>
+                        <div class="explanation-content">
+                            <p>El seguimiento de tiempo es esencial para asegurar que los proyectos son sostenibles. Nos permite detectar si estamos dedicando demasiado poco (comprometiendo la calidad) o demasiado tiempo (afectando la rentabilidad) respecto a lo comprometido con el cliente.</p>
+                        </div>
+                    </details>
+                    <div class="highlight" style="margin-top: var(--spacing-sm);">
+                        <strong>REGLA:</strong> Completa diariamente, no acumules al final de la semana
+                    </div>
+                </div>
+
+                <div class="card card-highlight">
+                    <h3>SharePoint</h3>
+                    <p><strong>Repositorio central</strong></p>
+                    <ul>
+                        <li>TODO debe estar en SharePoint</li>
+                        <li>Nomenclatura estándar de archivos</li>
+                        <li>Sincroniza con tu equipo local</li>
+                    </ul>
+                    <div class="highlight">
+                        <strong>REGLA DE ORO:</strong> NUNCA guardes archivos solo en tu ordenador local
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Nomenclatura de Archivos</h3>
+
+            <details class="principle-explanation" style="margin-bottom: var(--spacing-sm);">
+                <summary>¿Por qué es importante?</summary>
+                <div class="explanation-content">
+                    <p>Una nomenclatura consistente permite encontrar archivos rápidamente, evita duplicados y versiones perdidas, y facilita la colaboración entre equipos. Cuando todos seguimos el mismo sistema, cualquier persona puede localizar el archivo correcto sin preguntar.</p>
+                </div>
+            </details>
+
+            <pre><code>[CLIENTE]_[PROYECTO]_[TIPO]_[VERSION]_[FECHA]
+
+Ejemplo: MARCA_CampanaQ1_Guion_v03_20250117</code></pre>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Suite Creativa Completa</h3>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3>Adobe Creative Cloud</h3>
+                    <ul>
+                        <li>Premiere Pro</li>
+                        <li>After Effects</li>
+                        <li>Photoshop</li>
+                        <li>Illustrator</li>
+                        <li>Audition</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Plataformas de IA</h3>
+                    <ul>
+                        <li>Claude Pro</li>
+                        <li>ChatGPT Plus/Team</li>
+                        <li>Microsoft Copilot</li>
+                        <li>Midjourney</li>
+                        <li>Runway ML</li>
+                        <li>ElevenLabs</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Analítica y SEO</h3>
+                    <ul>
+                        <li>Ahrefs</li>
+                        <li>SEMrush</li>
+                        <li>Hootsuite</li>
+                        <li>Google Analytics 4</li>
+                        <li>YouTube Studio</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Gestión de Equipo y CRM</h3>
+
+            <div class="grid grid-3">
+                <div class="card card-highlight">
+                    <h3>Factorial</h3>
+                    <p><strong>Gestión de recursos humanos</strong></p>
+                    <ul>
+                        <li>Control horario y fichajes</li>
+                        <li>Gestión de vacaciones y ausencias</li>
+                        <li>Documentos y contratos</li>
+                        <li>Evaluaciones de desempeño</li>
+                    </ul>
+                </div>
+
+                <div class="card card-highlight">
+                    <h3>Zoho One</h3>
+                    <p><strong>Suite empresarial completa</strong></p>
+                    <ul>
+                        <li>Zoho CRM - Gestión de clientes</li>
+                        <li>Zoho Books - Presupuestos y facturación</li>
+                        <li>Zoho Campaigns - Email marketing</li>
+                        <li>Zoho Projects - Gestión de proyectos</li>
+                        <li>+40 módulos integrados</li>
+                    </ul>
+                </div>
+
+                <div class="card card-highlight">
+                    <h3>HubSpot</h3>
+                    <p><strong>Partner oficial de HubSpot</strong></p>
+                    <ul>
+                        <li>Marketing Hub</li>
+                        <li>Sales Hub</li>
+                        <li>CRM avanzado</li>
+                        <li>Automatización de marketing</li>
+                        <li>Analítica y reporting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- VACACIONES -->
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Política de Vacaciones</h3>
+
+            <div class="card" style="border-left: 4px solid var(--color-green);">
+                <div class="grid grid-2" style="gap: var(--spacing-lg);">
+                    <div>
+                        <h4 style="color: var(--color-green); margin-bottom: var(--spacing-sm);">Tus vacaciones</h4>
+                        <ul>
+                            <li><strong>24 días laborables</strong> de vacaciones al año</li>
+                            <li>Solicitud a través de <strong>Factorial</strong></li>
+                            <li>Aprobación por tu <strong>manager directo</strong></li>
+                            <li>Solicitar con <strong>mínimo 6 semanas de antelación</strong></li>
+                            <li>Máximo <strong>3 días</strong> se pueden pasar al año siguiente</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-red); margin-bottom: var(--spacing-sm);">Periodos restringidos</h4>
+                        <ul>
+                            <li><strong>3 semanas antes de Navidad:</strong> Pico de trabajo, no se pueden coger vacaciones</li>
+                            <li><strong>3 semanas antes de agosto:</strong> Pico de trabajo, no se pueden coger vacaciones</li>
+                            <li><strong>Entregas importantes:</strong> No se pueden coger si afectan a entregas críticas</li>
+                            <li><strong>Cobertura:</strong> Siempre debe haber alguien del equipo disponible</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight" style="margin-top: var(--spacing-md);">
+                    <strong>Agosto:</strong> Todo el equipo toma un mínimo de 2 semanas de vacaciones durante las 3 primeras semanas de agosto. Coordínate con tu equipo para asegurar cobertura.
+                </div>
+
+                <div class="warning" style="margin-top: var(--spacing-sm);">
+                    <strong>Importante:</strong> Coordina siempre con tu equipo antes de solicitar. No puede haber vacaciones simultáneas que dejen proyectos sin cobertura.
+                </div>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Herramientas de Productividad Avanzada</h3>
+
+            <div class="grid grid-2">
+                <div class="card card-highlight">
+                    <h3>Claude Code</h3>
+                    <p><strong>Asistente de desarrollo en terminal</strong> para automatización, código, análisis y tareas complejas.</p>
+                    <ul>
+                        <li>Generación y revisión de código</li>
+                        <li>Automatización de flujos de trabajo</li>
+                        <li>Análisis de datos y documentación</li>
+                        <li>Integración con Git y sistemas de archivos</li>
+                        <li>Creación de reportes y presentaciones</li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-xs);"><strong>Uso:</strong> Terminal / VS Code / Cursor</p>
+                </div>
+
+                <div class="card card-highlight">
+                    <h3>Obsidian</h3>
+                    <p><strong>Sistema de gestión del conocimiento</strong> basado en markdown y enlaces bidireccionales.</p>
+                    <ul>
+                        <li>Notas interconectadas (Second Brain)</li>
+                        <li>Documentación de proyectos y clientes</li>
+                        <li>MOCs (Maps of Content) por área</li>
+                        <li>Templates estandarizados</li>
+                        <li>Sincronización con vault de Zoopa</li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-xs);"><strong>Vault:</strong> BIBLIOTECA_COP_2026</p>
+                </div>
+            </div>
+
+            <div class="success" style="margin-top: var(--spacing-lg);">
+                <p><strong>IMPORTANTE sobre IA:</strong> Usa estas herramientas para optimizar tu trabajo, pero siempre revisa y edita el output. La IA es tu asistente, no tu reemplazo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER PROYECTOS 3: PlayStation/DMAX + Tag Heuer -->
+    <section style="display: flex; width: 100%; height: 200px; overflow: hidden;">
+        <div style="flex: 1; background: url('assets/playstation_dmax.jpg') center center / cover no-repeat;"></div>
+        <div style="flex: 1; background: url('assets/tagheuer_crack.jpg') center center / cover no-repeat;"></div>
+    </section>
+
+    <!-- BANNER PROYECTOS 4 -->
+    <section style="width: 100%; overflow: hidden;">
+        <img src="assets/banner-4.jpg" alt="Proyectos Zoopa" style="width: 100%; display: block;">
+    </section>
+
+    <!-- RITMO DE TRABAJO -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">RITMO Y RUTINAS DE TRABAJO</h2>
+
+            <h3 class="section-subtitle">Reunión Semanal - Viernes a Mediodía</h3>
+
+            <div class="card card-highlight">
+                <h3>La única reunión interna obligatoria de la semana</h3>
+                <p><strong>Objetivo:</strong> Mantener a todo el equipo alineado y al tanto de todos los proyectos.</p>
+                <p><strong>Duración:</strong> 60-90 minutos máximo</p>
+
+                <h4 style="margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Formato:</h4>
+                <ul>
+                    <li>Cada persona comparte avances, blockers y próximos pasos</li>
+                    <li>Updates de proyectos críticos</li>
+                    <li>Decisiones que requieren consenso de equipo</li>
+                </ul>
+
+                <h4 style="margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Reglas:</h4>
+                <ul>
+                    <li>Asistencia obligatoria (salvo causa justificada)</li>
+                    <li>Participa, sé activo y reacciona en la sesión</li>
+                    <li>No multitasking: estás presente al 100%</li>
+                    <li>Prepara tus updates con antelación</li>
+                </ul>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Ficha de Status Semanal</h3>
+
+            <div class="warning">
+                <strong>Entrega obligatoria cada semana</strong><br>
+                Viernes antes de la reunión de equipo (antes de las 12:00h)
+            </div>
+
+            <div class="card" style="margin-top: var(--spacing-md); background: rgba(0, 208, 132, 0.05); border-color: var(--color-green);">
+                <h4 style="color: var(--color-green); margin-bottom: var(--spacing-sm);">Formulario de Microsoft Teams</h4>
+                <p>Cada viernes recibirás automáticamente un <strong>formulario de Teams</strong> en tu chat. Es obligatorio completarlo y enviarlo <strong>antes de las 12:00h</strong>, antes de la reunión semanal.</p>
+                <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-xs);"><strong>Formato del formulario:</strong> El formulario sigue la estructura que se muestra a continuación. Prepara tus respuestas con antelación para completarlo rápidamente.</p>
+            </div>
+
+            <pre style="margin-top: var(--spacing-md);"><code>FICHA DE STATUS SEMANAL - [TU NOMBRE] - [FECHA]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 PROYECTOS ACTIVOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[CLIENTE] - [PROYECTO]
+└─ Estado: [En curso / Bloqueado / Finalizado]
+└─ Progreso esta semana: [Descripción breve]
+└─ Horas invertidas: [XX h en Clockify]
+└─ Próximos pasos: [Acciones concretas]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ LOGROS DE LA SEMANA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [Logro 1 con métricas si aplica]
+- [Logro 2]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚧 BLOCKERS / DESAFÍOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [Blocker 1 + acción propuesta]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎓 APRENDIZAJES / INSIGHTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [Aprendizaje relevante]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📅 PRÓXIMA SEMANA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [Prioridad 1]
+- [Prioridad 2]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⏱️ TIME TRACKING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total horas semana: [XX h]
+Distribución por proyecto: [según Clockify]</code></pre>
+
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Rutina Diaria Obligatoria</h3>
+
+            <div class="highlight">
+                <p><strong>CHECKLIST DE INICIO DEL DÍA (9:00-9:30)</strong></p>
+                <p>Este es el proceso obligatorio de inicio de jornada. Síguelo en este orden exacto.</p>
+            </div>
+
+            <table style="margin-top: var(--spacing-md);">
+                <thead>
+                    <tr>
+                        <th>Paso</th>
+                        <th>Acción</th>
+                        <th>Herramienta</th>
+                        <th>Objetivo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>Check Agenda</td>
+                        <td>Outlook Calendar</td>
+                        <td>Ver reuniones del día, preparar materiales</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>Check Email (externo)</td>
+                        <td>Outlook</td>
+                        <td>Revisar comunicaciones de clientes, urgencias</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>Check Planner</td>
+                        <td>Microsoft Planner</td>
+                        <td>Revisar tareas asignadas, priorizar el día</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>Check Teams</td>
+                        <td>Microsoft Teams</td>
+                        <td>Mensajes internos, notificaciones de equipo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td>Iniciar Clockify</td>
+                        <td>Clockify</td>
+                        <td>Activar timer del primer bloque de trabajo</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="grid grid-2" style="margin-top: var(--spacing-lg);">
+                <div class="card">
+                    <h3>1. Check Agenda</h3>
+                    <ul class="checklist">
+                        <li>Ver todas las reuniones programadas para hoy</li>
+                        <li>Preparar materiales necesarios para cada reunión</li>
+                        <li>Bloquear tiempo de trabajo profundo</li>
+                        <li>Confirmar asistencia a reuniones pendientes</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>2. Check Email Externo</h3>
+                    <ul class="checklist">
+                        <li>Revisar emails de clientes recibidos</li>
+                        <li>Identificar urgencias que requieren respuesta inmediata</li>
+                        <li>Marcar emails que requieren acción posterior</li>
+                        <li>Responder emails urgentes (máx. 15 min)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>3. Check Planner</h3>
+                    <ul class="checklist">
+                        <li>Revisar tareas asignadas y sus deadlines</li>
+                        <li>Actualizar estado de tareas en progreso</li>
+                        <li>Identificar las 3 prioridades críticas del día</li>
+                        <li>Añadir nuevas tareas surgidas de emails/agenda</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>4. Check Teams</h3>
+                    <ul class="checklist">
+                        <li>Revisar mensajes directos sin leer</li>
+                        <li>Revisar canales de proyectos activos</li>
+                        <li>Responder mensajes que requieren respuesta rápida</li>
+                        <li>Marcar mensajes que requieren acción elaborada</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning" style="margin-top: var(--spacing-md);">
+                <strong>IMPORTANTE:</strong> Sigue este orden. Primero agenda (para saber qué tienes), luego email externo (clientes son prioridad), después tareas internas (Planner), luego comunicación interna (Teams), y finalmente activa el timer de trabajo.
+            </div>
+        </div>
+    </section>
+
+    <!-- CULTURA ZOOPA -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">CULTURA ZOOPA</h2>
+
+            <div class="grid grid-2">
+                <div>
+                    <h3 class="section-subtitle">Lo que valoramos</h3>
+                    <div class="card" style="border-left: 4px solid var(--color-green);">
+                        <ul>
+                            <li><strong>Sé amable:</strong> El respeto y la empatía son la base de todo</li>
+                            <li><strong>Sé valiente:</strong> Atrévete a proponer, a equivocarte, a liderar</li>
+                            <li><strong>Sé curioso:</strong> Nunca dejes de aprender y preguntar</li>
+                            <li><strong>Sé honesto:</strong> La transparencia genera confianza</li>
+                            <li><strong>Sé inconformista:</strong> Cuestiona el status quo, busca mejoras</li>
+                            <li><strong>Sé experto:</strong> Domina tu área, la excelencia no es negociable</li>
+                            <li><strong>Sé único:</strong> Valoramos la diversidad y lo que te hace especial</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="section-subtitle">Lo que NO toleramos</h3>
+                    <div class="card" style="border-left: 4px solid var(--color-red);">
+                        <ul>
+                            <li><strong>Falta de responsabilidad:</strong> Tu trabajo es tu compromiso</li>
+                            <li><strong>Comunicación opaca o tardía:</strong> La transparencia es clave</li>
+                            <li><strong>Estancamiento profesional:</strong> Siempre hay que crecer</li>
+                            <li><strong>Crítica destructiva:</strong> Sin propuestas no hay valor</li>
+                            <li><strong>Mediocridad conformista:</strong> La excelencia no es opcional</li>
+                            <li><strong>Ser desagradecidos con clientes:</strong> Son nuestros partners, no adversarios</li>
+                        </ul>
+                        <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-xs); font-style: italic;">Valoramos la diversidad y creemos que lo que nos hace únicos a cada uno es nuestra mayor fortaleza como equipo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TU COMPROMISO -->
+    <section class="section" style="background: linear-gradient(135deg, var(--color-black) 0%, var(--color-gray-dark) 100%); color: var(--color-white);">
+        <div class="container">
+            <h2 class="section-subtitle" style="color: var(--color-white); text-align: center;">TU COMPROMISO</h2>
+
+            <p style="text-align: center; font-size: var(--font-size-md); margin-bottom: var(--spacing-lg);">Al unirte a Zoopa, te comprometes a:</p>
+
+            <div class="grid grid-2">
+                <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 8px;">
+                    <h3 style="color: var(--color-red); margin-bottom: var(--spacing-sm);">1-4</h3>
+                    <ol>
+                        <li>Actuar con autonomía y responsabilidad en tu rol</li>
+                        <li>Buscar la excelencia en cada tarea</li>
+                        <li>Comunicar de forma transparente avances y blockers</li>
+                        <li>Aprender continuamente y compartir conocimientos</li>
+                    </ol>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 8px;">
+                    <h3 style="color: var(--color-red); margin-bottom: var(--spacing-sm);">5-8</h3>
+                    <ol start="5">
+                        <li>Colaborar activamente con el equipo</li>
+                        <li>Cuestionar constructivamente procesos y decisiones</li>
+                        <li>Asumir riesgos calculados para innovar</li>
+                        <li>Crecer profesionalmente y contribuir al crecimiento de Zoopa</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIENVENIDA FINAL - Con degradado fluido animado -->
+    <section class="section gradient-fluid-section" style="text-align: center; position: relative; overflow: hidden;">
+        <div class="gradient-blob" style="width: 500px; height: 500px; background: #e84393; top: -200px; left: -200px;"></div>
+        <div class="gradient-blob" style="width: 400px; height: 400px; background: #4a69bd; top: 50%; right: -150px;"></div>
+        <div class="gradient-blob" style="width: 350px; height: 350px; background: #00d2d3; bottom: -150px; left: 30%;"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h2 class="section-subtitle" style="color: var(--color-white); font-size: var(--font-size-lg);">BIENVENIDO AL EQUIPO</h2>
+
+            <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-md);">Estás aquí porque creemos en tu talento y potencial.</p>
+
+            <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-lg);">Zoopa es un lugar donde la <strong>autonomía, la excelencia y la innovación</strong> no son solo palabras, sino la forma en que trabajamos cada día.</p>
+
+            <div style="background: rgba(0,0,0,0.3); backdrop-filter: blur(10px); padding: var(--spacing-lg); border-radius: 12px; margin-bottom: var(--spacing-lg); border: 1px solid rgba(255,255,255,0.2);">
+                <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold);">Estamos muy ilusionados por compartir este proyecto contigo.</p>
+                <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); margin-top: var(--spacing-sm);">¡Diviértete!</p>
+            </div>
+
+            <!-- PRINCIPIOS DESTACADOS: EXCELENCIA -->
+            <div style="background: rgba(207, 46, 46, 0.3); padding: var(--spacing-lg); border-radius: 8px; margin-bottom: var(--spacing-lg); border: 2px solid var(--color-red);">
+                <p style="font-size: var(--font-size-md); font-weight: var(--font-weight-extrabold); margin-bottom: var(--spacing-sm);">RECUERDA:</p>
+                <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-sm);"><strong>La mediocridad no es una opción.</strong> Simplemente "hacer la tarea" no es suficiente. En Zoopa, cada entrega debe ser <strong>extraordinaria</strong>.</p>
+                <p style="font-size: var(--font-size-md);"><strong>No entregues nada de lo que no estés orgulloso/a.</strong> Si no te emociona lo que has hecho, vuelve a empezar. Tus clientes y tu equipo merecen tu mejor versión.</p>
+            </div>
+
+            <!-- LA CAMPANA -->
+            <div style="background: rgba(255, 215, 0, 0.15); padding: var(--spacing-lg); border-radius: 8px; margin-bottom: var(--spacing-lg); border: 2px solid #FFD700; text-align: center;">
+                <p style="font-size: 3rem; margin-bottom: var(--spacing-sm);">🔔</p>
+                <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold); color: #FFD700;">¡TOCA LA CAMPANA!</p>
+                <p style="font-size: var(--font-size-md); margin-top: var(--spacing-sm);">En la oficina hay una <strong>campana disponible</strong> para tocarla cuando estés orgulloso/a de algo:</p>
+                <ul style="text-align: left; display: inline-block; margin-top: var(--spacing-sm);">
+                    <li>Un documento brillante que te ha quedado increíble</li>
+                    <li>Un feedback positivo de un cliente</li>
+                    <li>Un proyecto nuevo que acabas de cerrar</li>
+                    <li>Algo que por fin has aprendido y se te resistía</li>
+                    <li>Cualquier logro del que estés genuinamente orgulloso/a</li>
+                </ul>
+                <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); font-style: italic;">Celebrar las victorias, grandes y pequeñas, es parte de nuestra cultura.</p>
+            </div>
+
+            <!-- ZOOPA DAY -->
+            <div style="background: linear-gradient(135deg, rgba(207, 46, 46, 0.1) 0%, rgba(255, 105, 0, 0.1) 100%); padding: var(--spacing-lg); border-radius: 8px; margin-bottom: var(--spacing-lg); border: 2px solid var(--color-red); text-align: center;">
+                <p style="font-size: 3rem; margin-bottom: var(--spacing-sm);">🎉</p>
+                <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold); color: var(--color-red);">ZOOPA DAY</p>
+                <p style="font-size: var(--font-size-md); margin-top: var(--spacing-sm);"><strong>3 veces al año</strong> celebramos un día fuera de la oficina donde procuramos pasarlo bien, echar unas risas y compartir buenos momentos juntos.</p>
+                <div style="background: rgba(255,255,255,0.5); padding: var(--spacing-md); border-radius: 8px; margin-top: var(--spacing-md);">
+                    <p style="margin: 0;"><strong>¿Quién lo organiza?</strong> Un grupo de compañeros se encarga de prepararlo.</p>
+                    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold);">¡Suele ser un día ÉPICO!</p>
+                </div>
+            </div>
+
+            <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold);">Ahora, actúa rápido, rompe límites y haz que las cosas sucedan.</p>
+
+            <h1 style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); margin-top: var(--spacing-lg);">Welcome to Zoopa.</h1>
+        </div>
+    </section>
+
+    <!-- QUOTE INSPIRACIONAL 4 -->
+    <section style="background: linear-gradient(135deg, #1a1a1a 0%, var(--color-red) 100%); color: var(--color-white); padding: var(--spacing-xl) var(--spacing-lg); text-align: center;">
+        <div class="container">
+            <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); line-height: 1.3; margin: 0;">
+                "SÉ RESILIENTE.<br><span style="color: var(--color-orange);">APRENDE DEL FRACASO.</span>"
+            </p>
+            <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); opacity: 0.7;">Principio #16 de Zoopa</p>
+        </div>
     </section>
 
     <!-- UNIDADES DE NEGOCIO -->
@@ -1258,7 +2322,7 @@
 
             <div class="grid grid-2">
                 <!-- AGENCIA CREATIVA 360 -->
-                <details class="business-unit" open>
+                <details class="business-unit">
                     <summary><h3>1. AGENCIA CREATIVA 360</h3></summary>
                     <div class="unit-content">
                         <p>Agencia de servicios integrales que combina creatividad, estrategia y ejecución para marcas líderes.</p>
@@ -1485,1104 +2549,208 @@
         </div>
     </section>
 
-    <!-- QUOTE INSPIRACIONAL 2 -->
-    <section style="background: linear-gradient(135deg, var(--color-red) 0%, #1a1a1a 100%); color: var(--color-white); padding: var(--spacing-xl) var(--spacing-lg); text-align: center;">
-        <div class="container">
-            <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); line-height: 1.3; margin: 0;">
-                "¡BUSCA ATAJOS!<br><span style="color: var(--color-orange);">TRABAJA INTELIGENTE.</span>"
-            </p>
-            <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); opacity: 0.7;">Principio #2 de Zoopa</p>
-        </div>
-    </section>
-
-    <!-- TU ROL EN ZOOPA -->
-    <section class="section" style="background: var(--color-white);">
-        <div class="container">
-            <h2 class="section-title">TU ROL EN ZOOPA</h2>
-
-            <div class="highlight">
-                <p><strong>Como profesional de Zoopa, no eres solo un ejecutor de tareas. Eres un experto en tu área.</strong></p>
-            </div>
-
-            <p>Eres responsable de:</p>
-
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3>1. Dominar tu proyecto</h3>
-                    <p>Debes conocer tu cliente y proyecto mejor que ellos mismos</p>
-                </div>
-
-                <div class="card">
-                    <h3>2. Innovar constantemente</h3>
-                    <p>Proponer soluciones escalables y sostenibles</p>
-                </div>
-
-                <div class="card">
-                    <h3>3. Crecer profesionalmente</h3>
-                    <p>Tu desarrollo es tu responsabilidad</p>
-                </div>
-
-                <div class="card">
-                    <h3>4. Contribuir al ecosistema</h3>
-                    <p>Ser parte activa de la comunidad Zoopa</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRINCIPIOS DE ACTUACIÓN -->
-    <section class="section" id="principios" style="background: rgba(0,0,0,0.02);">
-        <div class="container">
-            <h2 class="section-title">PRINCIPIOS DE ACTUACIÓN ZOOPA</h2>
-
-            <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-lg);">16 principios organizados en 4 bloques temáticos que guían nuestra forma de trabajar:</p>
-
-            <!-- BLOQUE 1 -->
-            <h3 class="section-subtitle">BLOQUE 1: Acción, Enfoque y Autonomía</h3>
-
-            <div class="principle">
-                <span class="principle-number">1</span>
-                <h4>Actúa Rápido, No Esperes a la Perfección</h4>
-                <p><strong>La acción es clave.</strong> No esperes el momento perfecto; comienza de inmediato y ajusta mientras avanzas. La rapidez es vital para mantener el impulso, pero siempre busca la calidad en lo que haces.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Lanza MVPs (Minimum Viable Products) y mejora iterativamente</li>
-                        <li>No dediques más de 2 horas a planificar sin ejecutar</li>
-                        <li>Prioriza el feedback real sobre la especulación</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">2</span>
-                <h4>¡Busca Atajos! Trabaja Inteligente</h4>
-                <p><strong>Enfócate en lo esencial</strong> y hazlo de manera excepcional. La eficiencia se basa en la simplicidad. <strong>Menos es más</strong>, pero cada tarea debe ejecutarse con la máxima dedicación.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Identifica las 3 prioridades críticas del día</li>
-                        <li>Rechaza tareas que no aporten valor estratégico</li>
-                        <li>Calidad sobre cantidad en cada entregable</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">3</span>
-                <h4>Vive de los Recursos Disponibles</h4>
-                <p><strong>Maximiza lo que tienes.</strong> Vive de los recursos disponibles y busca maneras inteligentes de ejecutar tareas. Cada tarea tiene unos recursos (tiempo, equipo) y un briefing: ten siempre presente ambas cosas.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Antes de pedir presupuesto, explora soluciones con recursos actuales</li>
-                        <li>Reutiliza assets, templates y workflows existentes</li>
-                        <li>Sé creativo con limitaciones</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">4</span>
-                <h4>Comunicación Directa y Transparente</h4>
-                <p><strong>La honestidad es fundamental.</strong> Habla con claridad y asegúrate de que todos en el equipo estén alineados. La transparencia y la comunicación abierta fomentan una cultura de confianza y colaboración.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Si no sabes algo, dilo inmediatamente</li>
-                        <li>Comunica blockers antes de que se vuelvan críticos</li>
-                        <li>Reporta avances y retrocesos con la misma transparencia</li>
-                    </ul>
-                </details>
-            </div>
-
-            <!-- BLOQUE 2 -->
-            <h3 class="section-subtitle" style="margin-top: var(--spacing-xxl);">BLOQUE 2: Crecimiento Continuo y Responsabilidad</h3>
-
-            <div class="principle">
-                <span class="principle-number">5</span>
-                <h4>Nunca Dejes de Estudiar</h4>
-                <p><strong>El aprendizaje constante es esencial</strong> para el crecimiento. No estás aquí solo para hacer tareas, sino también para aprender, crecer y resolver problemas de manera innovadora.</p>
-                <p><strong>Debes ser un experto en tu área y el que más sabe de tu proyecto y cliente, más que ellos mismos. ¡Sí!</strong></p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Dedica 1 hora semanal a formación en tu área</li>
-                        <li>Mantente actualizado en tendencias de la industria</li>
-                        <li>Comparte aprendizajes con el equipo</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">6</span>
-                <h4>Rompe las Reglas Cuando Sea Necesario</h4>
-                <p>Si las reglas limitan tu capacidad de innovar, <strong>rompe las normas</strong>. La agilidad requiere ser flexible, pero siempre con un propósito claro. <strong>Lucha por lo que es mejor, inventa cuando haga falta, no por lo que es fácil.</strong></p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Si un proceso bloquea la innovación, propón alternativas</li>
-                        <li>Justifica tus decisiones con datos y razonamiento</li>
-                        <li>Asume la responsabilidad de tus experimentos</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">7</span>
-                <h4>Ve Rápido, Pero No Con Prisas</h4>
-                <p><strong>Actúa rápido, pero con reflexión.</strong> La rapidez es importante, pero no a costa de la calidad ni del impacto. Aprovecha la agilidad para avanzar, pero tómate el tiempo para resolver lo que realmente importa.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Diferencia entre urgente e importante</li>
-                        <li>Automatiza lo repetitivo para tener tiempo para lo estratégico</li>
-                        <li>No sacrifiques calidad por velocidad en entregables críticos</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">8</span>
-                <h4>Asume Responsabilidad</h4>
-                <p><strong>Tu trabajo no está terminado hasta que esté completamente resuelto.</strong> No te limites a hacer lo mínimo; haz que las cosas sucedan, sin importar los obstáculos. La responsabilidad total es esencial para lograr resultados excepcionales.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>No digas "no es mi responsabilidad" si puedes solucionarlo</li>
-                        <li>Sigue los proyectos hasta su cierre completo</li>
-                        <li>Anticipa problemas y resuelve proactivamente</li>
-                    </ul>
-                </details>
-            </div>
-
-            <!-- BLOQUE 3 -->
-            <h3 class="section-subtitle" style="margin-top: var(--spacing-xxl);">BLOQUE 3: Superación y Colaboración</h3>
-
-            <div class="principle">
-                <span class="principle-number">9</span>
-                <h4>Empuja los Límites, Supera las Expectativas</h4>
-                <p><strong>Supera tus propios límites</strong> y los de los demás. Desafía lo posible y busca constantemente formas de mejorar el rendimiento. El cambio continuo y la evolución son la clave para avanzar.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Establece KPIs personales más ambiciosos que los oficiales</li>
-                        <li>Propón mejoras antes de que te las pidan</li>
-                        <li>Celebra los pequeños logros en el camino</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">10</span>
-                <h4>Tu Objetivo es Crecer Profesionalmente con Todos Nosotros</h4>
-                <p><strong>Tu crecimiento profesional es tu responsabilidad.</strong> Zoopa te brinda las herramientas, pero eres tú quien marca el ritmo. Aprovéchalo para desarrollarte constantemente y contribuir al éxito del equipo.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Define tu plan de desarrollo profesional trimestral</li>
-                        <li>Solicita feedback regularmente</li>
-                        <li>Busca mentores dentro y fuera de Zoopa</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">11</span>
-                <h4>Hazlo Tú Mismo y Colabora</h4>
-                <p><strong>No esperes instrucciones.</strong> Toma la iniciativa, pero al mismo tiempo, trabaja en equipo. La colaboración activa y el apoyo mutuo son la base para alcanzar grandes logros.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Resuelve de forma autónoma pero comparte el proceso</li>
-                        <li>Ofrece ayuda a compañeros sin que te la pidan</li>
-                        <li>Documenta tus procesos para que otros aprendan</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">12</span>
-                <h4>Sé Auténtico y Fiel a Ti Mismo</h4>
-                <p><strong>La autenticidad es crucial.</strong> No imites a otros ni sigas ciegamente tendencias. Sé tú mismo, mantén tu integridad y aporta valor único al equipo y a la empresa.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Aporta tu perspectiva única en reuniones</li>
-                        <li>No tengas miedo de disentir constructivamente</li>
-                        <li>Tus diferencias son tu valor, no tu debilidad</li>
-                    </ul>
-                </details>
-            </div>
-
-            <!-- BLOQUE 4 -->
-            <h3 class="section-subtitle" style="margin-top: var(--spacing-xxl);">BLOQUE 4: Resiliencia, Competencia y Gestión Eficiente</h3>
-
-            <div class="principle">
-                <span class="principle-number">13</span>
-                <h4>Somos Competitivos Pero Grandes Compañeros</h4>
-                <p><strong>Enfréntate a los desafíos</strong> con mentalidad competitiva, pero en el interior del equipo, busca siempre la colaboración. Crece junto a los demás, ya que todos ganamos cuando el equipo progresa.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Compite contra el mercado, no contra tus compañeros</li>
-                        <li>Comparte conocimientos y casos de éxito</li>
-                        <li>El éxito del equipo es tu éxito</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">14</span>
-                <h4>Minimiza las Reuniones, Maximiza la Acción</h4>
-                <p><strong>Las reuniones largas y complejas retrasan el progreso.</strong> Enfócate en la acción real. Has de estar donde aportas; si acudes a una reunión es para participar.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>No asistas a reuniones donde no aportes valor</li>
-                        <li>Si organizas una reunión, ten agenda clara y timeboxing</li>
-                        <li>Prefiere Teams/email para updates, reuniones para decisiones</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">15</span>
-                <h4>Nunca Critiques a los Clientes</h4>
-                <p><strong>Los clientes son nuestros compañeros y clave</strong> para el éxito. No los critiques porque sí, pero <strong>cuestionálos cuando sea necesario</strong>, y hazlo de manera respetuosa y constructiva.</p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Critica en privado, apoya en público</li>
-                        <li>Transforma quejas en propuestas de mejora</li>
-                        <li>Recuerda: sin clientes, no hay Zoopa</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="principle">
-                <span class="principle-number">16</span>
-                <h4>Sé Resiliente y Aprende del Fracaso</h4>
-                <p><strong>No temas al fracaso</strong>; es parte del proceso de aprendizaje. La resiliencia es una de las claves del éxito.</p>
-                <p><strong>¡Atrévete! Nunca hemos castigado un error; lo que es imperdonable es no atreverse o no aprender de ellos.</strong></p>
-                <details class="principle-application">
-                    <summary>Aplicación práctica:</summary>
-                    <ul>
-                        <li>Documenta tus errores y aprendizajes</li>
-                        <li>Comparte fallos con el equipo para que aprendan</li>
-                        <li>El fracaso rápido es mejor que el éxito tardío</li>
-                    </ul>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- BANNER PROYECTOS 2: Hot Wheels + Rakuten/Barça -->
-    <section style="display: flex; width: 100%; height: 200px; overflow: hidden;">
-        <div style="flex: 1; background: url('assets/hotwheels_project.jpg') center center / cover no-repeat;"></div>
-        <div style="flex: 1; background: url('assets/rakuten_project.jpg') center center / cover no-repeat;"></div>
-    </section>
-
-    <!-- QUOTE INSPIRACIONAL 3 -->
-    <section style="background: var(--color-black); color: var(--color-white); padding: var(--spacing-xl) var(--spacing-lg); text-align: center;">
-        <div class="container">
-            <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); line-height: 1.3; margin: 0;">
-                "NUNCA DEJES<br><span style="color: var(--color-green);">DE ESTUDIAR.</span>"
-            </p>
-            <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); opacity: 0.7;">Principio #5 de Zoopa</p>
-        </div>
-    </section>
-
-    <!-- HERRAMIENTAS -->
-    <section class="section" id="herramientas">
-        <div class="container-wide">
-            <h2 class="section-title">HERRAMIENTAS Y TECNOLOGÍAS EN ZOOPA</h2>
-
-            <h3 class="section-subtitle">Stack Principal de Comunicación y Organización</h3>
-
-            <div class="grid grid-2">
-                <div class="card card-highlight">
-                    <h3>Microsoft Teams</h3>
-                    <p><strong>Comunicación interna</strong></p>
-                    <ul>
-                        <li>Toda la comunicación diaria del equipo</li>
-                        <li>Videoconferencias y llamadas</li>
-                        <li>Canales por proyecto y área</li>
-                    </ul>
-                    <div class="warning">
-                        <strong>IMPORTANTE:</strong> Teams para comunicación interna, email para clientes externos
-                    </div>
-                </div>
-
-                <div class="card card-highlight">
-                    <h3>Microsoft Outlook</h3>
-                    <p><strong>Email corporativo</strong></p>
-                    <ul>
-                        <li>Comunicación oficial con clientes y proveedores</li>
-                        <li>Gestión de calendario y citas</li>
-                        <li>Invitaciones a reuniones externas</li>
-                    </ul>
-                    <div class="highlight">
-                        <strong>Tu email:</strong> nombre.apellido@zoopa.es
-                    </div>
-                </div>
-
-                <div class="card card-highlight">
-                    <h3>Microsoft Planner</h3>
-                    <p><strong>Gestión de tareas</strong></p>
-                    <ul>
-                        <li>Cada persona gestiona sus tareas en Planner</li>
-                        <li>Sincronización con tu calendario</li>
-                        <li>Actualiza diariamente el estado de tus tareas</li>
-                    </ul>
-                </div>
-
-                <div class="card card-highlight" style="border: 2px solid var(--color-red);">
-                    <h3>Clockify - Seguimiento de Tiempo por Proyecto</h3>
-                    <p><strong>Time tracking OBLIGATORIO</strong></p>
-                    <ul>
-                        <li>Registra TODO el tiempo invertido en cada proyecto</li>
-                        <li>Permite análisis de rentabilidad por cliente</li>
-                        <li>Categoriza por tipo de actividad</li>
-                    </ul>
-                    <div class="warning" style="margin-top: var(--spacing-sm);">
-                        <strong>¿Por qué es obligatorio?</strong> El seguimiento de tiempo es esencial para asegurar que los proyectos son sostenibles. Nos permite detectar si estamos dedicando demasiado poco (comprometiendo la calidad) o demasiado tiempo (afectando la rentabilidad) respecto a lo comprometido con el cliente.
-                    </div>
-                    <div class="highlight" style="margin-top: var(--spacing-xs);">
-                        <strong>REGLA:</strong> Completa diariamente, no acumules al final de la semana
-                    </div>
-                </div>
-
-                <div class="card card-highlight">
-                    <h3>SharePoint</h3>
-                    <p><strong>Repositorio central</strong></p>
-                    <ul>
-                        <li>TODO debe estar en SharePoint</li>
-                        <li>Nomenclatura estándar de archivos</li>
-                        <li>Sincroniza con tu equipo local</li>
-                    </ul>
-                    <div class="highlight">
-                        <strong>REGLA DE ORO:</strong> NUNCA guardes archivos solo en tu ordenador local
-                    </div>
-                </div>
-            </div>
-
-            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Nomenclatura de Archivos</h3>
-
-            <pre><code>[CLIENTE]_[PROYECTO]_[TIPO]_[VERSION]_[FECHA]
-
-Ejemplo: MARCA_CampanaQ1_Guion_v03_20250117</code></pre>
-
-            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Suite Creativa Completa</h3>
-
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3>Adobe Creative Cloud</h3>
-                    <ul>
-                        <li>Premiere Pro</li>
-                        <li>After Effects</li>
-                        <li>Photoshop</li>
-                        <li>Illustrator</li>
-                        <li>Audition</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Plataformas de IA</h3>
-                    <ul>
-                        <li>Claude Pro</li>
-                        <li>ChatGPT Plus/Team</li>
-                        <li>Microsoft Copilot</li>
-                        <li>Midjourney</li>
-                        <li>Runway ML</li>
-                        <li>ElevenLabs</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Analítica y SEO</h3>
-                    <ul>
-                        <li>Ahrefs</li>
-                        <li>SEMrush</li>
-                        <li>Hootsuite</li>
-                        <li>Google Analytics 4</li>
-                        <li>YouTube Studio</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Gestión de Equipo y CRM</h3>
-
-            <div class="grid grid-3">
-                <div class="card card-highlight">
-                    <h3>Factorial</h3>
-                    <p><strong>Gestión de recursos humanos</strong></p>
-                    <ul>
-                        <li>Control horario y fichajes</li>
-                        <li>Gestión de vacaciones y ausencias</li>
-                        <li>Documentos y contratos</li>
-                        <li>Evaluaciones de desempeño</li>
-                    </ul>
-                </div>
-
-                <div class="card card-highlight">
-                    <h3>Zoho One</h3>
-                    <p><strong>Suite empresarial completa</strong></p>
-                    <ul>
-                        <li>Zoho CRM - Gestión de clientes</li>
-                        <li>Zoho Books - Presupuestos y facturación</li>
-                        <li>Zoho Campaigns - Email marketing</li>
-                        <li>Zoho Projects - Gestión de proyectos</li>
-                        <li>+40 módulos integrados</li>
-                    </ul>
-                </div>
-
-                <div class="card card-highlight">
-                    <h3>HubSpot</h3>
-                    <p><strong>Partner oficial de HubSpot</strong></p>
-                    <ul>
-                        <li>Marketing Hub</li>
-                        <li>Sales Hub</li>
-                        <li>CRM avanzado</li>
-                        <li>Automatización de marketing</li>
-                        <li>Analítica y reporting</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- VACACIONES -->
-            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Política de Vacaciones</h3>
-
-            <div class="card" style="border-left: 4px solid var(--color-green);">
-                <div class="grid grid-2" style="gap: var(--spacing-lg);">
-                    <div>
-                        <h4 style="color: var(--color-green); margin-bottom: var(--spacing-sm);">Tus vacaciones</h4>
-                        <ul>
-                            <li><strong>24 días laborables</strong> de vacaciones al año</li>
-                            <li>Solicitud a través de <strong>Factorial</strong></li>
-                            <li>Aprobación por tu <strong>manager directo</strong></li>
-                            <li>Solicitar con <strong>mínimo 6 semanas de antelación</strong></li>
-                            <li>Máximo <strong>3 días</strong> se pueden pasar al año siguiente</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="color: var(--color-red); margin-bottom: var(--spacing-sm);">Periodos restringidos</h4>
-                        <ul>
-                            <li><strong>3 semanas antes de Navidad:</strong> Pico de trabajo, no se pueden coger vacaciones</li>
-                            <li><strong>3 semanas antes de agosto:</strong> Pico de trabajo, no se pueden coger vacaciones</li>
-                            <li><strong>Entregas importantes:</strong> No se pueden coger si afectan a entregas críticas</li>
-                            <li><strong>Cobertura:</strong> Siempre debe haber alguien del equipo disponible</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="highlight" style="margin-top: var(--spacing-md);">
-                    <strong>Agosto:</strong> Todo el equipo toma un mínimo de 2 semanas de vacaciones durante las 3 primeras semanas de agosto. Coordínate con tu equipo para asegurar cobertura.
-                </div>
-
-                <div class="warning" style="margin-top: var(--spacing-sm);">
-                    <strong>Importante:</strong> Coordina siempre con tu equipo antes de solicitar. No puede haber vacaciones simultáneas que dejen proyectos sin cobertura.
-                </div>
-            </div>
-
-            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Herramientas de Productividad Avanzada</h3>
-
-            <div class="grid grid-2">
-                <div class="card card-highlight">
-                    <h3>Claude Code</h3>
-                    <p><strong>Asistente de desarrollo en terminal</strong> para automatización, código, análisis y tareas complejas.</p>
-                    <ul>
-                        <li>Generación y revisión de código</li>
-                        <li>Automatización de flujos de trabajo</li>
-                        <li>Análisis de datos y documentación</li>
-                        <li>Integración con Git y sistemas de archivos</li>
-                        <li>Creación de reportes y presentaciones</li>
-                    </ul>
-                    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-xs);"><strong>Uso:</strong> Terminal / VS Code / Cursor</p>
-                </div>
-
-                <div class="card card-highlight">
-                    <h3>Obsidian</h3>
-                    <p><strong>Sistema de gestión del conocimiento</strong> basado en markdown y enlaces bidireccionales.</p>
-                    <ul>
-                        <li>Notas interconectadas (Second Brain)</li>
-                        <li>Documentación de proyectos y clientes</li>
-                        <li>MOCs (Maps of Content) por área</li>
-                        <li>Templates estandarizados</li>
-                        <li>Sincronización con vault de Zoopa</li>
-                    </ul>
-                    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-xs);"><strong>Vault:</strong> BIBLIOTECA_COP_2026</p>
-                </div>
-            </div>
-
-            <div class="success" style="margin-top: var(--spacing-lg);">
-                <p><strong>IMPORTANTE sobre IA:</strong> Usa estas herramientas para optimizar tu trabajo, pero siempre revisa y edita el output. La IA es tu asistente, no tu reemplazo.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- BANNER PROYECTOS 3: PlayStation/DMAX + Tag Heuer -->
-    <section style="display: flex; width: 100%; height: 200px; overflow: hidden;">
-        <div style="flex: 1; background: url('assets/playstation_dmax.jpg') center center / cover no-repeat;"></div>
-        <div style="flex: 1; background: url('assets/tagheuer_crack.jpg') center center / cover no-repeat;"></div>
-    </section>
-
-    <!-- BANNER PROYECTOS 4 -->
-    <section style="width: 100%; overflow: hidden;">
-        <img src="assets/banner-4.jpg" alt="Proyectos Zoopa" style="width: 100%; display: block;">
-    </section>
-
-    <!-- RITMO DE TRABAJO -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">RITMO Y RUTINAS DE TRABAJO</h2>
-
-            <h3 class="section-subtitle">Reunión Semanal - Viernes a Mediodía</h3>
-
-            <div class="card card-highlight">
-                <h3>La única reunión interna obligatoria de la semana</h3>
-                <p><strong>Objetivo:</strong> Mantener a todo el equipo alineado y al tanto de todos los proyectos.</p>
-                <p><strong>Duración:</strong> 60-90 minutos máximo</p>
-
-                <h4 style="margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Formato:</h4>
-                <ul>
-                    <li>Cada persona comparte avances, blockers y próximos pasos</li>
-                    <li>Updates de proyectos críticos</li>
-                    <li>Decisiones que requieren consenso de equipo</li>
-                </ul>
-
-                <h4 style="margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Reglas:</h4>
-                <ul>
-                    <li>Asistencia obligatoria (salvo causa justificada)</li>
-                    <li>Si asistes, participas activamente</li>
-                    <li>No multitasking: estás presente al 100%</li>
-                    <li>Prepara tus updates con antelación</li>
-                </ul>
-            </div>
-
-            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Ficha de Status Semanal</h3>
-
-            <div class="warning">
-                <strong>Entrega obligatoria cada semana</strong><br>
-                Viernes antes de la reunión de equipo (antes de las 12:00h)
-            </div>
-
-            <div class="card" style="margin-top: var(--spacing-md); background: rgba(0, 208, 132, 0.05); border-color: var(--color-green);">
-                <h4 style="color: var(--color-green); margin-bottom: var(--spacing-sm);">Formulario de Microsoft Teams</h4>
-                <p>Cada viernes recibirás automáticamente un <strong>formulario de Teams</strong> en tu chat. Es obligatorio completarlo y enviarlo <strong>antes de las 12:00h</strong>, antes de la reunión semanal.</p>
-                <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-xs);"><strong>Formato del formulario:</strong> El formulario sigue la estructura que se muestra a continuación. Prepara tus respuestas con antelación para completarlo rápidamente.</p>
-            </div>
-
-            <pre style="margin-top: var(--spacing-md);"><code>FICHA DE STATUS SEMANAL - [TU NOMBRE] - [FECHA]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🎯 PROYECTOS ACTIVOS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-[CLIENTE] - [PROYECTO]
-└─ Estado: [En curso / Bloqueado / Finalizado]
-└─ Progreso esta semana: [Descripción breve]
-└─ Horas invertidas: [XX h en Clockify]
-└─ Próximos pasos: [Acciones concretas]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ LOGROS DE LA SEMANA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- [Logro 1 con métricas si aplica]
-- [Logro 2]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚧 BLOCKERS / DESAFÍOS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- [Blocker 1 + acción propuesta]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🎓 APRENDIZAJES / INSIGHTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- [Aprendizaje relevante]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📅 PRÓXIMA SEMANA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- [Prioridad 1]
-- [Prioridad 2]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⏱️ TIME TRACKING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Total horas semana: [XX h]
-Distribución por proyecto: [según Clockify]</code></pre>
-
-            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Rutina Diaria Obligatoria</h3>
-
-            <div class="highlight">
-                <p><strong>CHECKLIST DE INICIO DEL DÍA (9:00-9:30)</strong></p>
-                <p>Este es el proceso obligatorio de inicio de jornada. Síguelo en este orden exacto.</p>
-            </div>
-
-            <table style="margin-top: var(--spacing-md);">
-                <thead>
-                    <tr>
-                        <th>Paso</th>
-                        <th>Acción</th>
-                        <th>Herramienta</th>
-                        <th>Objetivo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>1</strong></td>
-                        <td>Check Agenda</td>
-                        <td>Outlook Calendar</td>
-                        <td>Ver reuniones del día, preparar materiales</td>
-                    </tr>
-                    <tr>
-                        <td><strong>2</strong></td>
-                        <td>Check Email (externo)</td>
-                        <td>Outlook</td>
-                        <td>Revisar comunicaciones de clientes, urgencias</td>
-                    </tr>
-                    <tr>
-                        <td><strong>3</strong></td>
-                        <td>Check Planner</td>
-                        <td>Microsoft Planner</td>
-                        <td>Revisar tareas asignadas, priorizar el día</td>
-                    </tr>
-                    <tr>
-                        <td><strong>4</strong></td>
-                        <td>Check Teams</td>
-                        <td>Microsoft Teams</td>
-                        <td>Mensajes internos, notificaciones de equipo</td>
-                    </tr>
-                    <tr>
-                        <td><strong>5</strong></td>
-                        <td>Iniciar Clockify</td>
-                        <td>Clockify</td>
-                        <td>Activar timer del primer bloque de trabajo</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="grid grid-2" style="margin-top: var(--spacing-lg);">
-                <div class="card">
-                    <h3>1. Check Agenda</h3>
-                    <ul class="checklist">
-                        <li>Ver todas las reuniones programadas para hoy</li>
-                        <li>Preparar materiales necesarios para cada reunión</li>
-                        <li>Bloquear tiempo de trabajo profundo</li>
-                        <li>Confirmar asistencia a reuniones pendientes</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>2. Check Email Externo</h3>
-                    <ul class="checklist">
-                        <li>Revisar emails de clientes recibidos</li>
-                        <li>Identificar urgencias que requieren respuesta inmediata</li>
-                        <li>Marcar emails que requieren acción posterior</li>
-                        <li>Responder emails urgentes (máx. 15 min)</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>3. Check Planner</h3>
-                    <ul class="checklist">
-                        <li>Revisar tareas asignadas y sus deadlines</li>
-                        <li>Actualizar estado de tareas en progreso</li>
-                        <li>Identificar las 3 prioridades críticas del día</li>
-                        <li>Añadir nuevas tareas surgidas de emails/agenda</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>4. Check Teams</h3>
-                    <ul class="checklist">
-                        <li>Revisar mensajes directos sin leer</li>
-                        <li>Revisar canales de proyectos activos</li>
-                        <li>Responder mensajes que requieren respuesta rápida</li>
-                        <li>Marcar mensajes que requieren acción elaborada</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="warning" style="margin-top: var(--spacing-md);">
-                <strong>IMPORTANTE:</strong> Sigue este orden exacto. Primero agenda (para saber qué tienes), luego email externo (clientes son prioridad), después tareas internas (Planner), luego comunicación interna (Teams), y finalmente activa el timer de trabajo.
-            </div>
-        </div>
-    </section>
-
-    <!-- PROGRAMA BUDDY -->
-    <section class="section" style="background: rgba(0,0,0,0.02);">
-        <div class="container">
-            <h2 class="section-title">PROGRAMA DE BUDDY / MENTOR</h2>
-
-            <div class="highlight">
-                <p><strong>Al incorporarte a Zoopa, se te asignará un Buddy</strong> que te acompañará durante tus primeros 90 días.</p>
-            </div>
-
-            <div class="grid grid-2" style="margin-top: var(--spacing-lg);">
-                <div class="card">
-                    <h3>Rol del Buddy</h3>
-                    <ul>
-                        <li><strong>Orientación cultural:</strong> Normas no escritas y cultura Zoopa</li>
-                        <li><strong>Soporte operativo:</strong> Ayuda con herramientas y procesos</li>
-                        <li><strong>Integración social:</strong> Presentaciones con el equipo</li>
-                        <li><strong>Resolución de dudas:</strong> Preguntas del día a día</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Frecuencia de Reuniones</h3>
-                    <ul>
-                        <li><strong>Semana 1:</strong> Reunión diaria de 15 min</li>
-                        <li><strong>Semanas 2-4:</strong> Reunión semanal de 30 min</li>
-                        <li><strong>Mes 2-3:</strong> Reunión quincenal de 30 min</li>
-                        <li><strong>Después:</strong> Disponible cuando lo necesites</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="success" style="margin-top: var(--spacing-md);">
-                <p><strong>Diferencia clave:</strong> Tu Buddy te ayuda con el día a día y la cultura. Tu Manager es responsable de tus objetivos, evaluación y desarrollo profesional.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PLAN 30-60-90 -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">PLAN 30-60-90 DÍAS</h2>
-
-            <p style="margin-bottom: var(--spacing-lg);">Tu manager creará contigo un <strong>Plan 30-60-90</strong> personalizado en tu primera semana con objetivos claros y medibles.</p>
-
-            <div class="grid grid-3">
-                <div class="card" style="border-left: 6px solid var(--color-green);">
-                    <h3 style="color: var(--color-green);">Días 1-30: APRENDER</h3>
-                    <p><strong>Objetivo:</strong> Absorber contexto, conocer el equipo, quick wins.</p>
-                    <ul class="checklist">
-                        <li>Completar onboarding y dominar herramientas</li>
-                        <li>1:1 con todos los miembros del equipo</li>
-                        <li>Mapa de stakeholders completado</li>
-                        <li>Quick win identificado o ejecutado</li>
-                    </ul>
-                </div>
-
-                <div class="card" style="border-left: 6px solid var(--color-orange);">
-                    <h3 style="color: var(--color-orange);">Días 31-60: CONTRIBUIR</h3>
-                    <p><strong>Objetivo:</strong> Ejecutar independientemente, proponer mejoras.</p>
-                    <ul class="checklist">
-                        <li>Responsabilidad sobre tareas/proyectos</li>
-                        <li>Propuesta de mejora documentada</li>
-                        <li>Presentación a cliente (shadowing)</li>
-                        <li>Feedback 360 solicitado</li>
-                    </ul>
-                </div>
-
-                <div class="card" style="border-left: 6px solid var(--color-red);">
-                    <h3 style="color: var(--color-red);">Días 61-90: LIDERAR</h3>
-                    <p><strong>Objetivo:</strong> Independencia total, plan trimestral.</p>
-                    <ul class="checklist">
-                        <li>Ownership completo de proyectos</li>
-                        <li>Resultados medibles documentados</li>
-                        <li>Playbook o documentación creada</li>
-                        <li>Plan Q+1 acordado con manager</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3 class="subsection-title" style="margin-top: var(--spacing-xl);">Reuniones de Seguimiento</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Día</th>
-                        <th>Reunión</th>
-                        <th>Participantes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>15</td><td>Check-in intermedio</td><td>Manager + Buddy</td></tr>
-                    <tr><td>30</td><td>Review Mes 1</td><td>Manager</td></tr>
-                    <tr><td>45</td><td>Check-in intermedio</td><td>Manager</td></tr>
-                    <tr><td>60</td><td>Review Mes 2</td><td>Manager</td></tr>
-                    <tr><td>75</td><td>Check-in intermedio</td><td>Manager</td></tr>
-                    <tr><td>90</td><td>Evaluación Final</td><td>Manager + RRHH</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- PRIMEROS 30 DÍAS -->
-    <section class="section" style="background: rgba(0,0,0,0.02);">
-        <div class="container">
-            <h2 class="section-title">PRIMEROS 30 DÍAS EN ZOOPA</h2>
-
-            <!-- REDES SOCIALES - ACCIÓN INMEDIATA -->
-            <div class="highlight" style="margin-bottom: var(--spacing-lg); background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);">
-                <h3 style="margin-bottom: var(--spacing-sm);">NADA MÁS EMPEZAR...</h3>
-                <ul style="margin-left: var(--spacing-md); margin-bottom: var(--spacing-md);">
-                    <li><strong>Sigue las redes sociales de Zoopa</strong> (Instagram, LinkedIn, YouTube, TikTok)</li>
-                    <li><strong>Sigue las redes de los clientes de Zoopa</strong> - ¡Conoce a quienes trabajamos!</li>
-                    <li><strong>¡Interactúa!</strong> Comenta, dale like, comparte - ¡SÍ, esperamos que participes!</li>
-                </ul>
-                <div style="background: rgba(255,255,255,0.2); padding: var(--spacing-md); border-radius: 8px;">
-                    <p style="font-size: var(--font-size-md); margin: 0;"><strong>Publica un post en LinkedIn</strong> anunciando tu incorporación a Zoopa. ¡Queremos darte cariño y celebrarlo contigo!</p>
-                </div>
-                <p style="margin-top: var(--spacing-md); font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold); text-align: center;">¡VAMOS!</p>
-            </div>
-
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3>Semana 1: Inmersión</h3>
-                    <ul class="checklist">
-                        <li><strong>Desayuno de bienvenida</strong> con el equipo</li>
-                        <li>Onboarding con tu manager</li>
-                        <li>Seguir redes sociales de Zoopa y clientes</li>
-                        <li>Publicar post de incorporación en LinkedIn</li>
-                        <li>Acceso a todas las herramientas (Teams, Planner, Clockify, SharePoint, Adobe, IAs)</li>
-                        <li>Configuración de Clockify y primer registro de tiempo</li>
-                        <li>Primera reunión de equipo del viernes</li>
-                        <li>Entrega de tu primera ficha de status semanal</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Semana 2: Conocimiento</h3>
-                    <ul class="checklist">
-                        <li>Estudio profundo de tus proyectos asignados</li>
-                        <li>Análisis de la competencia</li>
-                        <li>Benchmark de KPIs actuales</li>
-                        <li>Propuesta de quick wins</li>
-                        <li>Práctica con herramientas de IA</li>
-                        <li>Segunda ficha de status con más detalle</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Semana 3: Ejecución</h3>
-                    <ul class="checklist">
-                        <li>Implementación de primeras mejoras</li>
-                        <li>Primera presentación a cliente (shadowing)</li>
-                        <li>Optimización de procesos existentes</li>
-                        <li>Feedback session con tu manager</li>
-                        <li>Uso autónomo de suite Adobe</li>
-                        <li>Tercera ficha de status con resultados medibles</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Semana 4: Autonomía</h3>
-                    <ul class="checklist">
-                        <li>Gestión autónoma de tareas en Planner</li>
-                        <li>Primera propuesta estratégica completa</li>
-                        <li>Participación activa en reunión de equipo</li>
-                        <li>Revisión de objetivos del primer mes</li>
-                        <li>Análisis de tu time tracking en Clockify</li>
-                        <li>Cuarta ficha con plan para el segundo mes</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CULTURA ZOOPA -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">CULTURA ZOOPA</h2>
-
-            <div class="grid grid-2">
-                <div>
-                    <h3 class="section-subtitle">Lo que valoramos</h3>
-                    <div class="card">
-                        <ul>
-                            <li><strong>Sé amable:</strong> El respeto y la empatía son la base de todo</li>
-                            <li><strong>Sé valiente:</strong> Atrévete a proponer, a equivocarte, a liderar</li>
-                            <li><strong>Sé curioso:</strong> Nunca dejes de aprender y preguntar</li>
-                            <li><strong>Sé honesto:</strong> La transparencia genera confianza</li>
-                            <li><strong>Sé inconformista:</strong> Cuestiona el status quo, busca mejoras</li>
-                            <li><strong>Sé experto:</strong> Domina tu área, la excelencia no es negociable</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="section-subtitle">Lo que NO toleramos</h3>
-                    <div class="card" style="border-color: var(--color-red);">
-                        <ul>
-                            <li>Falta de responsabilidad</li>
-                            <li>Comunicación opaca o tardía</li>
-                            <li>Estancamiento profesional</li>
-                            <li>Crítica destructiva sin propuestas</li>
-                            <li>Mediocridad conformista</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TU COMPROMISO -->
-    <section class="section" style="background: linear-gradient(135deg, var(--color-black) 0%, var(--color-gray-dark) 100%); color: var(--color-white);">
-        <div class="container">
-            <h2 class="section-subtitle" style="color: var(--color-white); text-align: center;">TU COMPROMISO</h2>
-
-            <p style="text-align: center; font-size: var(--font-size-md); margin-bottom: var(--spacing-lg);">Al unirte a Zoopa, te comprometes a:</p>
-
-            <div class="grid grid-2">
-                <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 8px;">
-                    <h3 style="color: var(--color-red); margin-bottom: var(--spacing-sm);">1-4</h3>
-                    <ol>
-                        <li>Actuar con autonomía y responsabilidad en tu rol</li>
-                        <li>Buscar la excelencia en cada tarea</li>
-                        <li>Comunicar de forma transparente avances y blockers</li>
-                        <li>Aprender continuamente y compartir conocimientos</li>
-                    </ol>
-                </div>
-
-                <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 8px;">
-                    <h3 style="color: var(--color-red); margin-bottom: var(--spacing-sm);">5-8</h3>
-                    <ol start="5">
-                        <li>Colaborar activamente con el equipo</li>
-                        <li>Cuestionar constructivamente procesos y decisiones</li>
-                        <li>Asumir riesgos calculados para innovar</li>
-                        <li>Crecer profesionalmente y contribuir al crecimiento de Zoopa</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BIENVENIDA FINAL -->
-    <section class="section" style="background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%); color: var(--color-white); text-align: center;">
-        <div class="container">
-            <h2 class="section-subtitle" style="color: var(--color-white); font-size: var(--font-size-lg);">BIENVENIDO AL EQUIPO</h2>
-
-            <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-md);">Estás aquí porque creemos en tu talento y potencial.</p>
-
-            <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-lg);">Zoopa es un lugar donde la <strong>autonomía, la excelencia y la innovación</strong> no son solo palabras, sino la forma en que trabajamos cada día.</p>
-
-            <div style="background: rgba(0,0,0,0.2); padding: var(--spacing-lg); border-radius: 8px; margin-bottom: var(--spacing-lg);">
-                <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold);">Estamos muy ilusionados por compartir este proyecto contigo.</p>
-                <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); margin-top: var(--spacing-sm);">¡Diviértete!</p>
-            </div>
-
-            <!-- PRINCIPIOS DESTACADOS: EXCELENCIA -->
-            <div style="background: rgba(207, 46, 46, 0.3); padding: var(--spacing-lg); border-radius: 8px; margin-bottom: var(--spacing-lg); border: 2px solid var(--color-red);">
-                <p style="font-size: var(--font-size-md); font-weight: var(--font-weight-extrabold); margin-bottom: var(--spacing-sm);">RECUERDA:</p>
-                <p style="font-size: var(--font-size-md); margin-bottom: var(--spacing-sm);"><strong>La mediocridad no es una opción.</strong> Simplemente "hacer la tarea" no es suficiente. En Zoopa, cada entrega debe ser <strong>extraordinaria</strong>.</p>
-                <p style="font-size: var(--font-size-md);"><strong>No entregues nada de lo que no estés orgulloso/a.</strong> Si no te emociona lo que has hecho, vuelve a empezar. Tus clientes y tu equipo merecen tu mejor versión.</p>
-            </div>
-
-            <!-- LA CAMPANA -->
-            <div style="background: rgba(255, 215, 0, 0.15); padding: var(--spacing-lg); border-radius: 8px; margin-bottom: var(--spacing-lg); border: 2px solid #FFD700; text-align: center;">
-                <p style="font-size: 3rem; margin-bottom: var(--spacing-sm);">🔔</p>
-                <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold); color: #FFD700;">¡TOCA LA CAMPANA!</p>
-                <p style="font-size: var(--font-size-md); margin-top: var(--spacing-sm);">En la oficina hay una <strong>campana disponible</strong> para tocarla cuando estés orgulloso/a de algo:</p>
-                <ul style="text-align: left; display: inline-block; margin-top: var(--spacing-sm);">
-                    <li>Un documento brillante que te ha quedado increíble</li>
-                    <li>Un feedback positivo de un cliente</li>
-                    <li>Un proyecto nuevo que acabas de cerrar</li>
-                    <li>Algo que por fin has aprendido y se te resistía</li>
-                    <li>Cualquier logro del que estés genuinamente orgulloso/a</li>
-                </ul>
-                <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); font-style: italic;">Celebrar las victorias, grandes y pequeñas, es parte de nuestra cultura.</p>
-            </div>
-
-            <!-- ZOOPA DAY -->
-            <div style="background: linear-gradient(135deg, rgba(207, 46, 46, 0.1) 0%, rgba(255, 105, 0, 0.1) 100%); padding: var(--spacing-lg); border-radius: 8px; margin-bottom: var(--spacing-lg); border: 2px solid var(--color-red); text-align: center;">
-                <p style="font-size: 3rem; margin-bottom: var(--spacing-sm);">🎉</p>
-                <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold); color: var(--color-red);">ZOOPA DAY</p>
-                <p style="font-size: var(--font-size-md); margin-top: var(--spacing-sm);"><strong>3 veces al año</strong> celebramos un día fuera de la oficina donde procuramos pasarlo bien, echar unas risas y compartir buenos momentos juntos.</p>
-                <div style="background: rgba(255,255,255,0.5); padding: var(--spacing-md); border-radius: 8px; margin-top: var(--spacing-md);">
-                    <p style="margin: 0;"><strong>¿Quién lo organiza?</strong> Un grupo de compañeros se encarga de prepararlo.</p>
-                    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold);">¡Suele ser un día ÉPICO!</p>
-                </div>
-            </div>
-
-            <p style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold);">Ahora, actúa rápido, rompe límites y haz que las cosas sucedan.</p>
-
-            <h1 style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); margin-top: var(--spacing-lg);">Welcome to Zoopa.</h1>
-        </div>
-    </section>
-
-    <!-- QUOTE INSPIRACIONAL 4 -->
-    <section style="background: linear-gradient(135deg, #1a1a1a 0%, var(--color-red) 100%); color: var(--color-white); padding: var(--spacing-xl) var(--spacing-lg); text-align: center;">
-        <div class="container">
-            <p style="font-size: var(--font-size-xl); font-weight: var(--font-weight-extrabold); line-height: 1.3; margin: 0;">
-                "SÉ RESILIENTE.<br><span style="color: var(--color-orange);">APRENDE DEL FRACASO.</span>"
-            </p>
-            <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-md); opacity: 0.7;">Principio #16 de Zoopa</p>
-        </div>
-    </section>
-
     <!-- FAQ -->
     <section class="section" id="faq">
         <div class="container">
             <h2 class="section-title">PREGUNTAS FRECUENTES (FAQ)</h2>
 
             <h3 class="section-subtitle">Sobre tu Incorporación</h3>
-            <div class="card">
-                <p><strong>¿Qué debo hacer antes de mi primer día?</strong><br>
-                Recibirás un email de bienvenida con instrucciones para configurar tu cuenta de Microsoft 365. Revísalo y sigue los pasos antes de tu primer día.</p>
-            </div>
-            <div class="card">
-                <p><strong>¿Cuál es el horario de trabajo?</strong><br>
-                El horario estándar es de 9:00 a 18:00 con flexibilidad. Lo importante es cumplir entregas y estar disponible en horas de solapamiento (10:00-14:00 y 16:00-18:00).</p>
-            </div>
-            <div class="card">
-                <p><strong>¿Hay periodo de prueba?</strong><br>
-                Sí, 90 días. Tendrás reuniones de seguimiento regulares con tu manager (días 15, 30, 45, 60, 75 y 90).</p>
-            </div>
-            <div class="card">
-                <p><strong>¿Puedo trabajar en remoto?</strong><br>
-                Zoopa tiene modelo híbrido. Consulta con tu manager las políticas específicas de tu equipo.</p>
-            </div>
+            <details class="faq-item">
+                <summary>¿Qué debo hacer antes de mi primer día?</summary>
+                <div class="faq-answer">Recibirás un email de bienvenida con instrucciones para configurar tu cuenta de Microsoft 365. Revísalo y sigue los pasos antes de tu primer día.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Cuál es el horario de trabajo?</summary>
+                <div class="faq-answer">El horario estándar es de 9:00 a 18:00 con flexibilidad. Lo importante es cumplir entregas y estar disponible en horas de solapamiento (10:00-14:00 y 16:00-18:00).</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Hay periodo de prueba?</summary>
+                <div class="faq-answer">Sí, 90 días. Tendrás reuniones de seguimiento regulares con tu manager para asegurar que todo va bien.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Puedo trabajar en remoto?</summary>
+                <div class="faq-answer">Zoopa tiene modelo híbrido. Consulta con tu manager las políticas específicas de tu equipo.</div>
+            </details>
 
             <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Sobre Herramientas y Procesos</h3>
-            <div class="card">
-                <p><strong>¿Dónde guardo mis archivos?</strong><br>
-                SIEMPRE en SharePoint, nunca solo en local. Sigue la nomenclatura: <code>[CLIENTE]_[PROYECTO]_[TIPO]_[VERSION]_[FECHA]</code></p>
-            </div>
-            <div class="card">
-                <p><strong>¿Es obligatorio registrar tiempo en Clockify?</strong><br>
-                Sí, es obligatorio y diario. Es la base para análisis de rentabilidad. Si olvidas un día, hazlo al día siguiente.</p>
-            </div>
-            <div class="card">
-                <p><strong>¿Cuándo uso Teams vs Email?</strong><br>
-                <strong>Teams:</strong> Comunicación interna (siempre). <strong>Email:</strong> Comunicación externa con clientes (siempre).</p>
-            </div>
+            <details class="faq-item">
+                <summary>¿Dónde guardo mis archivos?</summary>
+                <div class="faq-answer">SIEMPRE en SharePoint (sección Archivos de Teams), nunca solo en local ni en OneDrive. Sigue la nomenclatura: <code>[CLIENTE]_[PROYECTO]_[TIPO]_[VERSION]_[FECHA]</code></div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Es obligatorio registrar tiempo en Clockify?</summary>
+                <div class="faq-answer">Sí, es obligatorio y diario. Es la base para análisis de rentabilidad y sostenibilidad de proyectos. Si olvidas un día, hazlo al día siguiente.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Cuándo uso Teams vs Email?</summary>
+                <div class="faq-answer"><strong>Teams:</strong> Comunicación interna (siempre). <strong>Email:</strong> Comunicación externa con clientes (siempre).</div>
+            </details>
 
             <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Sobre Proyectos y Clientes</h3>
-            <div class="card">
-                <p><strong>¿Puedo contactar directamente con el cliente?</strong><br>
-                Consulta con tu manager primero. Las comunicaciones con cliente generalmente pasan por el responsable de cuenta.</p>
-            </div>
-            <div class="card">
-                <p><strong>¿Qué hago si un cliente me pide algo fuera del scope?</strong><br>
-                No digas que sí inmediatamente. Anota la petición y comunícala a tu manager. Las ampliaciones deben ser aprobadas.</p>
-            </div>
+            <details class="faq-item">
+                <summary>¿Puedo contactar directamente con el cliente?</summary>
+                <div class="faq-answer">Consulta con tu manager primero. Las comunicaciones con cliente generalmente pasan por el responsable de cuenta.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Qué hago si un cliente me pide algo fuera del scope?</summary>
+                <div class="faq-answer">No digas que sí inmediatamente. Anota la petición y comunícala a tu manager. Las ampliaciones deben ser aprobadas.</div>
+            </details>
 
             <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Sobre IA y Herramientas 498AS</h3>
-            <div class="card">
-                <p><strong>¿Puedo usar ChatGPT o Claude para mi trabajo?</strong><br>
-                Sí, Zoopa tiene licencias profesionales. SIEMPRE revisa el output. La IA es tu asistente, no tu sustituto.</p>
-            </div>
-            <div class="card">
-                <p><strong>¿Puedo compartir información confidencial con herramientas de IA externas?</strong><br>
-                <strong>NO.</strong> Nunca introduzcas información confidencial de clientes en herramientas de IA públicas.</p>
-            </div>
+            <details class="faq-item">
+                <summary>¿Puedo usar ChatGPT o Claude para mi trabajo?</summary>
+                <div class="faq-answer">Sí, Zoopa tiene licencias profesionales. SIEMPRE revisa el output. La IA es tu asistente, no tu sustituto.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Puedo compartir información confidencial con herramientas de IA externas?</summary>
+                <div class="faq-answer"><strong>NO.</strong> Nunca introduzcas información confidencial de clientes en herramientas de IA públicas. Usa solo las herramientas autorizadas por la empresa.</div>
+            </details>
 
             <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Sobre Cultura y Equipo</h3>
-            <div class="card">
-                <p><strong>¿Qué pasa si cometo un error?</strong><br>
-                Comunicarlo inmediatamente. En Zoopa no castigamos errores; lo imperdonable es ocultarlos o no aprender de ellos.</p>
-            </div>
-            <div class="card">
-                <p><strong>¿Cómo doy feedback a un compañero o manager?</strong><br>
-                De forma directa, constructiva y en privado. La comunicación transparente es un principio Zoopa.</p>
-            </div>
+            <details class="faq-item">
+                <summary>¿Qué pasa si cometo un error?</summary>
+                <div class="faq-answer">Comunicarlo inmediatamente. En Zoopa no castigamos errores; lo imperdonable es ocultarlos o no aprender de ellos.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Cómo doy feedback a un compañero o manager?</summary>
+                <div class="faq-answer">De forma directa, constructiva y en privado. La comunicación transparente es un principio Zoopa.</div>
+            </details>
 
             <div class="warning" style="margin-top: var(--spacing-lg);">
-                <strong>¿Más preguntas?</strong> Consulta el documento completo en Markdown o pregunta a tu Buddy o Manager. No hay preguntas tontas.
+                <strong>¿Más preguntas?</strong> Pregunta a tu Buddy o Manager. No hay preguntas tontas.
+            </div>
+        </div>
+    </section>
+
+    <!-- Separador con degradado fluido -->
+    <hr class="gradient-divider" style="max-width: 1200px; margin: 0 auto;">
+
+    <!-- INNOVACIÓN Y ACADEMIA -->
+    <section class="section" id="academia" style="background: linear-gradient(135deg, rgba(232,67,147,0.03) 0%, rgba(74,105,189,0.05) 50%, rgba(0,210,211,0.03) 100%); position: relative; overflow: hidden;">
+        <div class="gradient-blob" style="width: 600px; height: 600px; background: rgba(74,105,189,0.15); top: -300px; right: -200px;"></div>
+        <div class="gradient-blob" style="width: 400px; height: 400px; background: rgba(0,210,211,0.1); bottom: -200px; left: -100px;"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h2 class="section-title" style="background: linear-gradient(135deg, #e84393 0%, #4a69bd 50%, #00d2d3 100%);">INNOVACIÓN Y ACADEMIA</h2>
+
+            <div class="highlight" style="margin-bottom: var(--spacing-lg); background: linear-gradient(135deg, #e84393 0%, #9b59b6 30%, #4a69bd 70%, #00d2d3 100%);">
+                <p><strong>Zoopa es posiblemente una de las agencias más avanzadas tecnológicamente del sector.</strong></p>
+                <p>Somos fans de la tecnología y la innovación. No las vemos como herramientas, sino como parte de nuestro ADN.</p>
+                <p style="margin-top: var(--spacing-sm);"><strong>La tecnología, junto con el mejor equipo y proyectos interesantes, son el entorno ideal para convertirte en el mejor profesional que puedes ser.</strong></p>
+            </div>
+
+            <!-- ADN INNOVADOR -->
+            <div class="card card-highlight" style="border-left: 4px solid var(--color-red);">
+                <h3 style="color: var(--color-red);">Nuestro ADN Innovador</h3>
+                <div class="grid grid-2" style="margin-top: var(--spacing-md);">
+                    <div>
+                        <h4>Lo que nos define</h4>
+                        <ul>
+                            <li><strong>Primera agencia</strong> en ofrecer servicios de GEO (Generative Engine Optimization)</li>
+                            <li><strong>Desarrollo de productos propios</strong> de IA: GEOradar, S.A.M., Prompt Atlas</li>
+                            <li><strong>Metodología validada</strong> por instituciones académicas</li>
+                            <li><strong>Adoptamos tecnología</strong> antes que el resto del mercado</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Tecnología en el día a día</h4>
+                        <ul>
+                            <li><strong>Claude Code:</strong> Asistente de desarrollo y automatización</li>
+                            <li><strong>Agentes IA:</strong> Automatización de flujos de trabajo</li>
+                            <li><strong>Obsidian:</strong> Gestión del conocimiento</li>
+                            <li><strong>Tomasín:</strong> Comunicarnos "en IA" ya es parte de nuestra cultura</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACUERDOS ACADÉMICOS Y PROGRAMA DE BECARIOS -->
+            <details class="business-unit" style="margin-top: var(--spacing-xl);">
+                <summary><h3>Acuerdos Académicos y Programa de Becarios</h3></summary>
+                <div class="unit-content">
+
+                    <h4 style="color: var(--color-red); margin-top: var(--spacing-md);">Instituciones Colaboradoras</h4>
+                    <div class="grid grid-2" style="margin-top: var(--spacing-sm);">
+                        <div class="card" style="border-left: 4px solid #0033A0;">
+                            <h4 style="color: #0033A0;">CSIC - Consejo Superior de Investigaciones Científicas</h4>
+                            <p>Colaboración en investigación y validación de metodologías de IA aplicadas al marketing y visibilidad digital.</p>
+                            <ul>
+                                <li>Validación científica de metodología GEO</li>
+                                <li>Publicaciones académicas conjuntas</li>
+                                <li>Acceso a recursos de investigación</li>
+                            </ul>
+                        </div>
+
+                        <div class="card" style="border-left: 4px solid #005EB8;">
+                            <h4 style="color: #005EB8;">UAB - Universitat Autònoma de Barcelona</h4>
+                            <p>Acuerdo de colaboración con los departamentos de Matemáticas, Data Science e Inteligencia Artificial.</p>
+                            <ul>
+                                <li>Dirección de TFGs y TFMs</li>
+                                <li>Prácticas curriculares</li>
+                                <li>Proyectos de investigación aplicada</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="success" style="margin-top: var(--spacing-md);">
+                        <strong>Credencial:</strong> Nuestra metodología GEO ha sido validada por la <strong>Universidad de Barcelona</strong> y el <strong>CSIC</strong>, además de reconocimientos de <strong>UNESCO AI Governance</strong> y <strong>EU Next Generation</strong>.
+                    </div>
+
+                    <h4 style="color: var(--color-green); margin-top: var(--spacing-lg);">Zoopa Academia - Programa de Becarios y Prácticas</h4>
+                    <p>Tenemos un programa activo de formación y prácticas con <strong>más de 6 centros educativos</strong>. A lo largo del año, varios becarios forman parte de nuestros equipos.</p>
+
+                    <div class="grid grid-2" style="margin-top: var(--spacing-md);">
+                        <div>
+                            <h4>Centros colaboradores</h4>
+                            <ul>
+                                <li><strong>UAB</strong> - Computer Mathematics, Data Science, IA</li>
+                                <li><strong>UB</strong> - Comunicación Audiovisual</li>
+                                <li><strong>UPF</strong> - Ingeniería de Datos</li>
+                                <li><strong>EINA</strong> - Diseño y Arte</li>
+                                <li><strong>Elisava</strong> - Diseño Gráfico</li>
+                                <li><strong>FP / Grados superiores</strong> - Audiovisuales, Marketing</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Qué ofrecemos</h4>
+                            <ul>
+                                <li><strong>Dirección de TFGs/TFMs:</strong> Tutorización de proyectos de grado y máster</li>
+                                <li><strong>Prácticas remuneradas:</strong> Experiencia real en proyectos con clientes</li>
+                                <li><strong>Mentorship:</strong> Acompañamiento personalizado</li>
+                                <li><strong>Posibilidad de incorporación:</strong> Muchos becarios acaban en plantilla</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="warning" style="margin-top: var(--spacing-md);">
+                        <strong>Si conoces estudiantes de calidad</strong> en estas áreas (Computer Mathematics, Data Science, IA, Comunicación Audiovisual, Diseño), recomiéndanos. Siempre estamos buscando talento.
+                    </div>
+                </div>
+            </details>
+
+            <!-- ÁREAS DE INVESTIGACIÓN -->
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Áreas de Investigación Activas</h3>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3 style="color: var(--color-red);">GEO & LLM Visibility</h3>
+                    <p>Cómo posicionar marcas en respuestas de ChatGPT, Claude, Gemini y otros LLMs.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--color-red);">Agentes IA</h3>
+                    <p>Desarrollo de agentes autónomos para automatización de procesos creativos y operativos.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--color-red);">AI Governance</h3>
+                    <p>Compliance EU AI Act y mejores prácticas de gobernanza de inteligencia artificial.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--color-red);">Vertical Drama</h3>
+                    <p>Narrativas audiovisuales optimizadas para formato vertical y consumo mobile-first.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--color-red);">True Crime Ecosistema Digital</h3>
+                    <p>Estrategias multiplataforma para contenido True Crime: YouTube, podcasts, documentales y redes.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -2599,113 +2767,19 @@ Distribución por proyecto: [según Clockify]</code></pre>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><strong>498AS</strong></td><td>Unidad de innovación e IA de Zoopa</td></tr>
-                    <tr><td><strong>Buddy</strong></td><td>Compañero asignado para apoyarte en tus primeros 90 días</td></tr>
-                    <tr><td><strong>Clockify</strong></td><td>Herramienta de registro de tiempo obligatoria</td></tr>
-                    <tr><td><strong>GEO</strong></td><td>Generative Engine Optimization (visibilidad en LLMs)</td></tr>
-                    <tr><td><strong>GEOradar</strong></td><td>Producto 498AS para análisis de visibilidad en IA</td></tr>
+                    <tr><td><strong>498AS</strong></td><td>Unidad de innovación e IA de Zoopa. El nombre hace referencia a los 498 segundos que tarda la luz del sol en llegar a la Tierra.</td></tr>
+                    <tr><td><strong>Buddy</strong></td><td>Compañero asignado para apoyarte en tus primeros 30 días</td></tr>
+                    <tr><td><strong>Clockify</strong></td><td>Herramienta de registro de tiempo por proyecto</td></tr>
+                    <tr><td><strong>GEO</strong></td><td>Generative Engine Optimization (visibilidad en LLMs como ChatGPT, Claude, Gemini)</td></tr>
+                    <tr><td><strong>GEOradar</strong></td><td>Producto 498AS para análisis de visibilidad de marcas en IA</td></tr>
                     <tr><td><strong>MCN</strong></td><td>Multi-Channel Network (red de canales de YouTube)</td></tr>
+                    <tr><td><strong>Planner</strong></td><td>Herramienta de Microsoft Teams para gestión de tareas por departamento</td></tr>
                     <tr><td><strong>S.A.M.</strong></td><td>Semantic Alignment Machine (producto 498AS)</td></tr>
-                    <tr><td><strong>Zoopa Network</strong></td><td>Unidad de negocio MCN de Zoopa (+60 creadores)</td></tr>
+                    <tr><td><strong>The Smart Agency</strong></td><td>Nuestra filosofía: rechazar lo obvio, buscar caminos nuevos, actuar de forma audaz e inteligente</td></tr>
+                    <tr><td><strong>Tomasín</strong></td><td>Hablar "en Tomasín" significa alterar el orden de las letras y palabras de manera que solo una IA pueda entenderte. Somos fans de la tecnología.</td></tr>
+                    <tr><td><strong>Zoopa Network</strong></td><td>Unidad de negocio MCN de Zoopa (+60 creadores, +1.500M reproducciones)</td></tr>
                 </tbody>
             </table>
-        </div>
-    </section>
-
-    <!-- COMMUNITY MANAGER GUIDE -->
-    <section class="section" id="community" style="background: rgba(0,0,0,0.02);">
-        <div class="container">
-            <h2 class="section-title">ANEXO: COMMUNITY MANAGER GUIDE</h2>
-
-            <div class="highlight">
-                <p><strong>Un Community Manager es el enlace estratégico entre una Marca y su público.</strong></p>
-                <p>No es solo quien publica contenido, sino <strong>quien más sabe sobre la comunidad</strong>: quiénes son, qué les gusta, cómo actúan, qué valoran.</p>
-            </div>
-
-            <h3 class="section-subtitle">Tu Rol como Community Manager</h3>
-
-            <p>El Community trata los <strong>contenidos como HERRAMIENTA</strong> de gestión de la comunidad. Tu trabajo no es publicar o crecer sin más, es <strong>gestionar de forma óptima y maximizar el retorno a la Marca</strong>.</p>
-
-            <h3 class="section-subtitle">Conocimientos Básicos de la Comunidad</h3>
-
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3>Datos Geográficos</h3>
-                    <ul>
-                        <li>¿Dónde vive la comunidad?</li>
-                        <li>Distribución por países/regiones</li>
-                        <li>Husos horarios relevantes</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Datos Demográficos</h3>
-                    <ul>
-                        <li>Edad, sexo, nivel socioeconómico</li>
-                        <li>Ocupación, educación</li>
-                        <li>Estructura familiar</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Cultura y Valores</h3>
-                    <ul>
-                        <li>Valores que mueven a la comunidad</li>
-                        <li>Intereses y pasiones</li>
-                        <li>Hábitos de consumo</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3 class="section-subtitle">Checklist: Nuevo Cliente de RRSS</h3>
-
-            <ul class="checklist">
-                <li>Análisis completo de todas las RRSS actuales</li>
-                <li>Facebook: ¿Global Page o Fan Page?</li>
-                <li>Perfiles que sigue la marca</li>
-                <li>Contenido publicado histórico y KPIs to date</li>
-                <li>Colaboraciones con influencers y resultados</li>
-                <li>Seguir todas las RRSS desde tu cuenta personal</li>
-            </ul>
-
-            <h3 class="section-subtitle">Conocimiento de la Marca</h3>
-
-            <ul class="checklist">
-                <li>Nombre y CV de la persona responsable</li>
-                <li>Conocer mínimo 3 personas de la organización</li>
-                <li>A quién pertenece la marca</li>
-                <li>Protocolo de CRISIS definido</li>
-                <li>Conocer la web a fondo</li>
-                <li>Probar los productos personalmente</li>
-                <li>Calendario anual de la marca</li>
-                <li>Briefing dominado al 100%</li>
-            </ul>
-
-            <h3 class="section-subtitle">Datos Clave de los Canales</h3>
-
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3>Datos Cuantitativos</h3>
-                    <ul>
-                        <li>Número de followers al día por canal</li>
-                        <li>Crecimiento medio mensual vs. previsión</li>
-                        <li>Nivel de engagement por tipo de post</li>
-                        <li>Marketing Personas y Buying Personas</li>
-                        <li>Contenido de más éxito (reach y engagement)</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Datos Cualitativos</h3>
-                    <ul>
-                        <li>Tipo de consultas semanales (DM y público)</li>
-                        <li>Tono de marca claro</li>
-                        <li>Territorios de marca definidos</li>
-                        <li>10 super-users identificados</li>
-                        <li>Perfiles de peligro catalogados</li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </section>
 
