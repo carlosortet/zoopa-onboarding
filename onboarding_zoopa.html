@@ -884,6 +884,41 @@
             }
         }
 
+        /* Details/Summary accordion styles */
+        details {
+            transition: all 0.3s ease;
+        }
+
+        details summary {
+            transition: all 0.3s ease;
+        }
+
+        details summary:hover {
+            background: var(--color-red) !important;
+        }
+
+        details[open] summary {
+            border-radius: 8px 8px 0 0;
+            background: var(--color-red) !important;
+        }
+
+        details[open] summary span:last-child {
+            transform: rotate(45deg);
+        }
+
+        details summary span:last-child {
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        details > div {
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
         /* ÍNDICE FLOTANTE */
         .toc {
             position: sticky;
@@ -1053,10 +1088,63 @@
                     <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">Ford · GroupM · Annalect · HubSpot</p>
                 </div>
                 <div class="card" style="text-align: center; padding: var(--spacing-md);">
-                    <strong style="color: var(--color-red);">Salud / Otros</strong>
-                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">AstraZeneca · Adeslas · Dexeus · Veolia · Iberostar</p>
+                    <strong style="color: var(--color-red);">Salud / Pharma</strong>
+                    <p style="font-size: var(--font-size-xs); margin-top: var(--spacing-xs);">AstraZeneca · Lab. Ferrer · NAOS (Bioderma, Etat Pur, Institut Esthederm) · Avène · Adeslas · Dexeus</p>
                 </div>
             </div>
+
+            <!-- PRODUCCIONES PROPIAS -->
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Producciones Propias</h3>
+            <p style="margin-bottom: var(--spacing-md);">Además del trabajo para clientes, Zoopa desarrolla <strong>producciones propias</strong> en varios formatos:</p>
+
+            <div class="grid grid-3">
+                <div class="card card-highlight">
+                    <h3 style="color: var(--color-red);">Series Documentales</h3>
+                    <p><strong>"Imparables"</strong> y otras producciones originales para plataformas y TV.</p>
+                </div>
+                <div class="card card-highlight">
+                    <h3 style="color: var(--color-red);">Teatro</h3>
+                    <p><strong>Decenas de espectáculos</strong> producidos, incluyendo el tour actual por España con <strong>Millán Salcedo</strong>.</p>
+                </div>
+                <div class="card card-highlight">
+                    <h3 style="color: var(--color-red);">Editorial</h3>
+                    <p><strong>+12 libros publicados:</strong> "No quepo, no quepo", "Nascuts per córrer", "Guía para triunfar absolutamente en todo", entre otros.</p>
+                </div>
+            </div>
+
+            <!-- EQUIPO - DESPLEGABLE -->
+            <h3 class="section-subtitle" style="margin-top: var(--spacing-xl);">Equipo</h3>
+            <details style="margin-top: var(--spacing-md);">
+                <summary style="cursor: pointer; padding: var(--spacing-md); background: var(--color-black); color: var(--color-white); border-radius: 8px; font-weight: var(--font-weight-bold); list-style: none; display: flex; align-items: center; justify-content: space-between;">
+                    <span>Ver lista del equipo Zoopa</span>
+                    <span style="font-size: var(--font-size-lg);">+</span>
+                </summary>
+                <div style="padding: var(--spacing-lg); border: 2px solid var(--color-gray-blue); border-top: none; border-radius: 0 0 8px 8px; background: var(--color-white);">
+                    <p style="margin-bottom: var(--spacing-md); font-style: italic; color: var(--color-gray-dark);">Esta sección se actualizará con los miembros actuales del equipo.</p>
+
+                    <div class="grid grid-2" style="gap: var(--spacing-md);">
+                        <div>
+                            <h4 style="color: var(--color-red); margin-bottom: var(--spacing-sm);">Fundadores</h4>
+                            <ul style="margin-left: var(--spacing-md);">
+                                <li>Carlos Ortet - CEO</li>
+                                <li>Mer Canet</li>
+                                <li>David Ortet</li>
+                                <li>Santi Millan</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--color-red); margin-bottom: var(--spacing-sm);">Equipo Veterano</h4>
+                            <ul style="margin-left: var(--spacing-md);">
+                                <li>Daniel Ebosogo</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="warning" style="margin-top: var(--spacing-lg);">
+                        <strong>Nota:</strong> Pide a tu manager o a RRHH la lista completa y actualizada del equipo con sus roles y departamentos.
+                    </div>
+                </div>
+            </details>
         </div>
     </section>
 
